@@ -1,0 +1,4 @@
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.csprojResolveAssemblyReference.cache
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmMaster.resources
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.Properties.Resources.resources
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.csproj.GenerateResource.Cache
