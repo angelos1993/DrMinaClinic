@@ -1,4 +1,11 @@
-G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.csprojResolveAssemblyReference.cache
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmMaster.resources
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.Properties.Resources.resources
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.csproj.GenerateResource.Cache
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\DrMinaClinic.exe.config
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\DrMinaClinic.exe
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\DrMinaClinic.pdb
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\DevComponents.DotNetBar2.dll
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\DevComponents.DotNetBar2.xml
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.exe
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.pdb
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmReception.resources
