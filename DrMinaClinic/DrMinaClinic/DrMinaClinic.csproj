@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PL\Forms\FrmExamination.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Forms\FrmExamination.Designer.cs">
+      <DependentUpon>FrmExamination.cs</DependentUpon>
+    </Compile>
     <Compile Include="PL\Forms\FrmMaster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="PL\Forms\FrmExamination.resx">
+      <DependentUpon>FrmExamination.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PL\Forms\FrmMaster.resx">
       <DependentUpon>FrmMaster.cs</DependentUpon>
     </EmbeddedResource>
