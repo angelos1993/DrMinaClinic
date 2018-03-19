@@ -76,6 +76,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -96,6 +97,19 @@
     <Folder Include="DAL\Repositories\Infrastructure\" />
     <Folder Include="DAL\VMs\" />
     <Folder Include="Deployment Versions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Add.png" />
+    <Content Include="Resources\Backup.png" />
+    <Content Include="Resources\Clear.ico" />
+    <Content Include="Resources\DB.png" />
+    <Content Include="Resources\Edit.png" />
+    <None Include="Resources\Examination.png" />
+    <Content Include="Resources\Exit.png" />
+    <None Include="Resources\OK.png" />
+    <Content Include="Resources\Restore.png" />
+    <Content Include="Resources\Save.png" />
+    <Content Include="Resources\Search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
