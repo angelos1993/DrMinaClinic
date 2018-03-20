@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DrMinaClinic.DAL.Enums;
 
 namespace DrMinaClinic.PL.Forms
 {
@@ -64,12 +65,53 @@ namespace DrMinaClinic.PL.Forms
 
         private void ResetForm()
         {
-            
+            EnableOrDisableControls(ReceptionFormMode.New);
         }
 
         private void FindPatient()
         {
             
+        }
+
+        private void EnableOrDisableControls(ReceptionFormMode mode)
+        {
+            #region Patient Data
+
+            txtId.Enabled = mode == ReceptionFormMode.New || mode == ReceptionFormMode.AddPatient;
+            txtName.Enabled = mode == ReceptionFormMode.New || mode == ReceptionFormMode.AddPatient ||
+                              mode == ReceptionFormMode.Edit;
+            dtBirthdate.Enabled = mode == ReceptionFormMode.AddPatient || mode == ReceptionFormMode.Edit;
+            txtAddress.Enabled = mode == ReceptionFormMode.AddPatient || mode == ReceptionFormMode.Edit;
+            txtPhone.Enabled = mode == ReceptionFormMode.AddPatient || mode == ReceptionFormMode.Edit;
+            btnFindPatient.Enabled = mode == ReceptionFormMode.New;
+
+            #endregion
+
+            #region Relevant Family History
+
+            pnlRelevantFamilyHistory.Enabled = mode == ReceptionFormMode.AddPatient || mode == ReceptionFormMode.Edit;
+
+            #endregion
+
+            #region First Examination
+
+            pnlFirstExamination.Enabled = mode == ReceptionFormMode.AddPatient || mode == ReceptionFormMode.Edit;
+
+            #endregion
+
+            #region Investigations
+
+            pnlInvestigations.Enabled = mode == ReceptionFormMode.AddPatient || mode == ReceptionFormMode.Edit;
+
+            #endregion
+
+            #region Lower Buttons
+
+            btnNewPatient.Enabled = mode == ReceptionFormMode.New;
+            btnEditPatient.Enabled = mode == ReceptionFormMode.HasPatient || mode == ReceptionFormMode.Edit;
+            btnNewExamination.Enabled = mode == ReceptionFormMode.HasPatient;
+
+            #endregion
         }
 
         #endregion
