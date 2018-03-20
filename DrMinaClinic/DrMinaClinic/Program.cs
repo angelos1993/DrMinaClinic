@@ -15,7 +15,6 @@ namespace DrMinaClinic
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FrmExamination());
-            //Application.Run(new FrmReception());
         }
     }
 }

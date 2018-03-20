@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.treePregnancies = new System.Windows.Forms.TreeView();
             this.pnlPatientData = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.lblPatientData = new DevComponents.DotNetBar.LabelX();
@@ -50,6 +50,17 @@
             this.integerInput1 = new DevComponents.Editors.IntegerInput();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.pnlExaminationData = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.labelX18 = new DevComponents.DotNetBar.LabelX();
+            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.MinusTwo = new DevComponents.Editors.ComboItem();
+            this.MinusOne = new DevComponents.Editors.ComboItem();
+            this.Zero = new DevComponents.Editors.ComboItem();
+            this.one = new DevComponents.Editors.ComboItem();
+            this.Two = new DevComponents.Editors.ComboItem();
+            this.labelX17 = new DevComponents.DotNetBar.LabelX();
+            this.integerInput12 = new DevComponents.Editors.IntegerInput();
+            this.labelX16 = new DevComponents.DotNetBar.LabelX();
             this.integerInput11 = new DevComponents.Editors.IntegerInput();
             this.labelX15 = new DevComponents.DotNetBar.LabelX();
             this.switchButton1 = new DevComponents.DotNetBar.Controls.SwitchButton();
@@ -69,19 +80,10 @@
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.integerInput7 = new DevComponents.Editors.IntegerInput();
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
-            this.btnNewPatient = new DevComponents.DotNetBar.ButtonX();
-            this.integerInput12 = new DevComponents.Editors.IntegerInput();
-            this.labelX16 = new DevComponents.DotNetBar.LabelX();
-            this.comboBoxEx2 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.labelX17 = new DevComponents.DotNetBar.LabelX();
-            this.textBoxX1 = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.labelX18 = new DevComponents.DotNetBar.LabelX();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.MinusOne = new DevComponents.Editors.ComboItem();
-            this.Zero = new DevComponents.Editors.ComboItem();
-            this.one = new DevComponents.Editors.ComboItem();
-            this.Two = new DevComponents.Editors.ComboItem();
-            this.MinusTwo = new DevComponents.Editors.ComboItem();
+            this.btnClose = new DevComponents.DotNetBar.ButtonX();
+            this.btnEditPregnancy = new DevComponents.DotNetBar.ButtonX();
+            this.btnSaveExamination = new DevComponents.DotNetBar.ButtonX();
+            this.btnNewPregnancy = new DevComponents.DotNetBar.ButtonX();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.pnlPatientData.SuspendLayout();
             this.pnlPregnancyData.SuspendLayout();
@@ -95,6 +97,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInput2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
             this.pnlExaminationData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput10)).BeginInit();
             this.pnlBP.SuspendLayout();
@@ -103,14 +106,13 @@
             this.pnlUrine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.doubleInput1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput12)).BeginInit();
             this.SuspendLayout();
             // 
             // treePregnancies
             // 
-            this.treePregnancies.Location = new System.Drawing.Point(12, 12);
+            this.treePregnancies.Location = new System.Drawing.Point(12, 24);
             this.treePregnancies.Name = "treePregnancies";
-            this.treePregnancies.Size = new System.Drawing.Size(121, 430);
+            this.treePregnancies.Size = new System.Drawing.Size(121, 418);
             this.treePregnancies.TabIndex = 0;
             // 
             // pnlPatientData
@@ -256,14 +258,14 @@
             // 
             this.dgvPregnancyDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPregnancyDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPregnancyDetails.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPregnancyDetails.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvPregnancyDetails.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvPregnancyDetails.Location = new System.Drawing.Point(297, 35);
             this.dgvPregnancyDetails.Name = "dgvPregnancyDetails";
@@ -584,6 +586,115 @@
             this.pnlExaminationData.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.pnlExaminationData.TabIndex = 3;
             this.pnlExaminationData.Text = "Examination Data";
+            // 
+            // labelX18
+            // 
+            this.labelX18.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX18.BackgroundStyle.Class = "";
+            this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX18.Location = new System.Drawing.Point(217, 73);
+            this.labelX18.Name = "labelX18";
+            this.labelX18.Size = new System.Drawing.Size(153, 23);
+            this.labelX18.TabIndex = 29;
+            this.labelX18.Text = "Ultra Soung Notes";
+            this.labelX18.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // textBoxX1
+            // 
+            // 
+            // 
+            // 
+            this.textBoxX1.Border.Class = "TextBoxBorder";
+            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.textBoxX1.Location = new System.Drawing.Point(376, 73);
+            this.textBoxX1.Name = "textBoxX1";
+            this.textBoxX1.Size = new System.Drawing.Size(660, 26);
+            this.textBoxX1.TabIndex = 28;
+            // 
+            // comboBoxEx2
+            // 
+            this.comboBoxEx2.DisplayMember = "Text";
+            this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboBoxEx2.FormattingEnabled = true;
+            this.comboBoxEx2.ItemHeight = 20;
+            this.comboBoxEx2.Items.AddRange(new object[] {
+            this.MinusTwo,
+            this.MinusOne,
+            this.Zero,
+            this.one,
+            this.Two});
+            this.comboBoxEx2.Location = new System.Drawing.Point(119, 73);
+            this.comboBoxEx2.Name = "comboBoxEx2";
+            this.comboBoxEx2.Size = new System.Drawing.Size(57, 26);
+            this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.comboBoxEx2.TabIndex = 27;
+            // 
+            // MinusTwo
+            // 
+            this.MinusTwo.Text = "-2";
+            // 
+            // MinusOne
+            // 
+            this.MinusOne.Text = "-1";
+            // 
+            // Zero
+            // 
+            this.Zero.Text = "0";
+            // 
+            // one
+            // 
+            this.one.Text = "1";
+            // 
+            // Two
+            // 
+            this.Two.Text = "2";
+            // 
+            // labelX17
+            // 
+            this.labelX17.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX17.BackgroundStyle.Class = "";
+            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX17.Location = new System.Drawing.Point(6, 73);
+            this.labelX17.Name = "labelX17";
+            this.labelX17.Size = new System.Drawing.Size(107, 23);
+            this.labelX17.TabIndex = 26;
+            this.labelX17.Text = "Engagement";
+            this.labelX17.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
+            // integerInput12
+            // 
+            // 
+            // 
+            // 
+            this.integerInput12.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.integerInput12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.integerInput12.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput12.Location = new System.Drawing.Point(447, 41);
+            this.integerInput12.Name = "integerInput12";
+            this.integerInput12.ShowUpDown = true;
+            this.integerInput12.Size = new System.Drawing.Size(61, 26);
+            this.integerInput12.TabIndex = 25;
+            // 
+            // labelX16
+            // 
+            this.labelX16.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX16.BackgroundStyle.Class = "";
+            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX16.Location = new System.Drawing.Point(329, 41);
+            this.labelX16.Name = "labelX16";
+            this.labelX16.Size = new System.Drawing.Size(118, 23);
+            this.labelX16.TabIndex = 24;
+            this.labelX16.Text = "F.H.S";
+            this.labelX16.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // integerInput11
             // 
@@ -925,150 +1036,71 @@
             this.labelX8.Text = "Weeks";
             this.labelX8.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // btnNewPatient
+            // btnClose
             // 
-            this.btnNewPatient.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnNewPatient.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNewPatient.Image = global::DrMinaClinic.Properties.Resources.Add;
-            this.btnNewPatient.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnNewPatient.Location = new System.Drawing.Point(584, 259);
-            this.btnNewPatient.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNewPatient.Name = "btnNewPatient";
-            this.btnNewPatient.Size = new System.Drawing.Size(175, 40);
-            this.btnNewPatient.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnNewPatient.TabIndex = 23;
-            this.btnNewPatient.Text = "New";
+            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClose.Image = global::DrMinaClinic.Properties.Resources.Exit;
+            this.btnClose.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnClose.Location = new System.Drawing.Point(499, 447);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(175, 40);
+            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClose.TabIndex = 26;
+            this.btnClose.Text = "Close";
             // 
-            // integerInput12
+            // btnEditPregnancy
             // 
+            this.btnEditPregnancy.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnEditPregnancy.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnEditPregnancy.Image = global::DrMinaClinic.Properties.Resources.Edit;
+            this.btnEditPregnancy.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnEditPregnancy.Location = new System.Drawing.Point(678, 259);
+            this.btnEditPregnancy.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditPregnancy.Name = "btnEditPregnancy";
+            this.btnEditPregnancy.Size = new System.Drawing.Size(175, 40);
+            this.btnEditPregnancy.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnEditPregnancy.TabIndex = 25;
+            this.btnEditPregnancy.Text = "Edit Pregnancy";
             // 
+            // btnSaveExamination
             // 
+            this.btnSaveExamination.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnSaveExamination.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnSaveExamination.Image = global::DrMinaClinic.Properties.Resources.Save;
+            this.btnSaveExamination.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnSaveExamination.Location = new System.Drawing.Point(678, 447);
+            this.btnSaveExamination.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSaveExamination.Name = "btnSaveExamination";
+            this.btnSaveExamination.Size = new System.Drawing.Size(175, 40);
+            this.btnSaveExamination.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnSaveExamination.TabIndex = 24;
+            this.btnSaveExamination.Text = "Save Examination";
             // 
-            this.integerInput12.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.integerInput12.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.integerInput12.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
-            this.integerInput12.Location = new System.Drawing.Point(447, 41);
-            this.integerInput12.Name = "integerInput12";
-            this.integerInput12.ShowUpDown = true;
-            this.integerInput12.Size = new System.Drawing.Size(61, 26);
-            this.integerInput12.TabIndex = 25;
+            // btnNewPregnancy
             // 
-            // labelX16
-            // 
-            this.labelX16.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX16.BackgroundStyle.Class = "";
-            this.labelX16.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX16.Location = new System.Drawing.Point(329, 41);
-            this.labelX16.Name = "labelX16";
-            this.labelX16.Size = new System.Drawing.Size(118, 23);
-            this.labelX16.TabIndex = 24;
-            this.labelX16.Text = "F.H.S";
-            this.labelX16.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // comboBoxEx2
-            // 
-            this.comboBoxEx2.DisplayMember = "Text";
-            this.comboBoxEx2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboBoxEx2.FormattingEnabled = true;
-            this.comboBoxEx2.ItemHeight = 20;
-            this.comboBoxEx2.Items.AddRange(new object[] {
-            this.MinusTwo,
-            this.MinusOne,
-            this.Zero,
-            this.one,
-            this.Two});
-            this.comboBoxEx2.Location = new System.Drawing.Point(119, 73);
-            this.comboBoxEx2.Name = "comboBoxEx2";
-            this.comboBoxEx2.Size = new System.Drawing.Size(57, 26);
-            this.comboBoxEx2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.comboBoxEx2.TabIndex = 27;
-            // 
-            // labelX17
-            // 
-            this.labelX17.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX17.BackgroundStyle.Class = "";
-            this.labelX17.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX17.Location = new System.Drawing.Point(6, 73);
-            this.labelX17.Name = "labelX17";
-            this.labelX17.Size = new System.Drawing.Size(107, 23);
-            this.labelX17.TabIndex = 26;
-            this.labelX17.Text = "Engagement";
-            this.labelX17.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // textBoxX1
-            // 
-            // 
-            // 
-            // 
-            this.textBoxX1.Border.Class = "TextBoxBorder";
-            this.textBoxX1.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX1.Location = new System.Drawing.Point(376, 73);
-            this.textBoxX1.Name = "textBoxX1";
-            this.textBoxX1.Size = new System.Drawing.Size(660, 26);
-            this.textBoxX1.TabIndex = 28;
-            // 
-            // labelX18
-            // 
-            this.labelX18.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX18.BackgroundStyle.Class = "";
-            this.labelX18.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX18.Location = new System.Drawing.Point(217, 73);
-            this.labelX18.Name = "labelX18";
-            this.labelX18.Size = new System.Drawing.Size(153, 23);
-            this.labelX18.TabIndex = 29;
-            this.labelX18.Text = "Ultra Soung Notes";
-            this.labelX18.TextAlignment = System.Drawing.StringAlignment.Center;
-            // 
-            // buttonX1
-            // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Image = global::DrMinaClinic.Properties.Resources.Add;
-            this.buttonX1.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.buttonX1.Location = new System.Drawing.Point(543, 447);
-            this.buttonX1.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(175, 40);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 24;
-            this.buttonX1.Text = "New";
-            // 
-            // MinusOne
-            // 
-            this.MinusOne.Text = "-1";
-            // 
-            // Zero
-            // 
-            this.Zero.Text = "0";
-            // 
-            // one
-            // 
-            this.one.Text = "1";
-            // 
-            // Two
-            // 
-            this.Two.Text = "2";
-            // 
-            // MinusTwo
-            // 
-            this.MinusTwo.Text = "-2";
+            this.btnNewPregnancy.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNewPregnancy.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnNewPregnancy.Image = global::DrMinaClinic.Properties.Resources.Add;
+            this.btnNewPregnancy.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnNewPregnancy.Location = new System.Drawing.Point(499, 259);
+            this.btnNewPregnancy.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNewPregnancy.Name = "btnNewPregnancy";
+            this.btnNewPregnancy.Size = new System.Drawing.Size(175, 40);
+            this.btnNewPregnancy.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnNewPregnancy.TabIndex = 23;
+            this.btnNewPregnancy.Text = "New Pregnancy";
             // 
             // FrmExamination
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1222, 496);
-            this.Controls.Add(this.buttonX1);
-            this.Controls.Add(this.btnNewPatient);
+            this.Controls.Add(this.btnClose);
+            this.Controls.Add(this.btnEditPregnancy);
+            this.Controls.Add(this.btnSaveExamination);
+            this.Controls.Add(this.btnNewPregnancy);
             this.Controls.Add(this.pnlExaminationData);
             this.Controls.Add(this.pnlPregnancyData);
             this.Controls.Add(this.pnlPatientData);
@@ -1090,6 +1122,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.integerInput2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
             this.pnlExaminationData.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput10)).EndInit();
             this.pnlBP.ResumeLayout(false);
@@ -1098,7 +1131,6 @@
             this.pnlUrine.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.doubleInput1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.integerInput12)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1126,7 +1158,7 @@
         private DevComponents.Editors.IntegerInput integerInput6;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.Controls.GroupPanel pnlExaminationData;
-        private DevComponents.DotNetBar.ButtonX btnNewPatient;
+        private DevComponents.DotNetBar.ButtonX btnNewPregnancy;
         private DevComponents.Editors.DoubleInput doubleInput1;
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.Editors.IntegerInput integerInput7;
@@ -1152,11 +1184,13 @@
         private DevComponents.DotNetBar.LabelX labelX16;
         private DevComponents.DotNetBar.LabelX labelX18;
         private DevComponents.DotNetBar.Controls.TextBoxX textBoxX1;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.ButtonX btnSaveExamination;
         private DevComponents.Editors.ComboItem MinusTwo;
         private DevComponents.Editors.ComboItem MinusOne;
         private DevComponents.Editors.ComboItem Zero;
         private DevComponents.Editors.ComboItem one;
         private DevComponents.Editors.ComboItem Two;
+        private DevComponents.DotNetBar.ButtonX btnEditPregnancy;
+        private DevComponents.DotNetBar.ButtonX btnClose;
     }
 }
