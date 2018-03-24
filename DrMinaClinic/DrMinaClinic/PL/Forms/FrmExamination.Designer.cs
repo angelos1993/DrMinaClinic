@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.treePregnancies = new System.Windows.Forms.TreeView();
             this.pnlPatientData = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.lblPatientData = new DevComponents.DotNetBar.LabelX();
@@ -114,6 +114,7 @@
             this.treePregnancies.Name = "treePregnancies";
             this.treePregnancies.Size = new System.Drawing.Size(121, 418);
             this.treePregnancies.TabIndex = 0;
+            this.treePregnancies.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treePregnancies_AfterSelect);
             // 
             // pnlPatientData
             // 
@@ -258,14 +259,14 @@
             // 
             this.dgvPregnancyDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPregnancyDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPregnancyDetails.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPregnancyDetails.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvPregnancyDetails.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvPregnancyDetails.Location = new System.Drawing.Point(297, 35);
             this.dgvPregnancyDetails.Name = "dgvPregnancyDetails";
@@ -1049,6 +1050,7 @@
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnClose.TabIndex = 26;
             this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnEditPregnancy
             // 
@@ -1063,6 +1065,7 @@
             this.btnEditPregnancy.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnEditPregnancy.TabIndex = 25;
             this.btnEditPregnancy.Text = "Edit Pregnancy";
+            this.btnEditPregnancy.Click += new System.EventHandler(this.btnEditPregnancy_Click);
             // 
             // btnSaveExamination
             // 
@@ -1077,6 +1080,7 @@
             this.btnSaveExamination.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnSaveExamination.TabIndex = 24;
             this.btnSaveExamination.Text = "Save Examination";
+            this.btnSaveExamination.Click += new System.EventHandler(this.btnSaveExamination_Click);
             // 
             // btnNewPregnancy
             // 
@@ -1091,6 +1095,7 @@
             this.btnNewPregnancy.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnNewPregnancy.TabIndex = 23;
             this.btnNewPregnancy.Text = "New Pregnancy";
+            this.btnNewPregnancy.Click += new System.EventHandler(this.btnNewPregnancy_Click);
             // 
             // FrmExamination
             // 
