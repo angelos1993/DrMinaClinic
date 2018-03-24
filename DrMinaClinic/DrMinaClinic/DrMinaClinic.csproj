@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\Enums\ExaminationFormMode.cs" />
     <Compile Include="DAL\Enums\ReceptionFormMode.cs" />
     <Compile Include="PL\Forms\FrmExamination.cs">
       <SubType>Form</SubType>

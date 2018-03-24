@@ -1,4 +1,7 @@
-﻿namespace DrMinaClinic.PL.Forms
+﻿using System;
+using DrMinaClinic.DAL.Enums;
+
+namespace DrMinaClinic.PL.Forms
 {
     public partial class FrmExamination : FrmMaster
     {
@@ -17,14 +20,24 @@
 
         #region Events
 
-        private void FrmExamination_Load(object sender, System.EventArgs e)
+        private void FrmExamination_Load(object sender, EventArgs e)
         {
-
+            ResetForm();
         }
 
         #endregion
 
         #region Methods
+
+        private void ResetForm()
+        {
+            EnableOrDisableControls(ExaminationFormMode.New);
+        }
+
+        private void EnableOrDisableControls(ExaminationFormMode mode)
+        {
+            
+        }
 
         #endregion
     }
