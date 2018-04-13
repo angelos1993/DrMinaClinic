@@ -30,6 +30,11 @@ namespace DrMinaClinic.PL.Forms
 
         }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         #endregion
 
         #region Methods

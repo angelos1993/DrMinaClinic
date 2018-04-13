@@ -30,6 +30,7 @@
         {
             this.btnNewExamination = new DevComponents.DotNetBar.ButtonX();
             this.btnStatistics = new DevComponents.DotNetBar.ButtonX();
+            this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.SuspendLayout();
             // 
             // btnNewExamination
@@ -56,11 +57,27 @@
             this.btnStatistics.Text = "Statistics";
             this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
+            // btnClose
+            // 
+            this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClose.Image = global::DrMinaClinic.Properties.Resources.Exit;
+            this.btnClose.ImageFixedSize = new System.Drawing.Size(30, 30);
+            this.btnClose.Location = new System.Drawing.Point(421, 277);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(2);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(175, 40);
+            this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnClose.TabIndex = 27;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // FrmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(946, 477);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnStatistics);
             this.Controls.Add(this.btnNewExamination);
             this.DoubleBuffered = true;
@@ -75,5 +92,6 @@
 
         private DevComponents.DotNetBar.ButtonX btnNewExamination;
         private DevComponents.DotNetBar.ButtonX btnStatistics;
+        private DevComponents.DotNetBar.ButtonX btnClose;
     }
 }

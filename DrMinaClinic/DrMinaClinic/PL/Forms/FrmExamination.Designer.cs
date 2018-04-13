@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.treePregnancies = new System.Windows.Forms.TreeView();
             this.pnlPatientData = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.lblPatientData = new DevComponents.DotNetBar.LabelX();
@@ -36,7 +36,7 @@
             this.integerInput6 = new DevComponents.Editors.IntegerInput();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
             this.dgvPregnancyDetails = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.dateTimeInput1 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.dtEDD = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.pnlPreviousLabour = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.integerInput4 = new DevComponents.Editors.IntegerInput();
@@ -84,12 +84,14 @@
             this.btnEditPregnancy = new DevComponents.DotNetBar.ButtonX();
             this.btnSaveExamination = new DevComponents.DotNetBar.ButtonX();
             this.btnNewPregnancy = new DevComponents.DotNetBar.ButtonX();
+            this.dtLMP = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
+            this.labelX19 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.pnlPatientData.SuspendLayout();
             this.pnlPregnancyData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPregnancyDetails)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEDD)).BeginInit();
             this.pnlPreviousLabour.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput5)).BeginInit();
@@ -106,13 +108,14 @@
             this.pnlUrine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.doubleInput1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtLMP)).BeginInit();
             this.SuspendLayout();
             // 
             // treePregnancies
             // 
             this.treePregnancies.Location = new System.Drawing.Point(12, 24);
             this.treePregnancies.Name = "treePregnancies";
-            this.treePregnancies.Size = new System.Drawing.Size(121, 418);
+            this.treePregnancies.Size = new System.Drawing.Size(121, 397);
             this.treePregnancies.TabIndex = 0;
             this.treePregnancies.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treePregnancies_AfterSelect);
             // 
@@ -177,10 +180,12 @@
             // 
             this.pnlPregnancyData.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlPregnancyData.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
+            this.pnlPregnancyData.Controls.Add(this.labelX19);
+            this.pnlPregnancyData.Controls.Add(this.dtLMP);
             this.pnlPregnancyData.Controls.Add(this.integerInput6);
             this.pnlPregnancyData.Controls.Add(this.labelX7);
             this.pnlPregnancyData.Controls.Add(this.dgvPregnancyDetails);
-            this.pnlPregnancyData.Controls.Add(this.dateTimeInput1);
+            this.pnlPregnancyData.Controls.Add(this.dtEDD);
             this.pnlPregnancyData.Controls.Add(this.labelX6);
             this.pnlPregnancyData.Controls.Add(this.pnlPreviousLabour);
             this.pnlPregnancyData.Controls.Add(this.integerInput3);
@@ -191,7 +196,7 @@
             this.pnlPregnancyData.Controls.Add(this.labelX1);
             this.pnlPregnancyData.Location = new System.Drawing.Point(139, 81);
             this.pnlPregnancyData.Name = "pnlPregnancyData";
-            this.pnlPregnancyData.Size = new System.Drawing.Size(1071, 173);
+            this.pnlPregnancyData.Size = new System.Drawing.Size(1071, 138);
             // 
             // 
             // 
@@ -259,69 +264,69 @@
             // 
             this.dgvPregnancyDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPregnancyDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPregnancyDetails.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPregnancyDetails.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvPregnancyDetails.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgvPregnancyDetails.Location = new System.Drawing.Point(297, 35);
             this.dgvPregnancyDetails.Name = "dgvPregnancyDetails";
-            this.dgvPregnancyDetails.Size = new System.Drawing.Size(752, 96);
+            this.dgvPregnancyDetails.Size = new System.Drawing.Size(752, 64);
             this.dgvPregnancyDetails.TabIndex = 9;
             // 
-            // dateTimeInput1
+            // dtEDD
             // 
             // 
             // 
             // 
-            this.dateTimeInput1.BackgroundStyle.Class = "DateTimeInputBackground";
-            this.dateTimeInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
-            this.dateTimeInput1.ButtonDropDown.Visible = true;
-            this.dateTimeInput1.Location = new System.Drawing.Point(60, 105);
+            this.dtEDD.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtEDD.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtEDD.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtEDD.ButtonDropDown.Visible = true;
+            this.dtEDD.Location = new System.Drawing.Point(521, 6);
             // 
             // 
             // 
-            this.dateTimeInput1.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            this.dtEDD.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
             // 
             // 
             // 
-            this.dateTimeInput1.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
-            this.dateTimeInput1.MonthCalendar.BackgroundStyle.Class = "";
-            this.dateTimeInput1.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.MonthCalendar.ClearButtonVisible = true;
+            this.dtEDD.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dtEDD.MonthCalendar.BackgroundStyle.Class = "";
+            this.dtEDD.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtEDD.MonthCalendar.ClearButtonVisible = true;
             // 
             // 
             // 
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.Class = "";
-            this.dateTimeInput1.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.MonthCalendar.DisplayMonth = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
-            this.dateTimeInput1.MonthCalendar.MarkedDates = new System.DateTime[0];
-            this.dateTimeInput1.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            this.dtEDD.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtEDD.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtEDD.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtEDD.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtEDD.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtEDD.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtEDD.MonthCalendar.CommandsBackgroundStyle.Class = "";
+            this.dtEDD.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtEDD.MonthCalendar.DisplayMonth = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
+            this.dtEDD.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dtEDD.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
             // 
             // 
             // 
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.Class = "";
-            this.dateTimeInput1.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.dateTimeInput1.MonthCalendar.TodayButtonVisible = true;
-            this.dateTimeInput1.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
-            this.dateTimeInput1.Name = "dateTimeInput1";
-            this.dateTimeInput1.Size = new System.Drawing.Size(231, 26);
-            this.dateTimeInput1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dateTimeInput1.TabIndex = 8;
+            this.dtEDD.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtEDD.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtEDD.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtEDD.MonthCalendar.NavigationBackgroundStyle.Class = "";
+            this.dtEDD.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtEDD.MonthCalendar.TodayButtonVisible = true;
+            this.dtEDD.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dtEDD.Name = "dtEDD";
+            this.dtEDD.Size = new System.Drawing.Size(231, 26);
+            this.dtEDD.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dtEDD.TabIndex = 8;
             // 
             // labelX6
             // 
@@ -331,7 +336,7 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(3, 105);
+            this.labelX6.Location = new System.Drawing.Point(464, 6);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(45, 23);
             this.labelX6.TabIndex = 7;
@@ -551,7 +556,7 @@
             this.pnlExaminationData.Controls.Add(this.labelX9);
             this.pnlExaminationData.Controls.Add(this.integerInput7);
             this.pnlExaminationData.Controls.Add(this.labelX8);
-            this.pnlExaminationData.Location = new System.Drawing.Point(139, 304);
+            this.pnlExaminationData.Location = new System.Drawing.Point(139, 283);
             this.pnlExaminationData.Name = "pnlExaminationData";
             this.pnlExaminationData.Size = new System.Drawing.Size(1071, 138);
             // 
@@ -1043,7 +1048,7 @@
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnClose.Image = global::DrMinaClinic.Properties.Resources.Exit;
             this.btnClose.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(499, 447);
+            this.btnClose.Location = new System.Drawing.Point(499, 426);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(175, 40);
@@ -1058,7 +1063,7 @@
             this.btnEditPregnancy.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnEditPregnancy.Image = global::DrMinaClinic.Properties.Resources.Edit;
             this.btnEditPregnancy.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnEditPregnancy.Location = new System.Drawing.Point(678, 259);
+            this.btnEditPregnancy.Location = new System.Drawing.Point(678, 224);
             this.btnEditPregnancy.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditPregnancy.Name = "btnEditPregnancy";
             this.btnEditPregnancy.Size = new System.Drawing.Size(175, 40);
@@ -1073,7 +1078,7 @@
             this.btnSaveExamination.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSaveExamination.Image = global::DrMinaClinic.Properties.Resources.Save;
             this.btnSaveExamination.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnSaveExamination.Location = new System.Drawing.Point(678, 447);
+            this.btnSaveExamination.Location = new System.Drawing.Point(678, 426);
             this.btnSaveExamination.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveExamination.Name = "btnSaveExamination";
             this.btnSaveExamination.Size = new System.Drawing.Size(175, 40);
@@ -1088,7 +1093,7 @@
             this.btnNewPregnancy.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnNewPregnancy.Image = global::DrMinaClinic.Properties.Resources.Add;
             this.btnNewPregnancy.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnNewPregnancy.Location = new System.Drawing.Point(499, 259);
+            this.btnNewPregnancy.Location = new System.Drawing.Point(499, 224);
             this.btnNewPregnancy.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewPregnancy.Name = "btnNewPregnancy";
             this.btnNewPregnancy.Size = new System.Drawing.Size(175, 40);
@@ -1097,11 +1102,76 @@
             this.btnNewPregnancy.Text = "New Pregnancy";
             this.btnNewPregnancy.Click += new System.EventHandler(this.btnNewPregnancy_Click);
             // 
+            // dtLMP
+            // 
+            // 
+            // 
+            // 
+            this.dtLMP.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.dtLMP.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtLMP.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
+            this.dtLMP.ButtonDropDown.Visible = true;
+            this.dtLMP.Location = new System.Drawing.Point(818, 6);
+            // 
+            // 
+            // 
+            this.dtLMP.MonthCalendar.AnnuallyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtLMP.MonthCalendar.BackgroundStyle.BackColor = System.Drawing.SystemColors.Window;
+            this.dtLMP.MonthCalendar.BackgroundStyle.Class = "";
+            this.dtLMP.MonthCalendar.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtLMP.MonthCalendar.ClearButtonVisible = true;
+            // 
+            // 
+            // 
+            this.dtLMP.MonthCalendar.CommandsBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground2;
+            this.dtLMP.MonthCalendar.CommandsBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtLMP.MonthCalendar.CommandsBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarBackground;
+            this.dtLMP.MonthCalendar.CommandsBackgroundStyle.BorderTop = DevComponents.DotNetBar.eStyleBorderType.Solid;
+            this.dtLMP.MonthCalendar.CommandsBackgroundStyle.BorderTopColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.BarDockedBorder;
+            this.dtLMP.MonthCalendar.CommandsBackgroundStyle.BorderTopWidth = 1;
+            this.dtLMP.MonthCalendar.CommandsBackgroundStyle.Class = "";
+            this.dtLMP.MonthCalendar.CommandsBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtLMP.MonthCalendar.DisplayMonth = new System.DateTime(2018, 3, 1, 0, 0, 0, 0);
+            this.dtLMP.MonthCalendar.MarkedDates = new System.DateTime[0];
+            this.dtLMP.MonthCalendar.MonthlyMarkedDates = new System.DateTime[0];
+            // 
+            // 
+            // 
+            this.dtLMP.MonthCalendar.NavigationBackgroundStyle.BackColor2SchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground2;
+            this.dtLMP.MonthCalendar.NavigationBackgroundStyle.BackColorGradientAngle = 90;
+            this.dtLMP.MonthCalendar.NavigationBackgroundStyle.BackColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.dtLMP.MonthCalendar.NavigationBackgroundStyle.Class = "";
+            this.dtLMP.MonthCalendar.NavigationBackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.dtLMP.MonthCalendar.TodayButtonVisible = true;
+            this.dtLMP.MonthCalendar.WeeklyMarkedDays = new System.DayOfWeek[0];
+            this.dtLMP.Name = "dtLMP";
+            this.dtLMP.Size = new System.Drawing.Size(231, 26);
+            this.dtLMP.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dtLMP.TabIndex = 12;
+            // 
+            // labelX19
+            // 
+            this.labelX19.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX19.BackgroundStyle.Class = "";
+            this.labelX19.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX19.Location = new System.Drawing.Point(767, 8);
+            this.labelX19.Name = "labelX19";
+            this.labelX19.Size = new System.Drawing.Size(45, 23);
+            this.labelX19.TabIndex = 13;
+            this.labelX19.Text = "L.M.P";
+            this.labelX19.TextAlignment = System.Drawing.StringAlignment.Center;
+            // 
             // FrmExamination
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1222, 496);
+            this.ClientSize = new System.Drawing.Size(1222, 477);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEditPregnancy);
             this.Controls.Add(this.btnSaveExamination);
@@ -1119,7 +1189,7 @@
             this.pnlPregnancyData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.integerInput6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPregnancyDetails)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dateTimeInput1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtEDD)).EndInit();
             this.pnlPreviousLabour.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.integerInput4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput5)).EndInit();
@@ -1136,6 +1206,7 @@
             this.pnlUrine.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.doubleInput1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtLMP)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1157,7 +1228,7 @@
         private DevComponents.DotNetBar.LabelX labelX4;
         private DevComponents.Editors.IntegerInput integerInput5;
         private DevComponents.DotNetBar.LabelX labelX5;
-        private DevComponents.Editors.DateTimeAdv.DateTimeInput dateTimeInput1;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtEDD;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.Controls.DataGridViewX dgvPregnancyDetails;
         private DevComponents.Editors.IntegerInput integerInput6;
@@ -1197,5 +1268,7 @@
         private DevComponents.Editors.ComboItem Two;
         private DevComponents.DotNetBar.ButtonX btnEditPregnancy;
         private DevComponents.DotNetBar.ButtonX btnClose;
+        private DevComponents.DotNetBar.LabelX labelX19;
+        private DevComponents.Editors.DateTimeAdv.DateTimeInput dtLMP;
     }
 }
