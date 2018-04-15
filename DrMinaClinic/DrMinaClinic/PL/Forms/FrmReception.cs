@@ -38,6 +38,7 @@ namespace DrMinaClinic.PL.Forms
         private void btnNewPatient_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
+            AddNewPatient();
             Cursor = Cursors.Default;
         }
 
@@ -112,6 +113,10 @@ namespace DrMinaClinic.PL.Forms
             btnNewExamination.Enabled = mode == ReceptionFormMode.HasPatient;
 
             #endregion
+        }
+
+        private void AddNewPatient()
+        {
         }
 
         #endregion

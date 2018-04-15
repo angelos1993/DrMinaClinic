@@ -9,6 +9,9 @@ G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\DevComponents.D
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.exe
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.pdb
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmReception.resources
-G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.csprojResolveAssemblyReference.cache
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmExamination.resources
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmIndex.resources
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\EntityFramework.dll
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\EntityFramework.SqlServer.dll
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\EntityFramework.xml
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\EntityFramework.SqlServer.xml

@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DrMinaClinicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Examination">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="PregnancyId" Type="Int32" Nullable="false" />
+    <Property Name="Weeks" Type="Int32" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="UterineSize" Type="Int32" />
+    <Property Name="UrineAlb" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="UrineSuger" Type="Boolean" />
+    <Property Name="BP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FundalHeight" Type="Int32" />
+    <Property Name="Oedema" Type="Boolean" />
+    <Property Name="Hb" Type="Int32" />
+    <Property Name="Fhs" Type="Int32" />
+    <Property Name="Engagement" Type="Int32" />
+    <Property Name="UltraSoundNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Pregnancy" Relationship="Self.FK_Examinations_Pregnancies" FromRole="Examinations" ToRole="Pregnancies" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Twins" Type="Int32" />
+    <Property Name="Diabetes" Type="Boolean" />
+    <Property Name="Hypertension" Type="Boolean" />
+    <Property Name="PastIllness" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Operations" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Allergies" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Drugs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Heart" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lungs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="VaricoseVenis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Pelvis" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LowerLimbs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PV" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AboGroup" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="RhesusGroup" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="CytomegaioVirus" Type="Boolean" />
+    <Property Name="HbsAg" Type="Boolean" />
+    <Property Name="HbcAb" Type="Boolean" />
+    <Property Name="Bhcg" Type="Int32" />
+    <Property Name="EstriolE3" Type="Int32" />
+    <Property Name="Fbs" Type="Int32" />
+    <Property Name="Cbc" Type="Int32" />
+    <Property Name="Platelets" Type="Int32" />
+    <Property Name="GeneralRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Pregnancies" Relationship="Self.FK_Pregnancies_Patients" FromRole="Patients" ToRole="Pregnancies" />
+  </EntityType>
+  <EntityType Name="Pregnancy">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="G" Type="Int32" />
+    <Property Name="P" Type="Int32" />
+    <Property Name="Vag" Type="Int32" />
+    <Property Name="CS" Type="Int32" />
+    <Property Name="No" Type="Int32" Nullable="false" />
+    <Property Name="LMP" Type="DateTime" Precision="0" />
+    <Property Name="EDD" Type="DateTime" Precision="0" />
+    <Property Name="ActualBirthdate" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Examinations" Relationship="Self.FK_Examinations_Pregnancies" FromRole="Pregnancies" ToRole="Examinations" />
+    <NavigationProperty Name="Patient" Relationship="Self.FK_Pregnancies_Patients" FromRole="Pregnancies" ToRole="Patients" />
+    <NavigationProperty Name="PregnancyDetails" Relationship="Self.FK_PregnancyDetails_Pregnancies" FromRole="Pregnancies" ToRole="PregnancyDetails" />
+  </EntityType>
+  <EntityType Name="PregnancyDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PregnancyId" Type="Int32" Nullable="false" />
+    <Property Name="Living" Type="Boolean" Nullable="false" />
+    <Property Name="AF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sex" Type="Boolean" Nullable="false" />
+    <Property Name="Placento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Weight" Type="Double" />
+    <Property Name="Presentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Pregnancy" Relationship="Self.FK_PregnancyDetails_Pregnancies" FromRole="PregnancyDetails" ToRole="Pregnancies" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Examinations_Pregnancies">
+    <End Role="Pregnancies" Type="Self.Pregnancy" Multiplicity="1" />
+    <End Role="Examinations" Type="Self.Examination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregnancies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Examinations">
+        <PropertyRef Name="PregnancyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pregnancies_Patients">
+    <End Role="Patients" Type="Self.Patient" Multiplicity="1" />
+    <End Role="Pregnancies" Type="Self.Pregnancy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pregnancies">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PregnancyDetails_Pregnancies">
+    <End Role="Pregnancies" Type="Self.Pregnancy" Multiplicity="1" />
+    <End Role="PregnancyDetails" Type="Self.PregnancyDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregnancies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PregnancyDetails">
+        <PropertyRef Name="PregnancyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DrMinaClinicEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Examinations" EntityType="Self.Examination" />
+    <EntitySet Name="Patients" EntityType="Self.Patient" />
+    <EntitySet Name="Pregnancies" EntityType="Self.Pregnancy" />
+    <EntitySet Name="PregnancyDetails" EntityType="Self.PregnancyDetail" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="FK_Examinations_Pregnancies" Association="Self.FK_Examinations_Pregnancies">
+      <End Role="Pregnancies" EntitySet="Pregnancies" />
+      <End Role="Examinations" EntitySet="Examinations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pregnancies_Patients" Association="Self.FK_Pregnancies_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Pregnancies" EntitySet="Pregnancies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PregnancyDetails_Pregnancies" Association="Self.FK_PregnancyDetails_Pregnancies">
+      <End Role="Pregnancies" EntitySet="Pregnancies" />
+      <End Role="PregnancyDetails" EntitySet="PregnancyDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

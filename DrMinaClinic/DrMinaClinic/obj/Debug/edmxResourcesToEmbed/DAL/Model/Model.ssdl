@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DrMinaClinicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Examinations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="PregnancyId" Type="int" Nullable="false" />
+    <Property Name="Weeks" Type="int" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="UterineSize" Type="int" />
+    <Property Name="UrineAlb" Type="nvarchar" MaxLength="10" />
+    <Property Name="UrineSuger" Type="bit" />
+    <Property Name="BP" Type="nvarchar" MaxLength="50" />
+    <Property Name="FundalHeight" Type="int" />
+    <Property Name="Oedema" Type="bit" />
+    <Property Name="Hb" Type="int" />
+    <Property Name="Fhs" Type="int" />
+    <Property Name="Engagement" Type="int" />
+    <Property Name="UltraSoundNotes" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Patients">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="Phone" Type="nvarchar(max)" />
+    <Property Name="BirthDate" Type="date" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="Twins" Type="int" />
+    <Property Name="Diabetes" Type="bit" />
+    <Property Name="Hypertension" Type="bit" />
+    <Property Name="PastIllness" Type="nvarchar(max)" />
+    <Property Name="Operations" Type="nvarchar(max)" />
+    <Property Name="Allergies" Type="nvarchar(max)" />
+    <Property Name="Drugs" Type="nvarchar(max)" />
+    <Property Name="Heart" Type="nvarchar(max)" />
+    <Property Name="Lungs" Type="nvarchar(max)" />
+    <Property Name="VaricoseVenis" Type="nvarchar(max)" />
+    <Property Name="Pelvis" Type="nvarchar(max)" />
+    <Property Name="LowerLimbs" Type="nvarchar(max)" />
+    <Property Name="PV" Type="nvarchar(max)" />
+    <Property Name="AboGroup" Type="nvarchar" MaxLength="2" />
+    <Property Name="RhesusGroup" Type="nvarchar" MaxLength="2" />
+    <Property Name="CytomegaioVirus" Type="bit" />
+    <Property Name="HbsAg" Type="bit" />
+    <Property Name="HbcAb" Type="bit" />
+    <Property Name="Bhcg" Type="int" />
+    <Property Name="EstriolE3" Type="int" />
+    <Property Name="Fbs" Type="int" />
+    <Property Name="Cbc" Type="int" />
+    <Property Name="Platelets" Type="int" />
+    <Property Name="GeneralRemarks" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Pregnancies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="G" Type="int" />
+    <Property Name="P" Type="int" />
+    <Property Name="Vag" Type="int" />
+    <Property Name="CS" Type="int" />
+    <Property Name="No" Type="int" Nullable="false" />
+    <Property Name="LMP" Type="date" />
+    <Property Name="EDD" Type="date" />
+    <Property Name="ActualBirthdate" Type="date" />
+  </EntityType>
+  <EntityType Name="PregnancyDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PregnancyId" Type="int" Nullable="false" />
+    <Property Name="Living" Type="bit" Nullable="false" />
+    <Property Name="AF" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sex" Type="bit" Nullable="false" />
+    <Property Name="Placento" Type="nvarchar(max)" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Presentation" Type="nvarchar(max)" />
+    <Property Name="Other" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Examinations_Pregnancies">
+    <End Role="Pregnancies" Type="Self.Pregnancies" Multiplicity="1" />
+    <End Role="Examinations" Type="Self.Examinations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregnancies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Examinations">
+        <PropertyRef Name="PregnancyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pregnancies_Patients">
+    <End Role="Patients" Type="Self.Patients" Multiplicity="1" />
+    <End Role="Pregnancies" Type="Self.Pregnancies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patients">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Pregnancies">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PregnancyDetails_Pregnancies">
+    <End Role="Pregnancies" Type="Self.Pregnancies" Multiplicity="1" />
+    <End Role="PregnancyDetails" Type="Self.PregnancyDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pregnancies">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PregnancyDetails">
+        <PropertyRef Name="PregnancyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DrMinaClinicModelStoreContainer">
+    <EntitySet Name="Examinations" EntityType="Self.Examinations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pregnancies" EntityType="Self.Pregnancies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PregnancyDetails" EntityType="Self.PregnancyDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Examinations_Pregnancies" Association="Self.FK_Examinations_Pregnancies">
+      <End Role="Pregnancies" EntitySet="Pregnancies" />
+      <End Role="Examinations" EntitySet="Examinations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pregnancies_Patients" Association="Self.FK_Pregnancies_Patients">
+      <End Role="Patients" EntitySet="Patients" />
+      <End Role="Pregnancies" EntitySet="Pregnancies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PregnancyDetails_Pregnancies" Association="Self.FK_PregnancyDetails_Pregnancies">
+      <End Role="Pregnancies" EntitySet="Pregnancies" />
+      <End Role="PregnancyDetails" EntitySet="PregnancyDetails" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

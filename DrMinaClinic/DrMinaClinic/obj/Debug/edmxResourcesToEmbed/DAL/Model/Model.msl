@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DrMinaClinicModelStoreContainer" CdmEntityContainer="DrMinaClinicEntities">
+    <EntitySetMapping Name="Examinations">
+      <EntityTypeMapping TypeName="DrMinaClinicModel.Examination">
+        <MappingFragment StoreEntitySet="Examinations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="PregnancyId" ColumnName="PregnancyId" />
+          <ScalarProperty Name="Weeks" ColumnName="Weeks" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="UterineSize" ColumnName="UterineSize" />
+          <ScalarProperty Name="UrineAlb" ColumnName="UrineAlb" />
+          <ScalarProperty Name="UrineSuger" ColumnName="UrineSuger" />
+          <ScalarProperty Name="BP" ColumnName="BP" />
+          <ScalarProperty Name="FundalHeight" ColumnName="FundalHeight" />
+          <ScalarProperty Name="Oedema" ColumnName="Oedema" />
+          <ScalarProperty Name="Hb" ColumnName="Hb" />
+          <ScalarProperty Name="Fhs" ColumnName="Fhs" />
+          <ScalarProperty Name="Engagement" ColumnName="Engagement" />
+          <ScalarProperty Name="UltraSoundNotes" ColumnName="UltraSoundNotes" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Patients">
+      <EntityTypeMapping TypeName="DrMinaClinicModel.Patient">
+        <MappingFragment StoreEntitySet="Patients">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="Twins" ColumnName="Twins" />
+          <ScalarProperty Name="Diabetes" ColumnName="Diabetes" />
+          <ScalarProperty Name="Hypertension" ColumnName="Hypertension" />
+          <ScalarProperty Name="PastIllness" ColumnName="PastIllness" />
+          <ScalarProperty Name="Operations" ColumnName="Operations" />
+          <ScalarProperty Name="Allergies" ColumnName="Allergies" />
+          <ScalarProperty Name="Drugs" ColumnName="Drugs" />
+          <ScalarProperty Name="Heart" ColumnName="Heart" />
+          <ScalarProperty Name="Lungs" ColumnName="Lungs" />
+          <ScalarProperty Name="VaricoseVenis" ColumnName="VaricoseVenis" />
+          <ScalarProperty Name="Pelvis" ColumnName="Pelvis" />
+          <ScalarProperty Name="LowerLimbs" ColumnName="LowerLimbs" />
+          <ScalarProperty Name="PV" ColumnName="PV" />
+          <ScalarProperty Name="AboGroup" ColumnName="AboGroup" />
+          <ScalarProperty Name="RhesusGroup" ColumnName="RhesusGroup" />
+          <ScalarProperty Name="CytomegaioVirus" ColumnName="CytomegaioVirus" />
+          <ScalarProperty Name="HbsAg" ColumnName="HbsAg" />
+          <ScalarProperty Name="HbcAb" ColumnName="HbcAb" />
+          <ScalarProperty Name="Bhcg" ColumnName="Bhcg" />
+          <ScalarProperty Name="EstriolE3" ColumnName="EstriolE3" />
+          <ScalarProperty Name="Fbs" ColumnName="Fbs" />
+          <ScalarProperty Name="Cbc" ColumnName="Cbc" />
+          <ScalarProperty Name="Platelets" ColumnName="Platelets" />
+          <ScalarProperty Name="GeneralRemarks" ColumnName="GeneralRemarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pregnancies">
+      <EntityTypeMapping TypeName="DrMinaClinicModel.Pregnancy">
+        <MappingFragment StoreEntitySet="Pregnancies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="G" ColumnName="G" />
+          <ScalarProperty Name="P" ColumnName="P" />
+          <ScalarProperty Name="Vag" ColumnName="Vag" />
+          <ScalarProperty Name="CS" ColumnName="CS" />
+          <ScalarProperty Name="No" ColumnName="No" />
+          <ScalarProperty Name="LMP" ColumnName="LMP" />
+          <ScalarProperty Name="EDD" ColumnName="EDD" />
+          <ScalarProperty Name="ActualBirthdate" ColumnName="ActualBirthdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PregnancyDetails">
+      <EntityTypeMapping TypeName="DrMinaClinicModel.PregnancyDetail">
+        <MappingFragment StoreEntitySet="PregnancyDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PregnancyId" ColumnName="PregnancyId" />
+          <ScalarProperty Name="Living" ColumnName="Living" />
+          <ScalarProperty Name="AF" ColumnName="AF" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Placento" ColumnName="Placento" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Presentation" ColumnName="Presentation" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DrMinaClinicModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
