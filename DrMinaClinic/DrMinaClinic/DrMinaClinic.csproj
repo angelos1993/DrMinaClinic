@@ -57,7 +57,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ExaminationManager.cs" />
     <Compile Include="BLL\Infrastructure\BaseManager.cs" />
+    <Compile Include="BLL\PatientManager.cs" />
+    <Compile Include="BLL\PregnancyDetailManager.cs" />
+    <Compile Include="BLL\PregnancyManager.cs" />
     <Compile Include="DAL\Enums\ExaminationFormMode.cs" />
     <Compile Include="DAL\Enums\ReceptionFormMode.cs" />
     <Compile Include="DAL\Model\Examination.cs">
@@ -90,10 +94,14 @@
     <Compile Include="DAL\Model\sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Repositories\ExaminationRepository.cs" />
     <Compile Include="DAL\Repositories\Infrastructure\DrMinaClinicContext.cs" />
     <Compile Include="DAL\Repositories\Infrastructure\IUnitOfWork.cs" />
     <Compile Include="DAL\Repositories\Infrastructure\RepositoryBase.cs" />
     <Compile Include="DAL\Repositories\Infrastructure\UnitOfWork.cs" />
+    <Compile Include="DAL\Repositories\PatientRepository.cs" />
+    <Compile Include="DAL\Repositories\PregnancyDetailsRepository.cs" />
+    <Compile Include="DAL\Repositories\PregnancyRepository.cs" />
     <Compile Include="PL\Forms\FrmExamination.cs">
       <SubType>Form</SubType>
     </Compile>
