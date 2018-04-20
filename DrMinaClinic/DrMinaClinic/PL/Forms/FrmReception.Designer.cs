@@ -576,6 +576,7 @@
             this.intInTwins.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intInTwins.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intInTwins.Location = new System.Drawing.Point(74, 3);
+            this.intInTwins.MinValue = 0;
             this.intInTwins.Name = "intInTwins";
             this.intInTwins.ShowUpDown = true;
             this.intInTwins.Size = new System.Drawing.Size(80, 26);
@@ -888,6 +889,7 @@
             this.intInPlatelets.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intInPlatelets.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intInPlatelets.Location = new System.Drawing.Point(368, 137);
+            this.intInPlatelets.MinValue = 0;
             this.intInPlatelets.Name = "intInPlatelets";
             this.intInPlatelets.ShowUpDown = true;
             this.intInPlatelets.Size = new System.Drawing.Size(122, 26);
@@ -902,6 +904,7 @@
             this.intInCBC.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intInCBC.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intInCBC.Location = new System.Drawing.Point(368, 105);
+            this.intInCBC.MinValue = 0;
             this.intInCBC.Name = "intInCBC";
             this.intInCBC.ShowUpDown = true;
             this.intInCBC.Size = new System.Drawing.Size(122, 26);
@@ -916,6 +919,7 @@
             this.intInFBS.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intInFBS.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intInFBS.Location = new System.Drawing.Point(368, 73);
+            this.intInFBS.MinValue = 0;
             this.intInFBS.Name = "intInFBS";
             this.intInFBS.ShowUpDown = true;
             this.intInFBS.Size = new System.Drawing.Size(122, 26);
@@ -930,6 +934,7 @@
             this.intInEstriolE3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intInEstriolE3.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intInEstriolE3.Location = new System.Drawing.Point(368, 41);
+            this.intInEstriolE3.MinValue = 0;
             this.intInEstriolE3.Name = "intInEstriolE3";
             this.intInEstriolE3.ShowUpDown = true;
             this.intInEstriolE3.Size = new System.Drawing.Size(122, 26);
@@ -944,6 +949,7 @@
             this.intInBHCG.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.intInBHCG.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
             this.intInBHCG.Location = new System.Drawing.Point(368, 9);
+            this.intInBHCG.MinValue = 0;
             this.intInBHCG.Name = "intInBHCG";
             this.intInBHCG.ShowUpDown = true;
             this.intInBHCG.Size = new System.Drawing.Size(122, 26);

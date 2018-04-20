@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using DrMinaClinic.Utility;
 using DrMinaClinic.BLL.Infrastructure;
+using DrMinaClinic.DAL.Model;
 
 namespace DrMinaClinic.BLL
 {
@@ -12,7 +14,7 @@ namespace DrMinaClinic.BLL
 
         #region Methods
 
-        public static string GetNextPatientId(string lastPatientId)
+        public string GetNextPatientId(string lastPatientId)
         {
             var today = DateTime.Now;
             if (!lastPatientId.IsNullOrEmptyOrWhiteSpace())
@@ -28,6 +30,17 @@ namespace DrMinaClinic.BLL
                 }
             }
             return $"{today.Year:0000}{today.Month:00}{today.Day:00}1";
+        }
+
+        public string GetLastPatientId()
+        {
+            return UnitOfWork.PatientRepository.GetAll().OrderByDescending(patient => patient.CreatedOn)
+                .Select(patient => patient.Id).FirstOrDefault();
+        }
+
+        public void AddNewPatient(Patient patient)
+        {
+            UnitOfWork.PatientRepository.Add(patient);
         }
 
         #endregion

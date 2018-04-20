@@ -121,6 +121,15 @@ namespace DrMinaClinic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This field is required.
+        /// </summary>
+        internal static string RequiredValidationMsg {
+            get {
+                return ResourceManager.GetString("RequiredValidationMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Save {
