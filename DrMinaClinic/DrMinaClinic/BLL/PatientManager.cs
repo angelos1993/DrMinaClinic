@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using DrMinaClinic.Utility;
 using DrMinaClinic.BLL.Infrastructure;
 using DrMinaClinic.DAL.Model;
+using DrMinaClinic.Utility;
 
 namespace DrMinaClinic.BLL
 {
@@ -61,6 +61,23 @@ namespace DrMinaClinic.BLL
         public IQueryable<Patient> GetAllPatients()
         {
             return UnitOfWork.PatientRepository.GetAll();
+        }
+
+        public int GetAboGroupValueFromText(string patientAboGroup)
+        {
+            switch (patientAboGroup)
+            {
+                case "A":
+                    return 1;
+                case "B":
+                    return 2;
+                case "AB":
+                    return 3;
+                case "O":
+                    return 4;
+                default:
+                    return 0;
+            }
         }
 
         #endregion

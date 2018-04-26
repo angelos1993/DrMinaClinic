@@ -1,5 +1,6 @@
 ﻿using System;
 using DrMinaClinic.DAL.Enums;
+using DrMinaClinic.DAL.Model;
 
 namespace DrMinaClinic.PL.Forms
 {
@@ -7,14 +8,17 @@ namespace DrMinaClinic.PL.Forms
     {
         #region Constructor
 
-        public FrmExamination()
+        public FrmExamination(Patient patient)
         {
             InitializeComponent();
+            Patient = patient;
         }
 
         #endregion
 
         #region Properties
+
+        public Patient Patient { get; set; }
 
         #endregion
 

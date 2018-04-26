@@ -2,9 +2,9 @@
 using System.Linq;
 using System.Windows.Forms;
 using DrMinaClinic.BLL;
-using DrMinaClinic.Properties;
 using DrMinaClinic.DAL.Enums;
 using DrMinaClinic.DAL.Model;
+using DrMinaClinic.Properties;
 using DrMinaClinic.Utility;
 using static DrMinaClinic.Utility.MessageBoxUtility;
 using static DrMinaClinic.Utility.Utility;
@@ -76,7 +76,8 @@ namespace DrMinaClinic.PL.Forms
 
         private void btnNewExamination_Click(object sender, EventArgs e)
         {
-            //TODO: open FrmExamination ...
+            Hide();
+            new FrmExamination(Patient).ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -113,7 +114,9 @@ namespace DrMinaClinic.PL.Forms
                 EnableOrDisableControls(ReceptionFormMode.HasPatient);
             }
             else
+            {
                 ShowErrorMsg(Resources.ErrorPatientIdAndNameMsg);
+            }
         }
 
         private void EnableOrDisableControls(ReceptionFormMode mode)
@@ -173,14 +176,13 @@ namespace DrMinaClinic.PL.Forms
                     LoadPatientFromForm();
                     Patient.Id = PatientManager.GetNextPatientId(PatientManager.GetLastPatientId());
                     PatientManager.AddNewPatient(Patient);
+                    DisplayPatient();
                     EnableOrDisableControls(ReceptionFormMode.HasPatient);
                     ToggleNewPatientButton(true);
                 }
                 else
                 {
                     ErrorProvider.SetError(txtName, Resources.RequiredValidationMsg);
-                    //TODO: need to complete (validate) the required fields
-                    //I think the name is the only required field
                 }
             }
         }
@@ -299,10 +301,10 @@ namespace DrMinaClinic.PL.Forms
 
             #region Investigations
 
-            //TODO: if not entered, then set the selected index by 0
-            cmbAboGroup.SelectedIndex = default(int);
-            //TODO: handle the null values (if not entered)
-            //swBtnRhesusGroup.Value = patient.RhesusGroup ?? false;
+            cmbAboGroup.SelectedIndex = Patient.AboGroup.IsNullOrEmptyOrWhiteSpace()
+                ? default(int)
+                : PatientManager.GetAboGroupValueFromText(Patient.AboGroup);
+            swBtnRhesusGroup.Value = Patient.RhesusGroup != null && Patient.RhesusGroup == "+";
             swBtnCytomegaloVirus.Value = Patient.CytomegaioVirus ?? false;
             swBtnHBSAg.Value = Patient.HbsAg ?? false;
             swBtnHBCAb.Value = Patient.HbcAb ?? false;
@@ -342,7 +344,6 @@ namespace DrMinaClinic.PL.Forms
             #region Patient's Basic Data
 
             Patient.Name = txtName.Text.FullTrim();
-            //TODO: check if the value is the default
             Patient.BirthDate = dtBirthdate.Value;
             Patient.Address = txtAddress.Text.FullTrim();
             Patient.Phone = txtPhone.Text.FullTrim();
@@ -375,11 +376,8 @@ namespace DrMinaClinic.PL.Forms
 
             #region Investigations
 
-            //TODO: need to make sure of this line
-            //TODO: check if the choice is null (no selected -_-)
-            Patient.AboGroup = cmbAboGroup.Text;
-            //TODO: if no selected, then set it by NULL
-            Patient.RhesusGroup = swBtnRhesusGroup.Value ? "+" : "-";
+            Patient.AboGroup = cmbAboGroup.SelectedIndex != 0 ? cmbAboGroup.SelectedItem.ToString() : null;
+            Patient.RhesusGroup = cmbAboGroup.SelectedIndex != 0 ? swBtnRhesusGroup.Value ? "+" : "-" : null;
             Patient.CytomegaioVirus = swBtnCytomegaloVirus.Value;
             Patient.HbsAg = swBtnHBSAg.Value;
             Patient.HbcAb = swBtnHBCAb.Value;
