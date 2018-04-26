@@ -145,4 +145,10 @@
   <data name="RequiredValidationMsg" xml:space="preserve">
     <value>This field is required</value>
   </data>
+  <data name="ErrorPatientIdAndNameMsg" xml:space="preserve">
+    <value>There's not any patient with this ID or Name</value>
+  </data>
+  <data name="RequiredPatientIdAndNameMsg" xml:space="preserve">
+    <value>You should enter Patient ID or Name</value>
+  </data>
 </root>

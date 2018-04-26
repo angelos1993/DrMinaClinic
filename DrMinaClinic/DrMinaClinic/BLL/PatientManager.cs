@@ -43,6 +43,26 @@ namespace DrMinaClinic.BLL
             UnitOfWork.PatientRepository.Add(patient);
         }
 
+        public Patient GetPatientById(string patientId)
+        {
+            return UnitOfWork.PatientRepository.Get(patient => patient.Id == patientId).FirstOrDefault();
+        }
+
+        public Patient GetPatientByName(string patientName)
+        {
+            return UnitOfWork.PatientRepository.Get(patient => patient.Name == patientName).FirstOrDefault();
+        }
+
+        public void UpdatePatient(Patient patient)
+        {
+            UnitOfWork.PatientRepository.Update(patient);
+        }
+
+        public IQueryable<Patient> GetAllPatients()
+        {
+            return UnitOfWork.PatientRepository.GetAll();
+        }
+
         #endregion
     }
 }

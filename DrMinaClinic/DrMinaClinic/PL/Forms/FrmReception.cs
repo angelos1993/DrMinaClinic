@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using DrMinaClinic.BLL;
 using DrMinaClinic.Properties;
 using DrMinaClinic.DAL.Enums;
 using DrMinaClinic.DAL.Model;
 using DrMinaClinic.Utility;
+using static DrMinaClinic.Utility.MessageBoxUtility;
+using static DrMinaClinic.Utility.Utility;
 
 namespace DrMinaClinic.PL.Forms
 {
@@ -24,6 +27,8 @@ namespace DrMinaClinic.PL.Forms
         private PatientManager _patientManager;
         private PatientManager PatientManager => _patientManager ?? (_patientManager = new PatientManager());
 
+        private Patient Patient { get; set; }
+
         #endregion
 
         #region Events
@@ -42,6 +47,12 @@ namespace DrMinaClinic.PL.Forms
             Cursor = Cursors.Default;
         }
 
+        private void txtPatientIdOrName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                FindPatient();
+        }
+
         private void btnNewPatient_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
@@ -52,6 +63,7 @@ namespace DrMinaClinic.PL.Forms
         private void btnEditPatient_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
+            EditPatient();
             Cursor = Cursors.Default;
         }
 
@@ -60,6 +72,11 @@ namespace DrMinaClinic.PL.Forms
             Cursor = Cursors.WaitCursor;
             ResetForm();
             Cursor = Cursors.Default;
+        }
+
+        private void btnNewExamination_Click(object sender, EventArgs e)
+        {
+            //TODO: open FrmExamination ...
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -75,11 +92,28 @@ namespace DrMinaClinic.PL.Forms
         {
             ResetPatientData();
             EnableOrDisableControls(ReceptionFormMode.New);
+            SetAutoCompletionForTextBoxes();
         }
 
         private void FindPatient()
         {
-
+            var patientId = txtId.Text.FullTrim();
+            var patientName = txtName.Text.FullTrim();
+            if (patientId.IsNullOrEmptyOrWhiteSpace() && patientName.IsNullOrEmptyOrWhiteSpace())
+            {
+                ShowErrorMsg(Resources.RequiredPatientIdAndNameMsg);
+                return;
+            }
+            Patient = !patientId.IsNullOrEmptyOrWhiteSpace()
+                ? PatientManager.GetPatientById(patientId)
+                : PatientManager.GetPatientByName(patientName);
+            if (Patient != null)
+            {
+                DisplayPatient();
+                EnableOrDisableControls(ReceptionFormMode.HasPatient);
+            }
+            else
+                ShowErrorMsg(Resources.ErrorPatientIdAndNameMsg);
         }
 
         private void EnableOrDisableControls(ReceptionFormMode mode)
@@ -135,61 +169,10 @@ namespace DrMinaClinic.PL.Forms
             {
                 if (!txtName.Text.FullTrim().IsNullOrEmptyOrWhiteSpace())
                 {
-                    var patient = new Patient
-                    {
-                        #region Patient's Basic Data
-
-                        Id = PatientManager.GetNextPatientId(PatientManager.GetLastPatientId()),
-                        Name = txtName.Text.FullTrim(),
-                        //TODO: check if the value is the default
-                        BirthDate = dtBirthdate.Value,
-                        Address = txtAddress.Text.FullTrim(),
-                        Phone = txtPhone.Text.FullTrim(),
-                        CreatedOn = DateTime.Now,
-
-                        #endregion
-
-                        #region First Examination
-
-                        Heart = txtHeart.Text.FullTrim(),
-                        Lungs = txtLungs.Text.FullTrim(),
-                        VaricoseVenis = txtVaricoseVeins.Text.FullTrim(),
-                        Pelvis = txtPelvis.Text.FullTrim(),
-                        LowerLimbs = txtLowerLimbs.Text.FullTrim(),
-                        PV = txtPV.Text.FullTrim(),
-
-                        #endregion
-
-                        #region Relevant Family History
-
-                        Twins = intInTwins.Value,
-                        Diabetes = swBtnDiabetes.Value,
-                        Hypertension = swBtnHypertension.Value,
-                        PastIllness = txtPastIllness.Text.FullTrim(),
-                        Operations = txtOperations.Text.FullTrim(),
-                        Allergies = txtAllergies.Text.FullTrim(),
-                        Drugs = txtDrugs.Text.FullTrim(),
-
-                        #endregion
-
-                        #region Investigations
-
-                        //TODO: need to make sure of this line
-                        AboGroup = cmbAboGroup.Text,
-                        RhesusGroup = swBtnRhesusGroup.Value ? "+" : "-",
-                        CytomegaioVirus = swBtnCytomegaloVirus.Value,
-                        HbsAg = swBtnHBSAg.Value,
-                        HbcAb = swBtnHBCAb.Value,
-                        Bhcg = intInBHCG.Value,
-                        EstriolE3 = intInEstriolE3.Value,
-                        Fbs = intInFBS.Value,
-                        Cbc = intInCBC.Value,
-                        Platelets = intInPlatelets.Value,
-                        GeneralRemarks = txtGeneralRemarks.Text.FullTrim()
-
-                        #endregion
-                    };
-                    PatientManager.AddNewPatient(patient);
+                    Patient = new Patient();
+                    LoadPatientFromForm();
+                    Patient.Id = PatientManager.GetNextPatientId(PatientManager.GetLastPatientId());
+                    PatientManager.AddNewPatient(Patient);
                     EnableOrDisableControls(ReceptionFormMode.HasPatient);
                     ToggleNewPatientButton(true);
                 }
@@ -253,9 +236,10 @@ namespace DrMinaClinic.PL.Forms
 
             #endregion
 
-            #region New / Save button
+            #region New / Save & Edit / Save buttons
 
             ToggleNewPatientButton(true);
+            ToggleEditPatientButton(true);
 
             #endregion
 
@@ -270,6 +254,163 @@ namespace DrMinaClinic.PL.Forms
         {
             btnNewPatient.Text = isNew ? @"New" : @"Save";
             btnNewPatient.Image = isNew ? Resources.Add : Resources.Save;
+        }
+
+        private void ToggleEditPatientButton(bool isEdit)
+        {
+            btnEditPatient.Text = isEdit ? @"Edit" : @"Save";
+            btnEditPatient.Image = isEdit ? Resources.Edit : Resources.Save;
+        }
+
+        private void DisplayPatient()
+        {
+            #region Patient's Basic Data
+
+            txtId.Text = Patient.Id;
+            txtName.Text = Patient.Name;
+            dtBirthdate.Value = Patient.BirthDate ?? default(DateTime);
+            txtAddress.Text = Patient.Address;
+            txtPhone.Text = Patient.Phone;
+
+            #endregion
+
+            #region First Examination
+
+            txtHeart.Text = Patient.Heart;
+            txtLungs.Text = Patient.Lungs;
+            txtVaricoseVeins.Text = Patient.VaricoseVenis;
+            txtPelvis.Text = Patient.Pelvis;
+            txtLowerLimbs.Text = Patient.LowerLimbs;
+            txtPV.Text = Patient.PV;
+
+            #endregion
+
+            #region Relevant Family History
+
+            intInTwins.Value = Patient.Twins ?? 0;
+            swBtnDiabetes.Value = Patient.Diabetes ?? false;
+            swBtnHypertension.Value = Patient.Hypertension ?? false;
+            txtPastIllness.Text = Patient.PastIllness;
+            txtOperations.Text = Patient.Operations;
+            txtAllergies.Text = Patient.Allergies;
+            txtDrugs.Text = Patient.Drugs;
+
+            #endregion
+
+            #region Investigations
+
+            //TODO: if not entered, then set the selected index by 0
+            cmbAboGroup.SelectedIndex = default(int);
+            //TODO: handle the null values (if not entered)
+            //swBtnRhesusGroup.Value = patient.RhesusGroup ?? false;
+            swBtnCytomegaloVirus.Value = Patient.CytomegaioVirus ?? false;
+            swBtnHBSAg.Value = Patient.HbsAg ?? false;
+            swBtnHBCAb.Value = Patient.HbcAb ?? false;
+            intInBHCG.Value = Patient.Bhcg ?? 0;
+            intInEstriolE3.Value = Patient.EstriolE3 ?? 0;
+            intInFBS.Value = Patient.Fbs ?? 0;
+            intInCBC.Value = Patient.Cbc ?? 0;
+            intInPlatelets.Value = Patient.Platelets ?? 0;
+            txtGeneralRemarks.Text = Patient.GeneralRemarks;
+
+            #endregion
+        }
+
+        private void EditPatient()
+        {
+            if (btnEditPatient.Text == @"Edit")
+            {
+                ToggleEditPatientButton(false);
+                EnableOrDisableControls(ReceptionFormMode.Edit);
+            }
+            else
+            {
+                if (txtName.Text.FullTrim().IsNullOrEmptyOrWhiteSpace())
+                {
+                    ErrorProvider.SetError(txtName, Resources.RequiredValidationMsg);
+                    return;
+                }
+                LoadPatientFromForm();
+                PatientManager.UpdatePatient(Patient);
+                ToggleEditPatientButton(true);
+                EnableOrDisableControls(ReceptionFormMode.HasPatient);
+            }
+        }
+
+        private void LoadPatientFromForm()
+        {
+            #region Patient's Basic Data
+
+            Patient.Name = txtName.Text.FullTrim();
+            //TODO: check if the value is the default
+            Patient.BirthDate = dtBirthdate.Value;
+            Patient.Address = txtAddress.Text.FullTrim();
+            Patient.Phone = txtPhone.Text.FullTrim();
+            Patient.CreatedOn = DateTime.Now;
+
+            #endregion
+
+            #region First Examination
+
+            Patient.Heart = txtHeart.Text.FullTrim();
+            Patient.Lungs = txtLungs.Text.FullTrim();
+            Patient.VaricoseVenis = txtVaricoseVeins.Text.FullTrim();
+            Patient.Pelvis = txtPelvis.Text.FullTrim();
+            Patient.LowerLimbs = txtLowerLimbs.Text.FullTrim();
+            Patient.PV = txtPV.Text.FullTrim();
+
+            #endregion
+
+            #region Relevant Family History
+
+            Patient.Twins = intInTwins.Value;
+            Patient.Diabetes = swBtnDiabetes.Value;
+            Patient.Hypertension = swBtnHypertension.Value;
+            Patient.PastIllness = txtPastIllness.Text.FullTrim();
+            Patient.Operations = txtOperations.Text.FullTrim();
+            Patient.Allergies = txtAllergies.Text.FullTrim();
+            Patient.Drugs = txtDrugs.Text.FullTrim();
+
+            #endregion
+
+            #region Investigations
+
+            //TODO: need to make sure of this line
+            //TODO: check if the choice is null (no selected -_-)
+            Patient.AboGroup = cmbAboGroup.Text;
+            //TODO: if no selected, then set it by NULL
+            Patient.RhesusGroup = swBtnRhesusGroup.Value ? "+" : "-";
+            Patient.CytomegaioVirus = swBtnCytomegaloVirus.Value;
+            Patient.HbsAg = swBtnHBSAg.Value;
+            Patient.HbcAb = swBtnHBCAb.Value;
+            Patient.Bhcg = intInBHCG.Value;
+            Patient.EstriolE3 = intInEstriolE3.Value;
+            Patient.Fbs = intInFBS.Value;
+            Patient.Cbc = intInCBC.Value;
+            Patient.Platelets = intInPlatelets.Value;
+            Patient.GeneralRemarks = txtGeneralRemarks.Text.FullTrim();
+
+            #endregion
+        }
+
+        private void SetAutoCompletionForTextBoxes()
+        {
+            SetAutoCompletionForPatientIds();
+            SetAutoCompletionForPatientNames();
+        }
+
+        private void SetAutoCompletionForPatientIds()
+        {
+            var collection = new AutoCompleteStringCollection();
+            collection.AddRange(PatientManager.GetAllPatients().Select(patient => patient.Id).ToArray());
+            SetAutoCompleteSourceForTextBox(txtId, collection);
+        }
+
+        private void SetAutoCompletionForPatientNames()
+        {
+            var collection = new AutoCompleteStringCollection();
+            collection.AddRange(PatientManager.GetAllPatients().Select(patient => patient.Name).ToArray());
+            SetAutoCompleteSourceForTextBox(txtName, collection);
         }
 
         #endregion

@@ -86,6 +86,7 @@
             this.swBtnCytomegaloVirus = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.swBtnRhesusGroup = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.cmbAboGroup = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.Choose = new DevComponents.Editors.ComboItem();
             this.A = new DevComponents.Editors.ComboItem();
             this.B = new DevComponents.Editors.ComboItem();
             this.AB = new DevComponents.Editors.ComboItem();
@@ -201,6 +202,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(266, 26);
             this.txtName.TabIndex = 12;
+            this.txtName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPatientIdOrName_KeyDown);
             // 
             // txtId
             // 
@@ -213,6 +215,7 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(266, 26);
             this.txtId.TabIndex = 11;
+            this.txtId.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPatientIdOrName_KeyDown);
             // 
             // btnFindPatient
             // 
@@ -1111,6 +1114,7 @@
             this.cmbAboGroup.FormattingEnabled = true;
             this.cmbAboGroup.ItemHeight = 20;
             this.cmbAboGroup.Items.AddRange(new object[] {
+            this.Choose,
             this.A,
             this.B,
             this.AB,
@@ -1120,6 +1124,10 @@
             this.cmbAboGroup.Size = new System.Drawing.Size(77, 26);
             this.cmbAboGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbAboGroup.TabIndex = 17;
+            // 
+            // Choose
+            // 
+            this.Choose.Text = "Choose";
             // 
             // A
             // 
@@ -1220,6 +1228,7 @@
             this.btnNewExamination.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnNewExamination.TabIndex = 40;
             this.btnNewExamination.Text = "New Examination";
+            this.btnNewExamination.Click += new System.EventHandler(this.btnNewExamination_Click);
             // 
             // btnEditPatient
             // 
@@ -1389,5 +1398,6 @@
         private DevComponents.Editors.ComboItem B;
         private DevComponents.Editors.ComboItem AB;
         private DevComponents.Editors.ComboItem O;
+        private DevComponents.Editors.ComboItem Choose;
     }
 }

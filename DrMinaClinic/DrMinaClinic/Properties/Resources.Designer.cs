@@ -91,6 +91,15 @@ namespace DrMinaClinic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There&apos;s not any patient with this ID or Name.
+        /// </summary>
+        internal static string ErrorPatientIdAndNameMsg {
+            get {
+                return ResourceManager.GetString("ErrorPatientIdAndNameMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Examination {
@@ -117,6 +126,15 @@ namespace DrMinaClinic.Properties {
             get {
                 object obj = ResourceManager.GetObject("OK", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You should enter Patient ID or Name.
+        /// </summary>
+        internal static string RequiredPatientIdAndNameMsg {
+            get {
+                return ResourceManager.GetString("RequiredPatientIdAndNameMsg", resourceCulture);
             }
         }
         
