@@ -71,6 +71,7 @@
     <Property Name="LMP" Type="DateTime" Precision="0" />
     <Property Name="EDD" Type="DateTime" Precision="0" />
     <Property Name="ActualBirthdate" Type="DateTime" Precision="0" />
+    <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Examinations" Relationship="Self.FK_Examinations_Pregnancies" FromRole="Pregnancies" ToRole="Examinations" />
     <NavigationProperty Name="Patient" Relationship="Self.FK_Pregnancies_Patients" FromRole="Pregnancies" ToRole="Patients" />
     <NavigationProperty Name="PregnancyDetails" Relationship="Self.FK_PregnancyDetails_Pregnancies" FromRole="Pregnancies" ToRole="PregnancyDetails" />

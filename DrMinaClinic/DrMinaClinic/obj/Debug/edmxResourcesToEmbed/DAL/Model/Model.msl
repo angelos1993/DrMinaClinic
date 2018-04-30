@@ -71,6 +71,7 @@
           <ScalarProperty Name="LMP" ColumnName="LMP" />
           <ScalarProperty Name="EDD" ColumnName="EDD" />
           <ScalarProperty Name="ActualBirthdate" ColumnName="ActualBirthdate" />
+          <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -69,6 +69,7 @@
     <Property Name="LMP" Type="date" />
     <Property Name="EDD" Type="date" />
     <Property Name="ActualBirthdate" Type="date" />
+    <Property Name="IsCurrent" Type="bit" Nullable="false" />
   </EntityType>
   <EntityType Name="PregnancyDetails">
     <Key>

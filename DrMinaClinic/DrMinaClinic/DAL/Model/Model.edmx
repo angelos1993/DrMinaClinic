@@ -74,6 +74,7 @@
           <Property Name="LMP" Type="date" />
           <Property Name="EDD" Type="date" />
           <Property Name="ActualBirthdate" Type="date" />
+          <Property Name="IsCurrent" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="PregnancyDetails">
           <Key>
@@ -230,6 +231,7 @@
           <Property Name="LMP" Type="DateTime" Precision="0" />
           <Property Name="EDD" Type="DateTime" Precision="0" />
           <Property Name="ActualBirthdate" Type="DateTime" Precision="0" />
+          <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Examinations" Relationship="Self.FK_Examinations_Pregnancies" FromRole="Pregnancies" ToRole="Examinations" />
           <NavigationProperty Name="Patient" Relationship="Self.FK_Pregnancies_Patients" FromRole="Pregnancies" ToRole="Patients" />
           <NavigationProperty Name="PregnancyDetails" Relationship="Self.FK_PregnancyDetails_Pregnancies" FromRole="Pregnancies" ToRole="PregnancyDetails" />
@@ -390,6 +392,7 @@
                 <ScalarProperty Name="LMP" ColumnName="LMP" />
                 <ScalarProperty Name="EDD" ColumnName="EDD" />
                 <ScalarProperty Name="ActualBirthdate" ColumnName="ActualBirthdate" />
+                <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

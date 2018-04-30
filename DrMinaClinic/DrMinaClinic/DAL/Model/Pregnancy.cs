@@ -31,6 +31,7 @@ namespace DrMinaClinic.DAL.Model
         public Nullable<System.DateTime> LMP { get; set; }
         public Nullable<System.DateTime> EDD { get; set; }
         public Nullable<System.DateTime> ActualBirthdate { get; set; }
+        public bool IsCurrent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Examination> Examinations { get; set; }
