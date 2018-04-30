@@ -60,6 +60,7 @@ namespace DrMinaClinic.PL.Forms
 
         private void ResetForm()
         {
+            lblPatientData.Text = $@"ID: {Patient.Id} - Name: {Patient.Name}";
             EnableOrDisableControls(ExaminationFormMode.New);
         }
 

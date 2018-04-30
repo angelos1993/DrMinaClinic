@@ -1124,6 +1124,7 @@
             this.cmbAboGroup.Size = new System.Drawing.Size(77, 26);
             this.cmbAboGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbAboGroup.TabIndex = 17;
+            this.cmbAboGroup.SelectedIndexChanged += new System.EventHandler(this.cmbAboGroup_SelectedIndexChanged);
             // 
             // Choose
             // 

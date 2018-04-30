@@ -53,6 +53,11 @@ namespace DrMinaClinic.PL.Forms
                 FindPatient();
         }
 
+        private void cmbAboGroup_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            swBtnRhesusGroup.Enabled = cmbAboGroup.SelectedIndex != 0;
+        }
+
         private void btnNewPatient_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
