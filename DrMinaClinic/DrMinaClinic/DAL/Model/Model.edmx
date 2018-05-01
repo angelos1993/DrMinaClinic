@@ -67,7 +67,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PatientId" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="G" Type="int" />
-          <Property Name="P" Type="int" />
+          <Property Name="P1" Type="int" />
+          <Property Name="P2" Type="int" />
           <Property Name="Vag" Type="int" />
           <Property Name="CS" Type="int" />
           <Property Name="No" Type="int" Nullable="false" />
@@ -224,7 +225,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PatientId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="G" Type="Int32" />
-          <Property Name="P" Type="Int32" />
+          <Property Name="P1" Type="Int32" />
+          <Property Name="P2" Type="Int32" />
           <Property Name="Vag" Type="Int32" />
           <Property Name="CS" Type="Int32" />
           <Property Name="No" Type="Int32" Nullable="false" />
@@ -385,7 +387,8 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="G" ColumnName="G" />
-                <ScalarProperty Name="P" ColumnName="P" />
+                <ScalarProperty Name="P1" ColumnName="P1" />
+                <ScalarProperty Name="P2" ColumnName="P2" />
                 <ScalarProperty Name="Vag" ColumnName="Vag" />
                 <ScalarProperty Name="CS" ColumnName="CS" />
                 <ScalarProperty Name="No" ColumnName="No" />

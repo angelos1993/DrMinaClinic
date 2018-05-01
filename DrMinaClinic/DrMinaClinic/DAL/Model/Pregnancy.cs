@@ -24,7 +24,8 @@ namespace DrMinaClinic.DAL.Model
         public int Id { get; set; }
         public string PatientId { get; set; }
         public Nullable<int> G { get; set; }
-        public Nullable<int> P { get; set; }
+        public Nullable<int> P1 { get; set; }
+        public Nullable<int> P2 { get; set; }
         public Nullable<int> Vag { get; set; }
         public Nullable<int> CS { get; set; }
         public int No { get; set; }

@@ -64,7 +64,8 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PatientId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="G" Type="Int32" />
-    <Property Name="P" Type="Int32" />
+    <Property Name="P1" Type="Int32" />
+    <Property Name="P2" Type="Int32" />
     <Property Name="Vag" Type="Int32" />
     <Property Name="CS" Type="Int32" />
     <Property Name="No" Type="Int32" Nullable="false" />

@@ -62,7 +62,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PatientId" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="G" Type="int" />
-    <Property Name="P" Type="int" />
+    <Property Name="P1" Type="int" />
+    <Property Name="P2" Type="int" />
     <Property Name="Vag" Type="int" />
     <Property Name="CS" Type="int" />
     <Property Name="No" Type="int" Nullable="false" />
