@@ -15,3 +15,4 @@ G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\EntityFramework
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\EntityFramework.SqlServer.dll
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\EntityFramework.xml
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\EntityFramework.SqlServer.xml
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.csprojResolveAssemblyReference.cache
