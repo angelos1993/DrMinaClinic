@@ -86,7 +86,7 @@
             this.swBtnCytomegaloVirus = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.swBtnRhesusGroup = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.cmbAboGroup = new DevComponents.DotNetBar.Controls.ComboBoxEx();
-            this.Choose = new DevComponents.Editors.ComboItem();
+            this.Select = new DevComponents.Editors.ComboItem();
             this.A = new DevComponents.Editors.ComboItem();
             this.B = new DevComponents.Editors.ComboItem();
             this.AB = new DevComponents.Editors.ComboItem();
@@ -1114,7 +1114,7 @@
             this.cmbAboGroup.FormattingEnabled = true;
             this.cmbAboGroup.ItemHeight = 20;
             this.cmbAboGroup.Items.AddRange(new object[] {
-            this.Choose,
+            this.Select,
             this.A,
             this.B,
             this.AB,
@@ -1126,9 +1126,9 @@
             this.cmbAboGroup.TabIndex = 17;
             this.cmbAboGroup.SelectedIndexChanged += new System.EventHandler(this.cmbAboGroup_SelectedIndexChanged);
             // 
-            // Choose
+            // Select
             // 
-            this.Choose.Text = "Choose";
+            this.Select.Text = "Select";
             // 
             // A
             // 
@@ -1399,6 +1399,6 @@
         private DevComponents.Editors.ComboItem B;
         private DevComponents.Editors.ComboItem AB;
         private DevComponents.Editors.ComboItem O;
-        private DevComponents.Editors.ComboItem Choose;
+        private DevComponents.Editors.ComboItem Select;
     }
 }

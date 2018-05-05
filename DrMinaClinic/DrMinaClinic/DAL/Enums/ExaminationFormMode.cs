@@ -2,7 +2,6 @@
 {
     public enum ExaminationFormMode
     {
-        New,
         AddPregnancy,
         AddExamination,
         EditPregnancy,

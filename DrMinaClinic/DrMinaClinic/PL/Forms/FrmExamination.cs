@@ -55,6 +55,11 @@ namespace DrMinaClinic.PL.Forms
             Cursor = Cursors.Default;
         }
 
+        private void btnAddEditDetails_Click(object sender, EventArgs e)
+        {
+            //TODO: open a new form to add / edit the pregnancy details for each child
+        }
+
         private void btnNewPregnancy_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
@@ -67,6 +72,13 @@ namespace DrMinaClinic.PL.Forms
         {
             Cursor = Cursors.WaitCursor;
             EditPregnancy();
+            Cursor = Cursors.Default;
+        }
+
+        private void btnCloseCurrentPregnancy_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            CloseCurrentPregnancy();
             Cursor = Cursors.Default;
         }
 
@@ -91,6 +103,8 @@ namespace DrMinaClinic.PL.Forms
             lblPatientData.Text = $@"ID: {Patient.Id} - Name: {Patient.Name}";
             LoadPatientPregnancies();
             InitializeTheFormForExamination();
+            ResetPregnancyData();
+            ResetExaminationData();
         }
 
         private void LoadPatientPregnancies()
@@ -102,7 +116,7 @@ namespace DrMinaClinic.PL.Forms
         {
             if (AllPatientPregnancies.Any())
             {
-                var currentPregnancy = AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.IsCurrent);
+                var currentPregnancy = GetCurrentPregnancy();
                 if (currentPregnancy == null)
                 {
                     currentPregnancy = AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id).First();
@@ -111,8 +125,7 @@ namespace DrMinaClinic.PL.Forms
                 }
                 if (currentPregnancy.Examinations.Any())
                 {
-                    var currentExamination = currentPregnancy.Examinations.FirstOrDefault(
-                        examination => SqlFunctions.DateDiff("DAY", DateTime.Now, examination.Date) == 0);
+                    var currentExamination = GetCurrentExamination(currentPregnancy);
                     if (currentExamination != null)
                     {
                         //display the current examination (in case of the patient has an axamination today)
@@ -145,12 +158,40 @@ namespace DrMinaClinic.PL.Forms
 
         private void DisplayExamination(Examination examination)
         {
-            throw new NotImplementedException();
+            intInWeeks.Value = examination.Weeks ?? default(int);
+            dblInWeight.Value = examination.Weight ?? default(double);
+            intInFundalHeight.Value = examination.FundalHeight ?? default(int);
+            swBtnOedema.Value = examination.Oedema ?? default(bool);
+            intInHb.Value = examination.Hb ?? default(int);
+            intInUlterineSize.Value = examination.UterineSize ?? default(int);
+            /*
+            Examination.Engagement = cmbEngagement.SelectedIndex != 0
+                ? int.Parse(cmbEngagement.SelectedItem.ToString())
+                : (int?)null;
+            Examination.UrineAlb = cmbAlb.SelectedItem?.ToString();
+            */
+            //cmbEngagement.SelectedItem = 
+            //cmbAlb.SelectedItem = 
+            swBtnSugar.Value = examination.UrineSuger ?? default(bool);
+            //TODO: need to test this way, if it is wrong try the below one -_-
+            //TODO: also check if the value is NULL
+            var bp = examination.BP.Split(new[] {" / "}, StringSplitOptions.None);
+            intInBP1.Value = int.Parse(bp[0]);
+            intInBP2.Value = int.Parse(bp[1]);
+            txtUltraSoungNotes.Text = examination.UltraSoundNotes;
         }
 
         private void DisplayPregnancy(Pregnancy pregnancy)
         {
-            throw new NotImplementedException();
+            intInG.Value = pregnancy.G ?? default(int);
+            intInP1.Value = pregnancy.P1 ?? default(int);
+            intInP2.Value = pregnancy.P2 ?? default(int);
+            intInNo.Value = pregnancy.No;
+            dtEDD.Value = pregnancy.EDD ?? default(DateTime);
+            dtLMP.Value = pregnancy.LMP ?? default(DateTime);
+            intInCS.Value = pregnancy.CS ?? default(int);
+            intInVag.Value = pregnancy.Vag ?? default(int);
+            //TODO: set the pregnancy details to the grid -_-
         }
 
         private void SetFormForAddExamination(Pregnancy pregnancy)
@@ -180,16 +221,26 @@ namespace DrMinaClinic.PL.Forms
 
         private void EnableOrDisableControls(ExaminationFormMode mode)
         {
-            return;
+            //return;
             //todo: need to be tested well
-            //treePregnancies.Enabled = 
+            treePregnancies.Enabled = mode != ExaminationFormMode.EditPregnancy;
             pnlPregnancyData.Enabled = mode == ExaminationFormMode.AddPregnancy ||
                                        mode == ExaminationFormMode.EditPregnancy;
-            btnNewPregnancy.Enabled = mode == ExaminationFormMode.New || mode == ExaminationFormMode.AddPregnancy ||
+            btnNewPregnancy.Enabled = mode == ExaminationFormMode.AddPregnancy ||
                                       mode == ExaminationFormMode.AddExamination;
-            btnEditPregnancy.Enabled = mode == ExaminationFormMode.AddExamination;
-            pnlExaminationData.Enabled = mode == ExaminationFormMode.New || mode == ExaminationFormMode.AddExamination;
+            btnEditPregnancy.Enabled = mode == ExaminationFormMode.AddExamination ||
+                                       mode == ExaminationFormMode.EditPregnancy;
+            pnlExaminationData.Enabled = mode == ExaminationFormMode.AddExamination;
             btnSaveExamination.Enabled = mode == ExaminationFormMode.AddExamination;
+
+            #region Buttons' Text & Image
+
+            var isNew = mode != ExaminationFormMode.AddPregnancy;
+            var isEdit = mode != ExaminationFormMode.EditPregnancy;
+            ToggleNewPregnancyButton(isNew);
+            ToggleEditPregnancyButton(isEdit);
+
+            #endregion
         }
 
         private void DisplaySelectedExamination()
@@ -200,6 +251,7 @@ namespace DrMinaClinic.PL.Forms
         {
             if (btnNewPregnancy.Text == @"New Pregnancy")
             {
+                //todo: check if the he wants to add ActualDate to the old pregnancy -_- then create a new one
                 SetFormForAddPregnancy();
             }
             else
@@ -222,21 +274,44 @@ namespace DrMinaClinic.PL.Forms
 
         private void EditPregnancy()
         {
+            if (btnEditPregnancy.Text == @"Edit Pregnancy")
+            {
+                EnableOrDisableControls(ExaminationFormMode.EditPregnancy);
+            }
+            else
+            {
+                Pregnancy = GetCurrentPregnancy();
+                LoadPregnancyFromForm();
+                PregnancyManager.UpdatePregnancy(Pregnancy);
+                EnableOrDisableControls(ExaminationFormMode.AddExamination);
+            }
+        }
+
+        private void CloseCurrentPregnancy()
+        {
         }
 
         private void SaveExamination()
         {
+            Pregnancy = GetCurrentPregnancy();
+            var currentExamination = GetCurrentExamination(Pregnancy);
+            if (currentExamination == null)
+                Examination = new Examination();
+            LoadExaminationFromForm();
+            if (currentExamination == null)
+                ExaminationManager.AddExamination(Examination);
+            else
+                ExaminationManager.UpdateExamination(Examination);
         }
 
         private void LoadPregnancyFromForm()
         {
-            //TODO: consider the 'ActualDate' and when should it be set
             Pregnancy.PatientId = Patient.Id;
             Pregnancy.G = intInG.Value;
             Pregnancy.P1 = intInP1.Value;
             Pregnancy.P2 = intInP2.Value;
             Pregnancy.No = intInNo.Value;
-            Pregnancy.EDD = dtEDD.Value;
+            Pregnancy.EDD = dtEDD.Value != default(DateTime) ? dtEDD.Value : (DateTime?) null;
             Pregnancy.LMP = dtLMP.Value;
             Pregnancy.CS = intInCS.Value;
             Pregnancy.Vag = intInVag.Value;
@@ -254,12 +329,56 @@ namespace DrMinaClinic.PL.Forms
             Examination.Hb = intInHb.Value;
             Examination.Fhs = intInFHS.Value;
             Examination.UterineSize = intInUlterineSize.Value;
-            Examination.Engagement = int.Parse(cmbEngagement.SelectedItem.ToString());
-            //Examination.UrineAlb = cmbAlb.SelectedItem;
+            Examination.Engagement = cmbEngagement.SelectedIndex != 0
+                ? int.Parse(cmbEngagement.SelectedItem.ToString())
+                : (int?) null;
+            Examination.UrineAlb = cmbEngagement.SelectedIndex != 0 ? cmbAlb.SelectedItem?.ToString() : null;
             Examination.UrineSuger = swBtnSugar.Value;
             //TODO: check if the value is NULL
             Examination.BP = $"{intInBP1.Value} / {intInBP2.Value}";
             Examination.UltraSoundNotes = txtUltraSoungNotes.Text;
+        }
+
+        private Pregnancy GetCurrentPregnancy()
+        {
+            return AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id)
+                .FirstOrDefault(pregnancy => pregnancy.IsCurrent);
+        }
+
+        private Examination GetCurrentExamination(Pregnancy pregnancy)
+        {
+            return pregnancy?.Examinations.FirstOrDefault(
+                examination => SqlFunctions.DateDiff("DAY", DateTime.Now, examination.Date) == 0);
+        }
+
+        private void ResetExaminationData()
+        {
+            intInWeeks.Value = default(int);
+            dblInWeight.Value = default(int);
+            intInFundalHeight.Value = default(int);
+            swBtnOedema.Value = default(bool);
+            intInHb.Value = default(int);
+            intInFHS.Value = default(int);
+            intInUlterineSize.Value = default(int);
+            cmbEngagement.SelectedIndex = default(int);
+            cmbAlb.SelectedIndex = default(int);
+            swBtnSugar.Value = default(bool);
+            intInBP1.Value = default(int);
+            intInBP2.Value = default(int);
+            txtUltraSoungNotes.Clear();
+        }
+
+        private void ResetPregnancyData()
+        {
+            intInG.Value = default(int);
+            intInP1.Value = default(int);
+            intInP2.Value = default(int);
+            intInNo.Value = default(int);
+            dtEDD.Value = default(DateTime);
+            dtLMP.Value = default(DateTime);
+            intInCS.Value = default(int);
+            intInVag.Value = default(int);
+            //todo:reset pregnancy details data
         }
 
         #endregion
