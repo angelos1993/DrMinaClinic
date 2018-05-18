@@ -58,6 +58,7 @@
             this.labelX18 = new DevComponents.DotNetBar.LabelX();
             this.txtUltraSoungNotes = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.cmbEngagement = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.EngagementSelect = new DevComponents.Editors.ComboItem();
             this.EngagementMinusTwo = new DevComponents.Editors.ComboItem();
             this.EngagementMinusOne = new DevComponents.Editors.ComboItem();
             this.EngagementZero = new DevComponents.Editors.ComboItem();
@@ -79,6 +80,7 @@
             this.pnlUrine = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.swBtnSugar = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.cmbAlb = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.Select = new DevComponents.Editors.ComboItem();
             this.AlbCrace = new DevComponents.Editors.ComboItem();
             this.AlbOne = new DevComponents.Editors.ComboItem();
             this.AlbTwo = new DevComponents.Editors.ComboItem();
@@ -94,8 +96,6 @@
             this.btnSaveExamination = new DevComponents.DotNetBar.ButtonX();
             this.btnNewPregnancy = new DevComponents.DotNetBar.ButtonX();
             this.btnCloseCurrentPregnancy = new DevComponents.DotNetBar.ButtonX();
-            this.Select = new DevComponents.Editors.ComboItem();
-            this.EngagementSelect = new DevComponents.Editors.ComboItem();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).BeginInit();
             this.pnlPatientData.SuspendLayout();
             this.pnlPregnancyData.SuspendLayout();
@@ -126,7 +126,7 @@
             // 
             this.treePregnancies.Location = new System.Drawing.Point(12, 24);
             this.treePregnancies.Name = "treePregnancies";
-            this.treePregnancies.Size = new System.Drawing.Size(121, 397);
+            this.treePregnancies.Size = new System.Drawing.Size(178, 397);
             this.treePregnancies.TabIndex = 0;
             this.treePregnancies.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treePregnancies_AfterSelect);
             // 
@@ -135,7 +135,7 @@
             this.pnlPatientData.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlPatientData.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
             this.pnlPatientData.Controls.Add(this.lblPatientData);
-            this.pnlPatientData.Location = new System.Drawing.Point(139, 12);
+            this.pnlPatientData.Location = new System.Drawing.Point(196, 11);
             this.pnlPatientData.Name = "pnlPatientData";
             this.pnlPatientData.Size = new System.Drawing.Size(1071, 63);
             // 
@@ -206,7 +206,7 @@
             this.pnlPregnancyData.Controls.Add(this.labelX2);
             this.pnlPregnancyData.Controls.Add(this.intInG);
             this.pnlPregnancyData.Controls.Add(this.labelX1);
-            this.pnlPregnancyData.Location = new System.Drawing.Point(139, 81);
+            this.pnlPregnancyData.Location = new System.Drawing.Point(196, 80);
             this.pnlPregnancyData.Name = "pnlPregnancyData";
             this.pnlPregnancyData.Size = new System.Drawing.Size(1071, 138);
             // 
@@ -649,7 +649,7 @@
             this.pnlExaminationData.Controls.Add(this.labelX9);
             this.pnlExaminationData.Controls.Add(this.intInWeeks);
             this.pnlExaminationData.Controls.Add(this.labelX8);
-            this.pnlExaminationData.Location = new System.Drawing.Point(139, 283);
+            this.pnlExaminationData.Location = new System.Drawing.Point(196, 282);
             this.pnlExaminationData.Name = "pnlExaminationData";
             this.pnlExaminationData.Size = new System.Drawing.Size(1071, 138);
             // 
@@ -761,6 +761,10 @@
             this.cmbEngagement.Size = new System.Drawing.Size(57, 26);
             this.cmbEngagement.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbEngagement.TabIndex = 27;
+            // 
+            // EngagementSelect
+            // 
+            this.EngagementSelect.Text = "Select";
             // 
             // EngagementMinusTwo
             // 
@@ -1084,6 +1088,10 @@
             this.cmbAlb.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.cmbAlb.TabIndex = 7;
             // 
+            // Select
+            // 
+            this.Select.Text = "Select";
+            // 
             // AlbCrace
             // 
             this.AlbCrace.Text = "Crace";
@@ -1195,7 +1203,7 @@
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnClose.Image = global::DrMinaClinic.Properties.Resources.Exit;
             this.btnClose.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(499, 426);
+            this.btnClose.Location = new System.Drawing.Point(556, 425);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(175, 40);
@@ -1210,7 +1218,7 @@
             this.btnEditPregnancy.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnEditPregnancy.Image = global::DrMinaClinic.Properties.Resources.Edit;
             this.btnEditPregnancy.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnEditPregnancy.Location = new System.Drawing.Point(557, 224);
+            this.btnEditPregnancy.Location = new System.Drawing.Point(614, 223);
             this.btnEditPregnancy.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditPregnancy.Name = "btnEditPregnancy";
             this.btnEditPregnancy.Size = new System.Drawing.Size(175, 40);
@@ -1225,7 +1233,7 @@
             this.btnSaveExamination.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnSaveExamination.Image = global::DrMinaClinic.Properties.Resources.Save;
             this.btnSaveExamination.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnSaveExamination.Location = new System.Drawing.Point(678, 426);
+            this.btnSaveExamination.Location = new System.Drawing.Point(735, 425);
             this.btnSaveExamination.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveExamination.Name = "btnSaveExamination";
             this.btnSaveExamination.Size = new System.Drawing.Size(175, 40);
@@ -1240,7 +1248,7 @@
             this.btnNewPregnancy.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnNewPregnancy.Image = global::DrMinaClinic.Properties.Resources.Add;
             this.btnNewPregnancy.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnNewPregnancy.Location = new System.Drawing.Point(378, 224);
+            this.btnNewPregnancy.Location = new System.Drawing.Point(435, 223);
             this.btnNewPregnancy.Margin = new System.Windows.Forms.Padding(2);
             this.btnNewPregnancy.Name = "btnNewPregnancy";
             this.btnNewPregnancy.Size = new System.Drawing.Size(175, 40);
@@ -1255,7 +1263,7 @@
             this.btnCloseCurrentPregnancy.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btnCloseCurrentPregnancy.Image = global::DrMinaClinic.Properties.Resources.OK;
             this.btnCloseCurrentPregnancy.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnCloseCurrentPregnancy.Location = new System.Drawing.Point(736, 224);
+            this.btnCloseCurrentPregnancy.Location = new System.Drawing.Point(793, 223);
             this.btnCloseCurrentPregnancy.Margin = new System.Windows.Forms.Padding(2);
             this.btnCloseCurrentPregnancy.Name = "btnCloseCurrentPregnancy";
             this.btnCloseCurrentPregnancy.Size = new System.Drawing.Size(253, 40);
@@ -1264,19 +1272,11 @@
             this.btnCloseCurrentPregnancy.Text = "Close Current Pregnancy";
             this.btnCloseCurrentPregnancy.Click += new System.EventHandler(this.btnCloseCurrentPregnancy_Click);
             // 
-            // Select
-            // 
-            this.Select.Text = "Select";
-            // 
-            // EngagementSelect
-            // 
-            this.EngagementSelect.Text = "Select";
-            // 
             // FrmExamination
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1222, 477);
+            this.ClientSize = new System.Drawing.Size(1277, 477);
             this.Controls.Add(this.btnCloseCurrentPregnancy);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnEditPregnancy);

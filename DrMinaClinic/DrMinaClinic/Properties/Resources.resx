@@ -151,4 +151,7 @@
   <data name="RequiredPatientIdAndNameMsg" xml:space="preserve">
     <value>You should enter Patient ID or Name</value>
   </data>
+  <data name="CurrentPregnancyText" xml:space="preserve">
+    <value>Current Pregnancy</value>
+  </data>
 </root>

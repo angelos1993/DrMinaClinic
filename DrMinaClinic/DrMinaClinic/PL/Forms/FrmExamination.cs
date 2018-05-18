@@ -7,6 +7,7 @@ using DrMinaClinic.BLL;
 using DrMinaClinic.DAL.Enums;
 using DrMinaClinic.DAL.Model;
 using DrMinaClinic.Properties;
+using DrMinaClinic.Utility;
 
 namespace DrMinaClinic.PL.Forms
 {
@@ -35,7 +36,12 @@ namespace DrMinaClinic.PL.Forms
         public Patient Patient { get; set; }
         private List<Pregnancy> AllPatientPregnancies { get; set; }
         private Pregnancy Pregnancy { get; set; }
+
         private Examination Examination { get; set; }
+        //private static DateTime Today => DateTime.Now.Date;
+
+        //private bool IsExistPatientExaminationForToday =>
+        //    Pregnancy?.Examinations.Any(examination => examination.Date == Today) ?? false;
 
         #endregion
 
@@ -51,7 +57,7 @@ namespace DrMinaClinic.PL.Forms
         private void treePregnancies_AfterSelect(object sender, TreeViewEventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            DisplaySelectedExamination();
+            DisplaySelectedExamination(e.Node);
             Cursor = Cursors.Default;
         }
 
@@ -103,8 +109,9 @@ namespace DrMinaClinic.PL.Forms
             lblPatientData.Text = $@"ID: {Patient.Id} - Name: {Patient.Name}";
             LoadPatientPregnancies();
             InitializeTheFormForExamination();
-            ResetPregnancyData();
-            ResetExaminationData();
+            //ResetPregnancyData();
+            //ResetExaminationData();
+            FillTree();
         }
 
         private void LoadPatientPregnancies()
@@ -129,6 +136,7 @@ namespace DrMinaClinic.PL.Forms
                     if (currentExamination != null)
                     {
                         //display the current examination (in case of the patient has an axamination today)
+                        //todo: this method call should be moved to the outside of this if condition (to be called at all cases)
                         DisplayPregnancy(currentPregnancy);
                         DisplayExamination(currentExamination);
                     }
@@ -230,6 +238,7 @@ namespace DrMinaClinic.PL.Forms
                                       mode == ExaminationFormMode.AddExamination;
             btnEditPregnancy.Enabled = mode == ExaminationFormMode.AddExamination ||
                                        mode == ExaminationFormMode.EditPregnancy;
+            btnCloseCurrentPregnancy.Enabled = mode == ExaminationFormMode.AddExamination;
             pnlExaminationData.Enabled = mode == ExaminationFormMode.AddExamination;
             btnSaveExamination.Enabled = mode == ExaminationFormMode.AddExamination;
 
@@ -243,8 +252,31 @@ namespace DrMinaClinic.PL.Forms
             #endregion
         }
 
-        private void DisplaySelectedExamination()
+        private void DisplaySelectedExamination(TreeNode selectedNode)
         {
+            if (selectedNode.Parent == null)
+                treePregnancies.SelectedNode = selectedNode.Nodes[0];
+            else
+            {
+                var pregnancyId = int.Parse(selectedNode.Parent.Name);
+                var examinationId = int.Parse(selectedNode.Name);
+                if (pregnancyId == 0 && examinationId == 0)
+                {
+                    SetFormForAddPregnancy();
+                }
+                else if (pregnancyId != 0 && examinationId == 0)
+                {
+                    SetFormForAddExamination(
+                        AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.Id == pregnancyId));
+                }
+                else
+                {
+                    DisplayExamination(AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.Id == pregnancyId)
+                        ?.Examinations.FirstOrDefault(examination => examination.Id == examinationId));
+                    //todo: check if the selected is the today's examinaton
+                    EnableOrDisableControls(ExaminationFormMode.OldExamination);
+                }
+            }
         }
 
         private void NewPregnancy()
@@ -347,8 +379,11 @@ namespace DrMinaClinic.PL.Forms
 
         private Examination GetCurrentExamination(Pregnancy pregnancy)
         {
-            return pregnancy?.Examinations.FirstOrDefault(
-                examination => SqlFunctions.DateDiff("DAY", DateTime.Now, examination.Date) == 0);
+            //BUG: This function can only be invoked from LINQ to Entities.
+            //return pregnancy?.Examinations.AsQueryable().FirstOrDefault(
+            //    examination => SqlFunctions.DateDiff("DAY", DateTime.Now, examination.Date) == 0);
+            return pregnancy?.Examinations.AsQueryable()
+                .FirstOrDefault(examination => examination.Date.Date == DateTime.Now.Date);
         }
 
         private void ResetExaminationData()
@@ -379,6 +414,42 @@ namespace DrMinaClinic.PL.Forms
             intInCS.Value = default(int);
             intInVag.Value = default(int);
             //todo:reset pregnancy details data
+        }
+
+        private void FillTree()
+        {
+            foreach (var pregnancy in AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id))
+            {
+                var pregnancyNode = new TreeNode
+                {
+                    Name = pregnancy.Id.ToString(),
+                    Text = pregnancy.Id.ToString()
+                };
+                pregnancy.Examinations.ToList()
+                    .ForEach(examination => pregnancyNode.Nodes.Add(examination.Id.ToString(),
+                        examination.Date.ToCustomFormattedShortDateString()));
+                treePregnancies.Nodes.Add(pregnancyNode);
+            }
+            if (AllPatientPregnancies.Any())
+            {
+                var firstNode = treePregnancies.Nodes[0];
+                firstNode.Text = Resources.CurrentPregnancyText;
+                if (firstNode.Nodes.Count == 0)
+                    firstNode.Nodes.Add(0.ToString(), DateTime.Today.ToCustomFormattedShortDateString());
+            }
+            else
+            {
+                treePregnancies.Nodes.Insert(0, new TreeNode
+                {
+                    Name = 0.ToString(),
+                    Text = Resources.CurrentPregnancyText,
+                    Nodes =
+                    {
+                        new TreeNode {Name = 0.ToString(), Text = DateTime.Today.ToCustomFormattedShortDateString()}
+                    }
+                });
+            }
+            treePregnancies.Nodes[0].Expand();
         }
 
         #endregion

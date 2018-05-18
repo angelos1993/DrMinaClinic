@@ -81,6 +81,15 @@ namespace DrMinaClinic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current Pregnancy.
+        /// </summary>
+        internal static string CurrentPregnancyText {
+            get {
+                return ResourceManager.GetString("CurrentPregnancyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Edit {
