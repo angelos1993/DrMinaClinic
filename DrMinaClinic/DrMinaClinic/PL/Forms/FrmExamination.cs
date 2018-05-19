@@ -193,7 +193,7 @@ namespace DrMinaClinic.PL.Forms
         private void SetFormForAddExamination(Pregnancy pregnancy)
         {
             DisplayPregnancy(pregnancy);
-            EnableOrDisableControls(ExaminationFormMode.AddExamination);
+            EnableOrDisableControls(ExaminationFormMode.AddEditExamination);
             ToggleNewPregnancyButton(true);
         }
 
@@ -222,12 +222,12 @@ namespace DrMinaClinic.PL.Forms
             pnlPregnancyData.Enabled = mode == ExaminationFormMode.AddPregnancy ||
                                        mode == ExaminationFormMode.EditPregnancy;
             btnNewPregnancy.Enabled = mode == ExaminationFormMode.AddPregnancy ||
-                                      mode == ExaminationFormMode.AddExamination;
-            btnEditPregnancy.Enabled = mode == ExaminationFormMode.AddExamination ||
+                                      mode == ExaminationFormMode.AddEditExamination;
+            btnEditPregnancy.Enabled = mode == ExaminationFormMode.AddEditExamination ||
                                        mode == ExaminationFormMode.EditPregnancy;
-            btnCloseCurrentPregnancy.Enabled = mode == ExaminationFormMode.AddExamination;
-            pnlExaminationData.Enabled = mode == ExaminationFormMode.AddExamination;
-            btnSaveExamination.Enabled = mode == ExaminationFormMode.AddExamination;
+            btnCloseCurrentPregnancy.Enabled = mode == ExaminationFormMode.AddEditExamination;
+            pnlExaminationData.Enabled = mode == ExaminationFormMode.AddEditExamination;
+            btnSaveExamination.Enabled = mode == ExaminationFormMode.AddEditExamination;
 
             #region Buttons' Text & Image
 
@@ -270,7 +270,7 @@ namespace DrMinaClinic.PL.Forms
                     DisplayExamination(AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.Id == pregnancyId)
                         ?.Examinations.FirstOrDefault(examination => examination.Id == examinationId));
                     EnableOrDisableControls(selectedNode.Text == Today.ToCustomFormattedShortDateString()
-                        ? ExaminationFormMode.AddExamination
+                        ? ExaminationFormMode.AddEditExamination
                         : ExaminationFormMode.OldExamination);
                 }
             }
@@ -312,7 +312,7 @@ namespace DrMinaClinic.PL.Forms
                 Pregnancy = GetCurrentPregnancy();
                 LoadPregnancyFromForm();
                 PregnancyManager.UpdatePregnancy(Pregnancy);
-                EnableOrDisableControls(ExaminationFormMode.AddExamination);
+                EnableOrDisableControls(ExaminationFormMode.AddEditExamination);
             }
         }
 
@@ -322,15 +322,6 @@ namespace DrMinaClinic.PL.Forms
 
         private void SaveExamination()
         {
-            //Pregnancy = GetCurrentPregnancy();
-            //var currentExamination = GetCurrentExamination(Pregnancy);
-            //if (currentExamination == null)
-            //    Examination = new Examination();
-            //LoadExaminationFromForm();
-            //if (currentExamination == null)
-            //    ExaminationManager.AddExamination(Examination);
-            //else
-            //    ExaminationManager.UpdateExamination(Examination);
             if (!IsExistPregnancyExaminationForToday())
                 Examination = new Examination();
             LoadExaminationFromForm();
@@ -464,6 +455,7 @@ namespace DrMinaClinic.PL.Forms
                 });
             }
             treePregnancies.Nodes[0].Expand();
+            treePregnancies.SelectedNode = treePregnancies.Nodes[0];
         }
 
         private bool IsExistPregnancyExaminationForToday()
