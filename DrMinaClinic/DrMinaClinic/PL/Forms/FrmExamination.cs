@@ -8,6 +8,7 @@ using DrMinaClinic.DAL.Enums;
 using DrMinaClinic.DAL.Model;
 using DrMinaClinic.Properties;
 using DrMinaClinic.Utility;
+using static DrMinaClinic.Utility.MessageBoxUtility;
 
 namespace DrMinaClinic.PL.Forms
 {
@@ -346,6 +347,7 @@ namespace DrMinaClinic.PL.Forms
                 ExaminationManager.AddExamination(Examination);
             else
                 ExaminationManager.UpdateExamination(Examination);
+            ShowInfoMsg(Resources.ExaminationSavedSuccessfullyText);
         }
 
         private void LoadPregnancyFromForm()
@@ -444,7 +446,7 @@ namespace DrMinaClinic.PL.Forms
                     Name = pregnancy.Id.ToString(),
                     Text = pregnancy.Id.ToString()
                 };
-                pregnancy.Examinations.ToList()
+                pregnancy.Examinations.OrderByDescending(examination => examination.Date).ToList()
                     .ForEach(examination => pregnancyNode.Nodes.Add(examination.Id.ToString(),
                         examination.Date.ToCustomFormattedShortDateString()));
                 treePregnancies.Nodes.Add(pregnancyNode);

@@ -119,6 +119,15 @@ namespace DrMinaClinic.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Examination Saved Successfully.
+        /// </summary>
+        internal static string ExaminationSavedSuccessfullyText {
+            get {
+                return ResourceManager.GetString("ExaminationSavedSuccessfullyText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap Exit {

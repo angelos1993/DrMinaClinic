@@ -154,4 +154,7 @@
   <data name="CurrentPregnancyText" xml:space="preserve">
     <value>Current Pregnancy</value>
   </data>
+  <data name="ExaminationSavedSuccessfullyText" xml:space="preserve">
+    <value>Examination Saved Successfully</value>
+  </data>
 </root>
