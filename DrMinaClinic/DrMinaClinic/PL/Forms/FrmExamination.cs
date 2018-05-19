@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.SqlServer;
+//using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Windows.Forms;
 using DrMinaClinic.BLL;
@@ -36,12 +36,8 @@ namespace DrMinaClinic.PL.Forms
         public Patient Patient { get; set; }
         private List<Pregnancy> AllPatientPregnancies { get; set; }
         private Pregnancy Pregnancy { get; set; }
-
         private Examination Examination { get; set; }
-        //private static DateTime Today => DateTime.Now.Date;
-
-        //private bool IsExistPatientExaminationForToday =>
-        //    Pregnancy?.Examinations.Any(examination => examination.Date == Today) ?? false;
+        private static DateTime Today => DateTime.Now.Date;
 
         #endregion
 
@@ -108,61 +104,60 @@ namespace DrMinaClinic.PL.Forms
         {
             lblPatientData.Text = $@"ID: {Patient.Id} - Name: {Patient.Name}";
             LoadPatientPregnancies();
-            InitializeTheFormForExamination();
-            //ResetPregnancyData();
-            //ResetExaminationData();
+            //InitializeTheFormForExamination();
             FillTree();
         }
 
         private void LoadPatientPregnancies()
         {
             AllPatientPregnancies = PregnancyManager.GetAllPregnanciesForPatient(Patient.Id);
+            Pregnancy = GetCurrentPregnancy();
+            Examination = GetCurrentExamination(Pregnancy);
         }
 
-        private void InitializeTheFormForExamination()
-        {
-            if (AllPatientPregnancies.Any())
-            {
-                var currentPregnancy = GetCurrentPregnancy();
-                if (currentPregnancy == null)
-                {
-                    currentPregnancy = AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id).First();
-                    currentPregnancy.IsCurrent = true;
-                    PregnancyManager.UpdatePregnancy(currentPregnancy);
-                }
-                if (currentPregnancy.Examinations.Any())
-                {
-                    var currentExamination = GetCurrentExamination(currentPregnancy);
-                    if (currentExamination != null)
-                    {
-                        //display the current examination (in case of the patient has an axamination today)
-                        //todo: this method call should be moved to the outside of this if condition (to be called at all cases)
-                        DisplayPregnancy(currentPregnancy);
-                        DisplayExamination(currentExamination);
-                    }
-                    else
-                    {
-                        //create a new examination
-                        //display the current pregnancy
-                        //create a new examination for today
-                        SetFormForAddExamination(currentPregnancy);
-                    }
-                }
-                else
-                {
-                    //create a new examination
-                    //display the current pregnancy
-                    //create a new examination for today
-                    SetFormForAddExamination(currentPregnancy);
-                }
-            }
-            else
-            {
-                //new patient
-                //create a new pregnancy
-                SetFormForAddPregnancy();
-            }
-        }
+        //private void InitializeTheFormForExamination()
+        //{
+        //    if (AllPatientPregnancies.Any())
+        //    {
+        //        var currentPregnancy = GetCurrentPregnancy();
+        //        if (currentPregnancy == null)
+        //        {
+        //            currentPregnancy = AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id).First();
+        //            currentPregnancy.IsCurrent = true;
+        //            PregnancyManager.UpdatePregnancy(currentPregnancy);
+        //        }
+        //        if (currentPregnancy.Examinations.Any())
+        //        {
+        //            var currentExamination = GetCurrentExamination(currentPregnancy);
+        //            if (currentExamination != null)
+        //            {
+        //                //display the current examination (in case of the patient has an axamination today)
+        //                DisplayPregnancy(currentPregnancy);
+        //                DisplayExamination(currentExamination);
+        //            }
+        //            else
+        //            {
+        //                //create a new examination
+        //                //display the current pregnancy
+        //                //create a new examination for today
+        //                SetFormForAddExamination(currentPregnancy);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            //create a new examination
+        //            //display the current pregnancy
+        //            //create a new examination for today
+        //            SetFormForAddExamination(currentPregnancy);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        //new patient
+        //        //create a new pregnancy
+        //        SetFormForAddPregnancy();
+        //    }
+        //}
 
         private void DisplayExamination(Examination examination)
         {
@@ -262,19 +257,29 @@ namespace DrMinaClinic.PL.Forms
                 var examinationId = int.Parse(selectedNode.Name);
                 if (pregnancyId == 0 && examinationId == 0)
                 {
+                    ResetFormData();
                     SetFormForAddPregnancy();
                 }
                 else if (pregnancyId != 0 && examinationId == 0)
                 {
-                    SetFormForAddExamination(
-                        AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.Id == pregnancyId));
+                    ResetFormData();
+                    Examination = new Examination();
+                    SetFormForAddExamination(Pregnancy);
                 }
                 else
                 {
+                    if (selectedNode.Text != Today.ToCustomFormattedShortDateString())
+                    {
+                        LoadPregnancyFromForm();
+                        LoadExaminationFromForm();
+                    }
+                    ResetFormData();
+                    DisplayPregnancy(AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.Id == pregnancyId));
                     DisplayExamination(AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.Id == pregnancyId)
                         ?.Examinations.FirstOrDefault(examination => examination.Id == examinationId));
-                    //todo: check if the selected is the today's examinaton
-                    EnableOrDisableControls(ExaminationFormMode.OldExamination);
+                    EnableOrDisableControls(selectedNode.Text == Today.ToCustomFormattedShortDateString()
+                        ? ExaminationFormMode.AddExamination
+                        : ExaminationFormMode.OldExamination);
                 }
             }
         }
@@ -325,12 +330,19 @@ namespace DrMinaClinic.PL.Forms
 
         private void SaveExamination()
         {
-            Pregnancy = GetCurrentPregnancy();
-            var currentExamination = GetCurrentExamination(Pregnancy);
-            if (currentExamination == null)
+            //Pregnancy = GetCurrentPregnancy();
+            //var currentExamination = GetCurrentExamination(Pregnancy);
+            //if (currentExamination == null)
+            //    Examination = new Examination();
+            //LoadExaminationFromForm();
+            //if (currentExamination == null)
+            //    ExaminationManager.AddExamination(Examination);
+            //else
+            //    ExaminationManager.UpdateExamination(Examination);
+            if (!IsExistPregnancyExaminationForToday())
                 Examination = new Examination();
             LoadExaminationFromForm();
-            if (currentExamination == null)
+            if (!IsExistPregnancyExaminationForToday())
                 ExaminationManager.AddExamination(Examination);
             else
                 ExaminationManager.UpdateExamination(Examination);
@@ -352,7 +364,8 @@ namespace DrMinaClinic.PL.Forms
 
         private void LoadExaminationFromForm()
         {
-            Examination.Date = DateTime.Now;
+            Examination.Date = Today;
+            //TODO: check if the Pregnancy is NULL
             Examination.PregnancyId = Pregnancy.Id;
             Examination.Weeks = intInWeeks.Value;
             Examination.Weight = dblInWeight.Value;
@@ -379,11 +392,11 @@ namespace DrMinaClinic.PL.Forms
 
         private Examination GetCurrentExamination(Pregnancy pregnancy)
         {
-            //BUG: This function can only be invoked from LINQ to Entities.
+            //BUG: This function can only be invoked from LINQ to Entities. (the below way is working properly)
             //return pregnancy?.Examinations.AsQueryable().FirstOrDefault(
-            //    examination => SqlFunctions.DateDiff("DAY", DateTime.Now, examination.Date) == 0);
+            //    examination => SqlFunctions.DateDiff("DAY", Today, examination.Date) == 0);
             return pregnancy?.Examinations.AsQueryable()
-                .FirstOrDefault(examination => examination.Date.Date == DateTime.Now.Date);
+                .FirstOrDefault(examination => examination.Date.Date == Today);
         }
 
         private void ResetExaminationData()
@@ -416,6 +429,12 @@ namespace DrMinaClinic.PL.Forms
             //todo:reset pregnancy details data
         }
 
+        private void ResetFormData()
+        {
+            ResetPregnancyData();
+            ResetExaminationData();
+        }
+
         private void FillTree()
         {
             foreach (var pregnancy in AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id))
@@ -434,8 +453,11 @@ namespace DrMinaClinic.PL.Forms
             {
                 var firstNode = treePregnancies.Nodes[0];
                 firstNode.Text = Resources.CurrentPregnancyText;
+                if (!IsExistPregnancyExaminationForToday())
+                    firstNode.Nodes.Insert(0,
+                        new TreeNode {Name = 0.ToString(), Text = Today.ToCustomFormattedShortDateString()});
                 if (firstNode.Nodes.Count == 0)
-                    firstNode.Nodes.Add(0.ToString(), DateTime.Today.ToCustomFormattedShortDateString());
+                    firstNode.Nodes.Add(0.ToString(), Today.ToCustomFormattedShortDateString());
             }
             else
             {
@@ -445,11 +467,17 @@ namespace DrMinaClinic.PL.Forms
                     Text = Resources.CurrentPregnancyText,
                     Nodes =
                     {
-                        new TreeNode {Name = 0.ToString(), Text = DateTime.Today.ToCustomFormattedShortDateString()}
+                        new TreeNode {Name = 0.ToString(), Text = Today.ToCustomFormattedShortDateString()}
                     }
                 });
             }
             treePregnancies.Nodes[0].Expand();
+        }
+
+        private bool IsExistPregnancyExaminationForToday()
+        {
+            return AllPatientPregnancies.Any(
+                pregnancy => pregnancy.Examinations.Any(examination => examination.Date.Date == Today.Date));
         }
 
         #endregion
