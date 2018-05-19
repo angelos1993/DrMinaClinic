@@ -168,17 +168,9 @@ namespace DrMinaClinic.PL.Forms
             swBtnOedema.Value = examination.Oedema ?? default(bool);
             intInHb.Value = examination.Hb ?? default(int);
             intInUlterineSize.Value = examination.UterineSize ?? default(int);
-            /*
-            Examination.Engagement = cmbEngagement.SelectedIndex != 0
-                ? int.Parse(cmbEngagement.SelectedItem.ToString())
-                : (int?)null;
-            Examination.UrineAlb = cmbAlb.SelectedItem?.ToString();
-            */
-            //cmbEngagement.SelectedItem = 
-            //cmbAlb.SelectedItem = 
+            cmbEngagement.SelectedIndex = ExaminationManager.GetEngagementValueFromText(examination.Engagement);
+            cmbAlb.SelectedIndex = ExaminationManager.GetAlbValueFromText(examination.UrineAlb);
             swBtnSugar.Value = examination.UrineSuger ?? default(bool);
-            //TODO: need to test this way, if it is wrong try the below one -_-
-            //TODO: also check if the value is NULL
             var bp = examination.BP.Split(new[] {" / "}, StringSplitOptions.None);
             intInBP1.Value = int.Parse(bp[0]);
             intInBP2.Value = int.Parse(bp[1]);
@@ -225,7 +217,6 @@ namespace DrMinaClinic.PL.Forms
 
         private void EnableOrDisableControls(ExaminationFormMode mode)
         {
-            //return;
             //todo: need to be tested well
             treePregnancies.Enabled = mode != ExaminationFormMode.EditPregnancy;
             pnlPregnancyData.Enabled = mode == ExaminationFormMode.AddPregnancy ||
@@ -381,7 +372,6 @@ namespace DrMinaClinic.PL.Forms
                 : (int?) null;
             Examination.UrineAlb = cmbEngagement.SelectedIndex != 0 ? cmbAlb.SelectedItem?.ToString() : null;
             Examination.UrineSuger = swBtnSugar.Value;
-            //TODO: check if the value is NULL
             Examination.BP = $"{intInBP1.Value} / {intInBP2.Value}";
             Examination.UltraSoundNotes = txtUltraSoungNotes.Text;
         }

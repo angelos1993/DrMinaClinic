@@ -306,9 +306,7 @@ namespace DrMinaClinic.PL.Forms
 
             #region Investigations
 
-            cmbAboGroup.SelectedIndex = Patient.AboGroup.IsNullOrEmptyOrWhiteSpace()
-                ? default(int)
-                : PatientManager.GetAboGroupValueFromText(Patient.AboGroup);
+            cmbAboGroup.SelectedIndex = PatientManager.GetAboGroupValueFromText(Patient.AboGroup);
             swBtnRhesusGroup.Value = Patient.RhesusGroup != null && Patient.RhesusGroup == "+";
             swBtnCytomegaloVirus.Value = Patient.CytomegaioVirus ?? false;
             swBtnHBSAg.Value = Patient.HbsAg ?? false;
