@@ -271,10 +271,13 @@ namespace DrMinaClinic.PL.Forms
                         LoadExaminationFromForm();
                     }
                     ResetFormData();
-                    DisplayPregnancy(AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.Id == pregnancyId));
+                    var selectedPregnancy =
+                        AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.Id == pregnancyId);
+                    DisplayPregnancy(selectedPregnancy);
                     DisplayExamination(AllPatientPregnancies.FirstOrDefault(pregnancy => pregnancy.Id == pregnancyId)
                         ?.Examinations.FirstOrDefault(examination => examination.Id == examinationId));
-                    EnableOrDisableControls(selectedNode.Text == Today.ToCustomFormattedShortDateString()
+                    EnableOrDisableControls(selectedPregnancy != null && selectedPregnancy.IsCurrent &&
+                                            selectedNode.Text == Today.ToCustomFormattedShortDateString()
                         ? ExaminationFormMode.AddEditExamination
                         : ExaminationFormMode.OldExamination);
                 }
@@ -322,9 +325,20 @@ namespace DrMinaClinic.PL.Forms
 
         private void CloseCurrentPregnancy()
         {
-            new FrmPregnancyActualBirthDate(Pregnancy).ShowDialog();
-            if (Pregnancy.ActualBirthdate != null)
+            if (Pregnancy.Examinations.Any())
+            {
+                new FrmPregnancyActualBirthDate(Pregnancy).ShowDialog();
+                if (Pregnancy.ActualBirthdate != null)
+                    ResetForm();
+            }
+            else
+            {
+                if (ShowConfirmationDialog("This pregnancy hasn't any examination. It will be deleted. ok?") ==
+                    DialogResult.No)
+                    return;
+                PregnancyManager.DeletePregnancy(Pregnancy);
                 ResetForm();
+            }
         }
 
         private void SaveExamination()
@@ -337,6 +351,8 @@ namespace DrMinaClinic.PL.Forms
             else
                 ExaminationManager.UpdateExamination(Examination);
             ShowInfoMsg(Resources.ExaminationSavedSuccessfullyText);
+            Hide();
+            new FrmReception().ShowDialog();
         }
 
         private void LoadPregnancyFromForm()
@@ -427,8 +443,7 @@ namespace DrMinaClinic.PL.Forms
         private void FillTree()
         {
             treePregnancies.Nodes.Clear();
-            foreach (var pregnancy in AllPatientPregnancies.Where(pregnancy => pregnancy.Examinations.Any())
-                .OrderByDescending(pregnancy => pregnancy.Id))
+            foreach (var pregnancy in AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id))
             {
                 var pregnancyNode = new TreeNode
                 {
@@ -470,8 +485,8 @@ namespace DrMinaClinic.PL.Forms
 
         private bool IsExistPregnancyExaminationForToday()
         {
-            return AllPatientPregnancies.Any(
-                pregnancy => pregnancy.Examinations.Any(examination => examination.Date.Date == Today.Date));
+            var pregnancy = GetCurrentPregnancy();
+            return pregnancy != null && pregnancy.Examinations.Any(examination => examination.Date.Date == Today.Date);
         }
 
         #endregion

@@ -30,7 +30,12 @@ namespace DrMinaClinic.BLL
             //TODO: check if there is pregnancy details should be saved -_-
             UnitOfWork.PregnancyRepository.Add(pregnancy);
         }
-        
+
+        public void DeletePregnancy(Pregnancy pregnancy)
+        {
+            UnitOfWork.PregnancyRepository.Delete(pregnancy);
+        }
+
         #endregion
     }
 }
