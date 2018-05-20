@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Windows.Forms;
 using DrMinaClinic.BLL;
@@ -67,7 +66,6 @@ namespace DrMinaClinic.PL.Forms
         private void btnNewPregnancy_Click(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
-            //TODO: rename this method NewPregnancy() -_-
             NewPregnancy();
             Cursor = Cursors.Default;
         }
@@ -106,7 +104,6 @@ namespace DrMinaClinic.PL.Forms
         {
             lblPatientData.Text = $@"ID: {Patient.Id} - Name: {Patient.Name}";
             LoadPatientPregnancies();
-            //InitializeTheFormForExamination();
             FillTree();
         }
 
@@ -116,50 +113,6 @@ namespace DrMinaClinic.PL.Forms
             Pregnancy = GetCurrentPregnancy();
             Examination = GetCurrentExamination(Pregnancy);
         }
-
-        //private void InitializeTheFormForExamination()
-        //{
-        //    if (AllPatientPregnancies.Any())
-        //    {
-        //        var currentPregnancy = GetCurrentPregnancy();
-        //        if (currentPregnancy == null)
-        //        {
-        //            currentPregnancy = AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id).First();
-        //            currentPregnancy.IsCurrent = true;
-        //            PregnancyManager.UpdatePregnancy(currentPregnancy);
-        //        }
-        //        if (currentPregnancy.Examinations.Any())
-        //        {
-        //            var currentExamination = GetCurrentExamination(currentPregnancy);
-        //            if (currentExamination != null)
-        //            {
-        //                //display the current examination (in case of the patient has an axamination today)
-        //                DisplayPregnancy(currentPregnancy);
-        //                DisplayExamination(currentExamination);
-        //            }
-        //            else
-        //            {
-        //                //create a new examination
-        //                //display the current pregnancy
-        //                //create a new examination for today
-        //                SetFormForAddExamination(currentPregnancy);
-        //            }
-        //        }
-        //        else
-        //        {
-        //            //create a new examination
-        //            //display the current pregnancy
-        //            //create a new examination for today
-        //            SetFormForAddExamination(currentPregnancy);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        //new patient
-        //        //create a new pregnancy
-        //        SetFormForAddPregnancy();
-        //    }
-        //}
 
         private void DisplayExamination(Examination examination)
         {
@@ -219,7 +172,6 @@ namespace DrMinaClinic.PL.Forms
         private void EnableOrDisableControls(ExaminationFormMode mode)
         {
             Mode = mode;
-            //todo: need to be tested well
             treePregnancies.Enabled = mode != ExaminationFormMode.EditPregnancy;
             pnlPregnancyData.Enabled = mode == ExaminationFormMode.AddPregnancy ||
                                        mode == ExaminationFormMode.EditPregnancy;
@@ -366,7 +318,7 @@ namespace DrMinaClinic.PL.Forms
             Pregnancy.LMP = dtLMP.Value;
             Pregnancy.CS = intInCS.Value;
             Pregnancy.Vag = intInVag.Value;
-            //set the pregnancy details from the grid
+            //todo: set the pregnancy details from the grid
         }
 
         private void LoadExaminationFromForm()
@@ -397,9 +349,6 @@ namespace DrMinaClinic.PL.Forms
 
         private Examination GetCurrentExamination(Pregnancy pregnancy)
         {
-            //BUG: This function can only be invoked from LINQ to Entities. (the below way is working properly)
-            //return pregnancy?.Examinations.AsQueryable().FirstOrDefault(
-            //    examination => SqlFunctions.DateDiff("DAY", Today, examination.Date) == 0);
             return pregnancy?.Examinations.AsQueryable()
                 .FirstOrDefault(examination => examination.Date.Date == Today);
         }
@@ -443,16 +392,15 @@ namespace DrMinaClinic.PL.Forms
         private void FillTree()
         {
             treePregnancies.Nodes.Clear();
-            foreach (var pregnancy in AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id))
+            AllPatientPregnancies = AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id).ToList();
+            for (var i = 0; i < AllPatientPregnancies.Count; i++)
             {
                 var pregnancyNode = new TreeNode
                 {
-                    Name = pregnancy.Id.ToString(),
-                    //TODO: should replaced by first examination date concatinated with the last one date
-                    //TODO: OR => get 1st, 2nd, 3rd, 4th, ... etc.
-                    Text = pregnancy.Id.ToString()
+                    Name = AllPatientPregnancies[i].Id.ToString(),
+                    Text = $@"{(AllPatientPregnancies.Count - i).ToOrdinal()} Pregnancy"
                 };
-                pregnancy.Examinations.OrderByDescending(examination => examination.Date).ToList()
+                AllPatientPregnancies[i].Examinations.OrderByDescending(examination => examination.Date).ToList()
                     .ForEach(examination => pregnancyNode.Nodes.Add(examination.Id.ToString(),
                         examination.Date.ToCustomFormattedShortDateString()));
                 treePregnancies.Nodes.Add(pregnancyNode);
