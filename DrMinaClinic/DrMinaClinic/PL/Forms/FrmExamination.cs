@@ -39,6 +39,7 @@ namespace DrMinaClinic.PL.Forms
         private Pregnancy Pregnancy { get; set; }
         private Examination Examination { get; set; }
         private static DateTime Today => DateTime.Now.Date;
+        private ExaminationFormMode Mode { get; set; }
 
         #endregion
 
@@ -217,6 +218,7 @@ namespace DrMinaClinic.PL.Forms
 
         private void EnableOrDisableControls(ExaminationFormMode mode)
         {
+            Mode = mode;
             //todo: need to be tested well
             treePregnancies.Enabled = mode != ExaminationFormMode.EditPregnancy;
             pnlPregnancyData.Enabled = mode == ExaminationFormMode.AddPregnancy ||
@@ -260,9 +262,12 @@ namespace DrMinaClinic.PL.Forms
                 }
                 else
                 {
-                    if (selectedNode.Text != Today.ToCustomFormattedShortDateString())
+                    if (selectedNode.Text != Today.ToCustomFormattedShortDateString() &&
+                        Mode != ExaminationFormMode.AddPregnancy && Mode != ExaminationFormMode.OldExamination)
                     {
                         LoadPregnancyFromForm();
+                        if (!IsExistPregnancyExaminationForToday())
+                            Examination = new Examination();
                         LoadExaminationFromForm();
                     }
                     ResetFormData();
@@ -280,8 +285,7 @@ namespace DrMinaClinic.PL.Forms
         {
             if (btnNewPregnancy.Text == @"New Pregnancy")
             {
-                //todo: check if the he wants to add ActualDate to the old pregnancy -_- then create a new one
-                SetFormForAddPregnancy();
+                CloseCurrentPregnancy();
             }
             else
             {
@@ -318,6 +322,9 @@ namespace DrMinaClinic.PL.Forms
 
         private void CloseCurrentPregnancy()
         {
+            new FrmPregnancyActualBirthDate(Pregnancy).ShowDialog();
+            if (Pregnancy.ActualBirthdate != null)
+                ResetForm();
         }
 
         private void SaveExamination()
@@ -349,7 +356,6 @@ namespace DrMinaClinic.PL.Forms
         private void LoadExaminationFromForm()
         {
             Examination.Date = Today;
-            //TODO: check if the Pregnancy is NULL
             Examination.PregnancyId = Pregnancy.Id;
             Examination.Weeks = intInWeeks.Value;
             Examination.Weight = dblInWeight.Value;
@@ -420,11 +426,15 @@ namespace DrMinaClinic.PL.Forms
 
         private void FillTree()
         {
-            foreach (var pregnancy in AllPatientPregnancies.OrderByDescending(pregnancy => pregnancy.Id))
+            treePregnancies.Nodes.Clear();
+            foreach (var pregnancy in AllPatientPregnancies.Where(pregnancy => pregnancy.Examinations.Any())
+                .OrderByDescending(pregnancy => pregnancy.Id))
             {
                 var pregnancyNode = new TreeNode
                 {
                     Name = pregnancy.Id.ToString(),
+                    //TODO: should replaced by first examination date concatinated with the last one date
+                    //TODO: OR => get 1st, 2nd, 3rd, 4th, ... etc.
                     Text = pregnancy.Id.ToString()
                 };
                 pregnancy.Examinations.OrderByDescending(examination => examination.Date).ToList()
@@ -432,7 +442,7 @@ namespace DrMinaClinic.PL.Forms
                         examination.Date.ToCustomFormattedShortDateString()));
                 treePregnancies.Nodes.Add(pregnancyNode);
             }
-            if (AllPatientPregnancies.Any())
+            if (AllPatientPregnancies.Any() && AllPatientPregnancies.Any(pregnancy => pregnancy.IsCurrent))
             {
                 var firstNode = treePregnancies.Nodes[0];
                 firstNode.Text = Resources.CurrentPregnancyText;

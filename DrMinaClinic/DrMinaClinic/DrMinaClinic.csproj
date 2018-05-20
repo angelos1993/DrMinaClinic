@@ -120,6 +120,12 @@
     <Compile Include="PL\Forms\FrmMaster.Designer.cs">
       <DependentUpon>FrmMaster.cs</DependentUpon>
     </Compile>
+    <Compile Include="PL\Forms\FrmPregnancyActualBirthDate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Forms\FrmPregnancyActualBirthDate.Designer.cs">
+      <DependentUpon>FrmPregnancyActualBirthDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="PL\Forms\FrmReception.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PL\Forms\FrmMaster.resx">
       <DependentUpon>FrmMaster.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Forms\FrmPregnancyActualBirthDate.resx">
+      <DependentUpon>FrmPregnancyActualBirthDate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PL\Forms\FrmReception.resx">
       <DependentUpon>FrmReception.cs</DependentUpon>
