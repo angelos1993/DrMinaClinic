@@ -46,6 +46,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -102,6 +103,7 @@
     <Compile Include="DAL\Repositories\PatientRepository.cs" />
     <Compile Include="DAL\Repositories\PregnancyDetailsRepository.cs" />
     <Compile Include="DAL\Repositories\PregnancyRepository.cs" />
+    <Compile Include="DAL\VMs\PregnancyDetailVm.cs" />
     <Compile Include="PL\Forms\FrmExamination.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +127,12 @@
     </Compile>
     <Compile Include="PL\Forms\FrmPregnancyActualBirthDate.Designer.cs">
       <DependentUpon>FrmPregnancyActualBirthDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PL\Forms\FrmPregnancyDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PL\Forms\FrmPregnancyDetails.Designer.cs">
+      <DependentUpon>FrmPregnancyDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="PL\Forms\FrmReception.cs">
       <SubType>Form</SubType>
@@ -151,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PL\Forms\FrmPregnancyActualBirthDate.resx">
       <DependentUpon>FrmPregnancyActualBirthDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PL\Forms\FrmPregnancyDetails.resx">
+      <DependentUpon>FrmPregnancyDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PL\Forms\FrmReception.resx">
       <DependentUpon>FrmReception.cs</DependentUpon>
@@ -187,7 +198,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DAL\VMs\" />
     <Folder Include="Deployment Versions\" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +212,7 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="Resources\Add.png" />
+    <None Include="Resources\Back.png" />
     <Content Include="Resources\Backup.png" />
     <Content Include="Resources\Clear.ico" />
     <Content Include="Resources\DB.png" />
@@ -209,6 +220,7 @@
     <None Include="Resources\Examination.png" />
     <Content Include="Resources\Exit.png" />
     <None Include="Resources\OK.png" />
+    <None Include="Resources\Next.png" />
     <Content Include="Resources\Restore.png" />
     <Content Include="Resources\Save.png" />
     <Content Include="Resources\Search.png" />

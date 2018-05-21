@@ -10,6 +10,11 @@ namespace DrMinaClinic.BLL
     {
         #region Properties
 
+        private PregnancyDetailManager _pregnancyDetailManager;
+
+        private PregnancyDetailManager PregnancyDetailManager =>
+            _pregnancyDetailManager ?? (_pregnancyDetailManager = new PregnancyDetailManager());
+
         #endregion
 
         #region Methods
@@ -27,12 +32,15 @@ namespace DrMinaClinic.BLL
 
         public void AddPregnancy(Pregnancy pregnancy)
         {
-            //TODO: check if there is pregnancy details should be saved -_-
             UnitOfWork.PregnancyRepository.Add(pregnancy);
+            if (pregnancy.PregnancyDetails.Any())
+                PregnancyDetailManager.AddPregnancyDetail(pregnancy.PregnancyDetails.ToList(), pregnancy.Id);
         }
 
         public void DeletePregnancy(Pregnancy pregnancy)
         {
+            if (pregnancy.PregnancyDetails.Any())
+                PregnancyDetailManager.DeletePregnancyDetailsForPregnancy(pregnancy.Id);
             UnitOfWork.PregnancyRepository.Delete(pregnancy);
         }
 

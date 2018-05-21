@@ -5,13 +5,13 @@ using System.Windows.Forms;
 using DrMinaClinic.BLL;
 using DrMinaClinic.DAL.Enums;
 using DrMinaClinic.DAL.Model;
+using DrMinaClinic.DAL.VMs;
 using DrMinaClinic.Properties;
 using DrMinaClinic.Utility;
 using static DrMinaClinic.Utility.MessageBoxUtility;
 
 namespace DrMinaClinic.PL.Forms
 {
-    //TODO: delete all comments after finishing all the implementation
     public partial class FrmExamination : FrmMaster
     {
         #region Constructor
@@ -60,7 +60,16 @@ namespace DrMinaClinic.PL.Forms
 
         private void btnAddEditDetails_Click(object sender, EventArgs e)
         {
-            //TODO: open a new form to add / edit the pregnancy details for each child
+            ErrorProvider.Clear();
+            if (intInNo.Value == 0)
+            {
+                ShowErrorMsg(Resources.EnterChildrenCountText);
+                ErrorProvider.SetError(intInNo, Resources.EnterChildrenCountText);
+                return;
+            }
+            if (Pregnancy == null)
+                Pregnancy = new Pregnancy();
+            new FrmPregnancyDetails(this, Pregnancy, intInNo.Value).ShowDialog();
         }
 
         private void btnNewPregnancy_Click(object sender, EventArgs e)
@@ -141,7 +150,7 @@ namespace DrMinaClinic.PL.Forms
             dtLMP.Value = pregnancy.LMP ?? default(DateTime);
             intInCS.Value = pregnancy.CS ?? default(int);
             intInVag.Value = pregnancy.Vag ?? default(int);
-            //TODO: set the pregnancy details to the grid -_-
+            FillGrid();
         }
 
         private void SetFormForAddExamination(Pregnancy pregnancy)
@@ -196,7 +205,9 @@ namespace DrMinaClinic.PL.Forms
         private void DisplaySelectedExamination(TreeNode selectedNode)
         {
             if (selectedNode.Parent == null)
+            {
                 treePregnancies.SelectedNode = selectedNode.Nodes[0];
+            }
             else
             {
                 var pregnancyId = int.Parse(selectedNode.Parent.Name);
@@ -285,8 +296,7 @@ namespace DrMinaClinic.PL.Forms
             }
             else
             {
-                if (ShowConfirmationDialog("This pregnancy hasn't any examination. It will be deleted. ok?") ==
-                    DialogResult.No)
+                if (ShowConfirmationDialog(Resources.DeletePregnancyConfirmationText) == DialogResult.No)
                     return;
                 PregnancyManager.DeletePregnancy(Pregnancy);
                 ResetForm();
@@ -295,7 +305,7 @@ namespace DrMinaClinic.PL.Forms
 
         private void SaveExamination()
         {
-            if (!IsExistPregnancyExaminationForToday())
+            if (!IsExistPregnancyExaminationForToday() && Examination == null)
                 Examination = new Examination();
             LoadExaminationFromForm();
             if (!IsExistPregnancyExaminationForToday())
@@ -318,7 +328,6 @@ namespace DrMinaClinic.PL.Forms
             Pregnancy.LMP = dtLMP.Value;
             Pregnancy.CS = intInCS.Value;
             Pregnancy.Vag = intInVag.Value;
-            //todo: set the pregnancy details from the grid
         }
 
         private void LoadExaminationFromForm()
@@ -380,7 +389,7 @@ namespace DrMinaClinic.PL.Forms
             dtLMP.Value = default(DateTime);
             intInCS.Value = default(int);
             intInVag.Value = default(int);
-            //todo:reset pregnancy details data
+            dgvPregnancyDetails.DataSource = null;
         }
 
         private void ResetFormData()
@@ -436,6 +445,30 @@ namespace DrMinaClinic.PL.Forms
             var pregnancy = GetCurrentPregnancy();
             return pregnancy != null && pregnancy.Examinations.Any(examination => examination.Date.Date == Today.Date);
         }
+
+        private void FillGrid()
+        {
+            dgvPregnancyDetails.DataSource = Pregnancy.PregnancyDetails.Select(pregnancyDetail => new PregnancyDetailVm
+            {
+                Living = pregnancyDetail.Living,
+                Af = pregnancyDetail.AF,
+                Sex = pregnancyDetail.Sex,
+                Placento = pregnancyDetail.Placento,
+                Weight = pregnancyDetail.Weight ?? default(double),
+                Presentation = pregnancyDetail.Presentation,
+                Other = pregnancyDetail.Other
+            }).ToList();
+        }
+
+        #region Call-Back(s)
+
+        public void SetPregnancyDetails(List<PregnancyDetail> pregnancyDetailsList)
+        {
+            Pregnancy.PregnancyDetails = pregnancyDetailsList;
+            FillGrid();
+        }
+
+        #endregion
 
         #endregion
     }
