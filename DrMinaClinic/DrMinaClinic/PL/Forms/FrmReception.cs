@@ -103,6 +103,7 @@ namespace DrMinaClinic.PL.Forms
 
         private void FindPatient()
         {
+            ErrorProvider.Clear();
             var patientId = txtId.Text.FullTrim();
             var patientName = txtName.Text.FullTrim();
             if (patientId.IsNullOrEmptyOrWhiteSpace() && patientName.IsNullOrEmptyOrWhiteSpace())
@@ -167,6 +168,7 @@ namespace DrMinaClinic.PL.Forms
 
         private void AddNewPatient()
         {
+            ErrorProvider.Clear();
             if (btnNewPatient.Text == @"New")
             {
                 ResetPatientData();

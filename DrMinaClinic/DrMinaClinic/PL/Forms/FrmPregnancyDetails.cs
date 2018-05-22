@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using DrMinaClinic.BLL;
 using DrMinaClinic.DAL.Model;
 using DrMinaClinic.Utility;
 
@@ -33,6 +34,8 @@ namespace DrMinaClinic.PL.Forms
                 for (var i = 0; i < No; i++)
                     PregnancyDetailsList.Add(new PregnancyDetail());
             }
+            PregnancyDetailManager.DeletePregnancyDetailsForPregnancy(pregnancy.Id);
+            pregnancy.PregnancyDetails.Clear();
         }
 
         #endregion
@@ -43,6 +46,10 @@ namespace DrMinaClinic.PL.Forms
         public int No { get; set; }
         private List<PregnancyDetail> PregnancyDetailsList { get; }
         private FrmExamination OwnerForm => Owner as FrmExamination;
+        private PregnancyDetailManager _pregnancyDetailManager;
+
+        private PregnancyDetailManager PregnancyDetailManager =>
+            _pregnancyDetailManager ?? (_pregnancyDetailManager = new PregnancyDetailManager());
 
         #endregion
 
@@ -128,12 +135,12 @@ namespace DrMinaClinic.PL.Forms
                 return;
             var pregnancyDetail = PregnancyDetailsList[selectedNodeIndex];
             swBtnLiving.Value = pregnancyDetail.Living;
-            txtAf.Text = pregnancyDetail.AF;
+            txtAf.Text = pregnancyDetail.AF ?? string.Empty;
             swBtnSex.Value = pregnancyDetail.Sex;
-            txtPlacento.Text = pregnancyDetail.Placento;
+            txtPlacento.Text = pregnancyDetail.Placento ?? string.Empty;
             dblInWeight.Value = pregnancyDetail.Weight ?? default(double);
-            txtPresentation.Text = pregnancyDetail.Presentation;
-            txtOther.Text = pregnancyDetail.Other;
+            txtPresentation.Text = pregnancyDetail.Presentation ?? string.Empty;
+            txtOther.Text = pregnancyDetail.Other ?? string.Empty;
         }
 
         private void Save()

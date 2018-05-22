@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
@@ -37,9 +38,21 @@ namespace DrMinaClinic.DAL.Repositories.Infrastructure
             Save();
         }
 
+        public void AddRange(List<T> entityList)
+        {
+            DbSet.AddRange(entityList);
+            Save();
+        }
+
         public void Delete(T entity)
         {
             DbSet.Remove(entity);
+            Save();
+        }
+
+        public void DeleteRange(List<T> entityList)
+        {
+            DbSet.RemoveRange(entityList);
             Save();
         }
 

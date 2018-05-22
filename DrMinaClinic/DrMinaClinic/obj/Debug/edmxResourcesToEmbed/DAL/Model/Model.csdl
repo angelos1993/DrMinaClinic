@@ -84,7 +84,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="PregnancyId" Type="Int32" Nullable="false" />
     <Property Name="Living" Type="Boolean" Nullable="false" />
-    <Property Name="AF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Sex" Type="Boolean" Nullable="false" />
     <Property Name="Placento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Weight" Type="Double" />

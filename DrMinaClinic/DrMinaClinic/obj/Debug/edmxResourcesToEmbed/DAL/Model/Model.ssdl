@@ -79,7 +79,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PregnancyId" Type="int" Nullable="false" />
     <Property Name="Living" Type="bit" Nullable="false" />
-    <Property Name="AF" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AF" Type="nvarchar(max)" />
     <Property Name="Sex" Type="bit" Nullable="false" />
     <Property Name="Placento" Type="nvarchar(max)" />
     <Property Name="Weight" Type="float" />

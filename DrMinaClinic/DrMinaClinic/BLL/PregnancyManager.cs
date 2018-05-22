@@ -27,6 +27,8 @@ namespace DrMinaClinic.BLL
 
         public void UpdatePregnancy(Pregnancy pregnancy)
         {
+            if (pregnancy.PregnancyDetails.Any())
+                PregnancyDetailManager.AddPregnancyDetail(pregnancy.PregnancyDetails.ToList(), pregnancy.Id);
             UnitOfWork.PregnancyRepository.Update(pregnancy);
         }
 

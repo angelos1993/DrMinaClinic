@@ -39,6 +39,10 @@ namespace DrMinaClinic.PL.Forms
         private Examination Examination { get; set; }
         private static DateTime Today => DateTime.Now.Date;
         private ExaminationFormMode Mode { get; set; }
+        private PregnancyDetailManager _pregnancyDetailManager;
+
+        private PregnancyDetailManager PregnancyDetailManager =>
+            _pregnancyDetailManager ?? (_pregnancyDetailManager = new PregnancyDetailManager());
 
         #endregion
 
@@ -56,6 +60,11 @@ namespace DrMinaClinic.PL.Forms
             Cursor = Cursors.WaitCursor;
             DisplaySelectedExamination(e.Node);
             Cursor = Cursors.Default;
+        }
+
+        private void intInNo_ValueChanged(object sender, EventArgs e)
+        {
+            intInNo.Value = Math.Max(dgvPregnancyDetails.Rows.Count, intInNo.Value);
         }
 
         private void btnAddEditDetails_Click(object sender, EventArgs e)
@@ -267,6 +276,7 @@ namespace DrMinaClinic.PL.Forms
                 LoadPregnancyFromForm();
                 Pregnancy.IsCurrent = true;
                 PregnancyManager.AddPregnancy(Pregnancy);
+                LoadPatientPregnancies();
                 SetFormForAddExamination(Pregnancy);
             }
         }
@@ -464,6 +474,7 @@ namespace DrMinaClinic.PL.Forms
 
         public void SetPregnancyDetails(List<PregnancyDetail> pregnancyDetailsList)
         {
+            PregnancyDetailManager.DeletePregnancyDetailsList(Pregnancy.PregnancyDetails.ToList());
             Pregnancy.PregnancyDetails = pregnancyDetailsList;
             FillGrid();
         }

@@ -16,13 +16,18 @@ namespace DrMinaClinic.BLL
         public void AddPregnancyDetail(List<PregnancyDetail> pregnancyDetailsList, int pregnancyId)
         {
             DeletePregnancyDetailsForPregnancy(pregnancyId);
-            pregnancyDetailsList.ForEach(pregnancyDetail => UnitOfWork.PregnancyDetailsRepository.Add(pregnancyDetail));
+            UnitOfWork.PregnancyDetailsRepository.AddRange(pregnancyDetailsList);
         }
 
         public void DeletePregnancyDetailsForPregnancy(int pregnancyId)
         {
             UnitOfWork.PregnancyDetailsRepository.Get(pregnancyDetail => pregnancyDetail.PregnancyId == pregnancyId)
                 .ToList().ForEach(pregnancyDetail => UnitOfWork.PregnancyDetailsRepository.Delete(pregnancyDetail));
+        }
+
+        public void DeletePregnancyDetailsList(List<PregnancyDetail> pregnancyDetailsliList)
+        {
+            UnitOfWork.PregnancyDetailsRepository.DeleteRange(pregnancyDetailsliList);
         }
 
         #endregion

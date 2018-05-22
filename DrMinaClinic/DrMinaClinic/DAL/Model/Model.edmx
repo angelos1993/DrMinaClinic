@@ -84,7 +84,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PregnancyId" Type="int" Nullable="false" />
           <Property Name="Living" Type="bit" Nullable="false" />
-          <Property Name="AF" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AF" Type="nvarchar(max)" />
           <Property Name="Sex" Type="bit" Nullable="false" />
           <Property Name="Placento" Type="nvarchar(max)" />
           <Property Name="Weight" Type="float" />
@@ -245,7 +245,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PregnancyId" Type="Int32" Nullable="false" />
           <Property Name="Living" Type="Boolean" Nullable="false" />
-          <Property Name="AF" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Sex" Type="Boolean" Nullable="false" />
           <Property Name="Placento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Weight" Type="Double" />
