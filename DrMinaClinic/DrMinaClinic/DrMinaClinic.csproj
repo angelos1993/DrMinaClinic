@@ -212,7 +212,10 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="Resources\Add.png" />
+    <None Include="Resources\Statistics.png" />
+    <None Include="Resources\Sma3a.png" />
     <None Include="Resources\Back.png" />
+    <None Include="Resources\Background.jpg" />
     <Content Include="Resources\Backup.png" />
     <Content Include="Resources\Clear.ico" />
     <Content Include="Resources\DB.png" />

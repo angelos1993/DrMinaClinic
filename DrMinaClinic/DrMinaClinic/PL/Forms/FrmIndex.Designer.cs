@@ -36,10 +36,14 @@
             // btnNewExamination
             // 
             this.btnNewExamination.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnNewExamination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewExamination.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnNewExamination.Location = new System.Drawing.Point(252, 172);
+            this.btnNewExamination.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewExamination.Image = global::DrMinaClinic.Properties.Resources.Sma3a;
+            this.btnNewExamination.ImageFixedSize = new System.Drawing.Size(100, 100);
+            this.btnNewExamination.Location = new System.Drawing.Point(535, 43);
             this.btnNewExamination.Name = "btnNewExamination";
-            this.btnNewExamination.Size = new System.Drawing.Size(253, 100);
+            this.btnNewExamination.Size = new System.Drawing.Size(375, 100);
             this.btnNewExamination.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnNewExamination.TabIndex = 1;
             this.btnNewExamination.Text = "New Examination";
@@ -48,10 +52,14 @@
             // btnStatistics
             // 
             this.btnStatistics.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnStatistics.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnStatistics.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnStatistics.Location = new System.Drawing.Point(511, 172);
+            this.btnStatistics.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatistics.Image = global::DrMinaClinic.Properties.Resources.Statistics;
+            this.btnStatistics.ImageFixedSize = new System.Drawing.Size(100, 100);
+            this.btnStatistics.Location = new System.Drawing.Point(535, 182);
             this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(253, 100);
+            this.btnStatistics.Size = new System.Drawing.Size(375, 100);
             this.btnStatistics.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnStatistics.TabIndex = 2;
             this.btnStatistics.Text = "Statistics";
@@ -60,13 +68,15 @@
             // btnClose
             // 
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.Image = global::DrMinaClinic.Properties.Resources.Exit;
             this.btnClose.ImageFixedSize = new System.Drawing.Size(30, 30);
-            this.btnClose.Location = new System.Drawing.Point(421, 277);
+            this.btnClose.Location = new System.Drawing.Point(535, 308);
             this.btnClose.Margin = new System.Windows.Forms.Padding(2);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(175, 40);
+            this.btnClose.Size = new System.Drawing.Size(375, 50);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.btnClose.TabIndex = 27;
             this.btnClose.Text = "Close";
@@ -76,6 +86,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::DrMinaClinic.Properties.Resources.Background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(946, 477);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnStatistics);
