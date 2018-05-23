@@ -272,12 +272,14 @@ namespace DrMinaClinic.PL.Forms
                         PregnancyManager.UpdatePregnancy(pregnancy);
                     }
                 });
-                Pregnancy = new Pregnancy();
+                if (Pregnancy == null)
+                    Pregnancy = new Pregnancy();
                 LoadPregnancyFromForm();
                 Pregnancy.IsCurrent = true;
                 PregnancyManager.AddPregnancy(Pregnancy);
                 LoadPatientPregnancies();
                 SetFormForAddExamination(Pregnancy);
+                DisplayPregnancy(Pregnancy);
             }
         }
 
