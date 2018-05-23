@@ -1,4 +1,7 @@
-﻿using DrMinaClinic.BLL.Infrastructure;
+﻿using System;
+using System.Data.Entity.SqlServer;
+using System.Linq;
+using DrMinaClinic.BLL.Infrastructure;
 using DrMinaClinic.DAL.Model;
 
 namespace DrMinaClinic.BLL
@@ -55,6 +58,12 @@ namespace DrMinaClinic.BLL
                 default:
                     return 0;
             }
+        }
+
+        public IQueryable<Examination> GetExaminationsByDate(DateTime date)
+        {
+            return UnitOfWork.ExaminationRepository.Get(
+                examination => SqlFunctions.DateDiff("DAY", examination.Date, date) == 0);
         }
 
         #endregion

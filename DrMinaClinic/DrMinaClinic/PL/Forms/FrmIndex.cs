@@ -27,7 +27,7 @@ namespace DrMinaClinic.PL.Forms
 
         private void btnStatistics_Click(object sender, EventArgs e)
         {
-
+            new FrmStatistics().ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
