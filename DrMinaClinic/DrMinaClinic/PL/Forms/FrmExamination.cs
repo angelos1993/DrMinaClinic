@@ -159,7 +159,7 @@ namespace DrMinaClinic.PL.Forms
             dtLMP.Value = pregnancy.LMP ?? default(DateTime);
             intInCS.Value = pregnancy.CS ?? default(int);
             intInVag.Value = pregnancy.Vag ?? default(int);
-            FillGrid();
+            FillGrid(pregnancy);
         }
 
         private void SetFormForAddExamination(Pregnancy pregnancy)
@@ -458,9 +458,9 @@ namespace DrMinaClinic.PL.Forms
             return pregnancy != null && pregnancy.Examinations.Any(examination => examination.Date.Date == Today.Date);
         }
 
-        private void FillGrid()
+        private void FillGrid(Pregnancy pregnancy)
         {
-            dgvPregnancyDetails.DataSource = Pregnancy.PregnancyDetails.Select(pregnancyDetail => new PregnancyDetailVm
+            dgvPregnancyDetails.DataSource = pregnancy.PregnancyDetails.Select(pregnancyDetail => new PregnancyDetailVm
             {
                 Living = pregnancyDetail.Living,
                 Af = pregnancyDetail.AF,
@@ -478,7 +478,7 @@ namespace DrMinaClinic.PL.Forms
         {
             PregnancyDetailManager.DeletePregnancyDetailsList(Pregnancy.PregnancyDetails.ToList());
             Pregnancy.PregnancyDetails = pregnancyDetailsList;
-            FillGrid();
+            FillGrid(Pregnancy);
         }
 
         #endregion
