@@ -18,3 +18,4 @@ G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\bin\Debug\EntityFramework
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmPregnancyActualBirthDate.resources
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmPregnancyDetails.resources
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmStatistics.resources
+G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.csprojResolveAssemblyReference.cache

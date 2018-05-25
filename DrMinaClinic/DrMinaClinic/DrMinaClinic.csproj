@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevComponents.DotNetBar2, Version=9.1.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -207,9 +210,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Deployment Versions\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DAL\Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -221,6 +222,10 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
+    <Content Include="Deployment Versions\1. May 25, 2018\Dr.Mina Clinic.exe" />
+    <Content Include="Deployment Versions\1. May 25, 2018\Script.iss" />
+    <Content Include="Deployment Versions\1. May 25, 2018\SQL-Script.sql" />
+    <Content Include="Logo.ico" />
     <Content Include="Resources\Add.png" />
     <None Include="Resources\Statistics.png" />
     <None Include="Resources\Sma3a.png" />
