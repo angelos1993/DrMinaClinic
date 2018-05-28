@@ -216,9 +216,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Deployment Versions\2. May 28, 2018\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DAL\Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -233,6 +231,7 @@
     <Content Include="Deployment Versions\1. May 25, 2018\Dr.Mina Clinic.exe" />
     <Content Include="Deployment Versions\1. May 25, 2018\Script.iss" />
     <Content Include="Deployment Versions\1. May 25, 2018\SQL-Script.sql" />
+    <Content Include="Deployment Versions\2. May 28, 2018\Script.sql" />
     <Content Include="Logo.ico" />
     <Content Include="Resources\Add.png" />
     <None Include="Resources\Statistics.png" />

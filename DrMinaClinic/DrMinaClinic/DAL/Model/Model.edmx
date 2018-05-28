@@ -93,7 +93,7 @@
           <Property Name="Living" Type="bit" Nullable="false" />
           <Property Name="AF" Type="nvarchar(max)" />
           <Property Name="Sex" Type="bit" Nullable="false" />
-          <Property Name="Placento" Type="nvarchar(max)" />
+          <Property Name="Placenta" Type="nvarchar(max)" />
           <Property Name="Weight" Type="float" />
           <Property Name="Presentation" Type="nvarchar(max)" />
           <Property Name="Other" Type="nvarchar(max)" />
@@ -262,7 +262,7 @@
           <Property Name="Living" Type="Boolean" Nullable="false" />
           <Property Name="AF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Sex" Type="Boolean" Nullable="false" />
-          <Property Name="Placento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Placenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Weight" Type="Double" />
           <Property Name="Presentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -431,7 +431,7 @@
                 <ScalarProperty Name="Living" ColumnName="Living" />
                 <ScalarProperty Name="AF" ColumnName="AF" />
                 <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="Placento" ColumnName="Placento" />
+                <ScalarProperty Name="Placenta" ColumnName="Placenta" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="Presentation" ColumnName="Presentation" />
                 <ScalarProperty Name="Other" ColumnName="Other" />

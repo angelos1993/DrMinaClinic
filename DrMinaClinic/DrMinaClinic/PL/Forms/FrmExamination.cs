@@ -465,7 +465,7 @@ namespace DrMinaClinic.PL.Forms
                 Living = pregnancyDetail.Living,
                 Af = pregnancyDetail.AF,
                 Sex = pregnancyDetail.Sex,
-                Placento = pregnancyDetail.Placento,
+                Placenta = pregnancyDetail.Placenta,
                 Weight = pregnancyDetail.Weight ?? default(double),
                 Presentation = pregnancyDetail.Presentation,
                 Other = pregnancyDetail.Other

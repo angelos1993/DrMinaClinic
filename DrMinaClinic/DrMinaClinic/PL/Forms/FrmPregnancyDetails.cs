@@ -137,7 +137,7 @@ namespace DrMinaClinic.PL.Forms
             swBtnLiving.Value = pregnancyDetail.Living;
             txtAf.Text = pregnancyDetail.AF ?? string.Empty;
             swBtnSex.Value = pregnancyDetail.Sex;
-            txtPlacento.Text = pregnancyDetail.Placento ?? string.Empty;
+            txtPlacenta.Text = pregnancyDetail.Placenta ?? string.Empty;
             dblInWeight.Value = pregnancyDetail.Weight ?? default(double);
             txtPresentation.Text = pregnancyDetail.Presentation ?? string.Empty;
             txtOther.Text = pregnancyDetail.Other ?? string.Empty;
@@ -173,7 +173,7 @@ namespace DrMinaClinic.PL.Forms
                 Living = swBtnLiving.Value,
                 AF = txtAf.Text,
                 Sex = swBtnSex.Value,
-                Placento = txtPlacento.Text,
+                Placenta = txtPlacenta.Text,
                 Weight = dblInWeight.Value,
                 Presentation = txtPresentation.Text,
                 Other = txtOther.Text

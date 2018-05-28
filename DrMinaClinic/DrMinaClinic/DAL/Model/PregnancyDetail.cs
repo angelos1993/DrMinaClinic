@@ -19,7 +19,7 @@ namespace DrMinaClinic.DAL.Model
         public bool Living { get; set; }
         public string AF { get; set; }
         public bool Sex { get; set; }
-        public string Placento { get; set; }
+        public string Placenta { get; set; }
         public Nullable<double> Weight { get; set; }
         public string Presentation { get; set; }
         public string Other { get; set; }

@@ -93,7 +93,7 @@
     <Property Name="Living" Type="Boolean" Nullable="false" />
     <Property Name="AF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Sex" Type="Boolean" Nullable="false" />
-    <Property Name="Placento" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Placenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Weight" Type="Double" />
     <Property Name="Presentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />

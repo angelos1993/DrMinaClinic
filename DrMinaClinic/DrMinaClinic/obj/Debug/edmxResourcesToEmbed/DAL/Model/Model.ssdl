@@ -88,7 +88,7 @@
     <Property Name="Living" Type="bit" Nullable="false" />
     <Property Name="AF" Type="nvarchar(max)" />
     <Property Name="Sex" Type="bit" Nullable="false" />
-    <Property Name="Placento" Type="nvarchar(max)" />
+    <Property Name="Placenta" Type="nvarchar(max)" />
     <Property Name="Weight" Type="float" />
     <Property Name="Presentation" Type="nvarchar(max)" />
     <Property Name="Other" Type="nvarchar(max)" />

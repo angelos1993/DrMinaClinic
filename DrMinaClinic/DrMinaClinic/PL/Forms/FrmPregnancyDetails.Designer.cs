@@ -42,7 +42,7 @@
             this.txtOther = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtPresentation = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.dblInWeight = new DevComponents.Editors.DoubleInput();
-            this.txtPlacento = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.txtPlacenta = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.btnNext = new DevComponents.DotNetBar.ButtonX();
             this.btnBack = new DevComponents.DotNetBar.ButtonX();
@@ -120,7 +120,7 @@
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(121, 23);
             this.labelX2.TabIndex = 25;
-            this.labelX2.Text = "Placento";
+            this.labelX2.Text = "Placenta";
             this.labelX2.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
             // labelX3
@@ -250,17 +250,17 @@
             this.dblInWeight.Size = new System.Drawing.Size(123, 26);
             this.dblInWeight.TabIndex = 34;
             // 
-            // txtPlacento
+            // txtPlacenta
             // 
             // 
             // 
             // 
-            this.txtPlacento.Border.Class = "TextBoxBorder";
-            this.txtPlacento.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPlacento.Location = new System.Drawing.Point(286, 127);
-            this.txtPlacento.Name = "txtPlacento";
-            this.txtPlacento.Size = new System.Drawing.Size(238, 26);
-            this.txtPlacento.TabIndex = 35;
+            this.txtPlacenta.Border.Class = "TextBoxBorder";
+            this.txtPlacenta.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPlacenta.Location = new System.Drawing.Point(286, 127);
+            this.txtPlacenta.Name = "txtPlacenta";
+            this.txtPlacenta.Size = new System.Drawing.Size(238, 26);
+            this.txtPlacenta.TabIndex = 35;
             // 
             // btnClose
             // 
@@ -348,7 +348,7 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnNext);
-            this.Controls.Add(this.txtPlacento);
+            this.Controls.Add(this.txtPlacenta);
             this.Controls.Add(this.dblInWeight);
             this.Controls.Add(this.txtPresentation);
             this.Controls.Add(this.txtOther);
@@ -389,7 +389,7 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtOther;
         private DevComponents.DotNetBar.Controls.TextBoxX txtPresentation;
         private DevComponents.Editors.DoubleInput dblInWeight;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtPlacento;
+        private DevComponents.DotNetBar.Controls.TextBoxX txtPlacenta;
         private DevComponents.DotNetBar.ButtonX btnClose;
         private DevComponents.DotNetBar.ButtonX btnNext;
         private DevComponents.DotNetBar.ButtonX btnBack;

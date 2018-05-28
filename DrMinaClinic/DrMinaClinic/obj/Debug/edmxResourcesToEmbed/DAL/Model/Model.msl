@@ -92,7 +92,7 @@
           <ScalarProperty Name="Living" ColumnName="Living" />
           <ScalarProperty Name="AF" ColumnName="AF" />
           <ScalarProperty Name="Sex" ColumnName="Sex" />
-          <ScalarProperty Name="Placento" ColumnName="Placento" />
+          <ScalarProperty Name="Placenta" ColumnName="Placenta" />
           <ScalarProperty Name="Weight" ColumnName="Weight" />
           <ScalarProperty Name="Presentation" ColumnName="Presentation" />
           <ScalarProperty Name="Other" ColumnName="Other" />

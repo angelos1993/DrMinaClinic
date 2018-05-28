@@ -19,8 +19,8 @@ namespace DrMinaClinic.DAL.VMs
         [DisplayName("Sex")]
         public string SexString => Sex ? "Male" : "Female";
 
-        [DisplayName("Placento")]
-        public string Placento { get; set; }
+        [DisplayName("Placenta")]
+        public string Placenta { get; set; }
 
         [DisplayName("Weight")]
         public double Weight { get; set; }
