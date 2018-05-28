@@ -1,5 +1,11 @@
 ﻿using System;
+using System.IO;
+using System.Windows.Forms;
 using DevComponents.DotNetBar;
+using DrMinaClinic.BLL;
+using DrMinaClinic.DAL.Model;
+using DrMinaClinic.Properties;
+using DrMinaClinic.Utility;
 
 namespace DrMinaClinic.PL.Forms
 {
@@ -16,9 +22,21 @@ namespace DrMinaClinic.PL.Forms
 
         #region Properties
 
+        private BackgroundImageManager _backgroundImageManager;
+
+        private BackgroundImageManager BackgroundImageManager =>
+            _backgroundImageManager ?? (_backgroundImageManager = new BackgroundImageManager());
+
         #endregion
 
         #region Events
+
+        private void FrmIndex_Load(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            SetBackgroundImage();
+            Cursor = Cursors.Default;
+        }
 
         private void btnNewExamination_Click(object sender, EventArgs e)
         {
@@ -30,6 +48,21 @@ namespace DrMinaClinic.PL.Forms
             new FrmStatistics().ShowDialog();
         }
 
+        private void btnChangeBackgroundImage_Click(object sender, EventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog
+            {
+                Title = Resources.OpenFileDialogTitleForImages,
+                Filter = Resources.AllImageFiles,
+                Multiselect = false
+            };
+            if (openFileDialog.ShowDialog() != DialogResult.OK)
+                return;
+            BackgroundImageManager.SaveTheBackgroundImage(
+                new BackgroundImage {Data = File.ReadAllBytes(openFileDialog.FileNames[0])});
+            SetBackgroundImage();
+        }
+
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();
@@ -38,6 +71,11 @@ namespace DrMinaClinic.PL.Forms
         #endregion
 
         #region Methods
+
+        private void SetBackgroundImage()
+        {
+            BackgroundImage = BackgroundImageManager.GetTheBackgroundImage()?.Data.ToImage();
+        }
 
         #endregion
     }

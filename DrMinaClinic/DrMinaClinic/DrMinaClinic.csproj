@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\BackgroundImageManager.cs" />
     <Compile Include="BLL\ExaminationManager.cs" />
     <Compile Include="BLL\Infrastructure\BaseManager.cs" />
     <Compile Include="BLL\PatientManager.cs" />
@@ -68,6 +69,9 @@
     <Compile Include="BLL\PregnancyManager.cs" />
     <Compile Include="DAL\Enums\ExaminationFormMode.cs" />
     <Compile Include="DAL\Enums\ReceptionFormMode.cs" />
+    <Compile Include="DAL\Model\BackgroundImage.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\Model\Examination.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -98,6 +102,7 @@
     <Compile Include="DAL\Model\sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Repositories\BackgroundImageRepository.cs" />
     <Compile Include="DAL\Repositories\ExaminationRepository.cs" />
     <Compile Include="DAL\Repositories\Infrastructure\DrMinaClinicContext.cs" />
     <Compile Include="DAL\Repositories\Infrastructure\IUnitOfWork.cs" />
@@ -152,8 +157,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utility\Constants.cs" />
     <Compile Include="Utility\DateTimeExtensions.cs" />
+    <Compile Include="Utility\ImageExtensions.cs" />
     <Compile Include="Utility\InputLanguageUtility.cs" />
     <Compile Include="Utility\MessageBoxUtility.cs" />
     <Compile Include="Utility\StringExtensions.cs" />
@@ -181,14 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EntityDeploy Include="DAL\Model\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
@@ -210,7 +216,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Deployment Versions\2. May 28, 2018\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="DAL\Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

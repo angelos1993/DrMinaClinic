@@ -8,6 +8,7 @@
         private PatientRepository _patientRepository;
         private PregnancyDetailsRepository _pregnancyDetailsRepository;
         private PregnancyRepository _pregnancyRepository;
+        private BackgroundImageRepository _backgroundImageRepository;
 
         #endregion
 
@@ -24,6 +25,9 @@
 
         public PregnancyRepository PregnancyRepository =>
             _pregnancyRepository ?? (_pregnancyRepository = new PregnancyRepository());
+
+        public BackgroundImageRepository BackgroundImageRepository =>
+            _backgroundImageRepository ?? (_backgroundImageRepository = new BackgroundImageRepository());
 
         #endregion
     }

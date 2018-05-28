@@ -166,9 +166,6 @@
   <data name="Examination" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Examination.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -177,5 +174,11 @@
   </data>
   <data name="Statistics" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Statistics.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AllImageFiles" xml:space="preserve">
+    <value>Image files | *.BMP; *.DIB; *.RLE; *.JPG; *.JPEG; *.JPE; *.JFIF; *.GIF; *.TIF; *.TIFF; *.PNG</value>
+  </data>
+  <data name="OpenFileDialogTitleForImages" xml:space="preserve">
+    <value>Choose Image(s)</value>
   </data>
 </root>

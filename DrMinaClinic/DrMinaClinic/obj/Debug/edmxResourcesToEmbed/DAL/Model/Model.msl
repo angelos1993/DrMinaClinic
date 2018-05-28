@@ -1,6 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DrMinaClinicModelStoreContainer" CdmEntityContainer="DrMinaClinicEntities">
+    <EntitySetMapping Name="BackgroundImages">
+      <EntityTypeMapping TypeName="DrMinaClinicModel.BackgroundImage">
+        <MappingFragment StoreEntitySet="BackgroundImages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Data" ColumnName="Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Examinations">
       <EntityTypeMapping TypeName="DrMinaClinicModel.Examination">
         <MappingFragment StoreEntitySet="Examinations">

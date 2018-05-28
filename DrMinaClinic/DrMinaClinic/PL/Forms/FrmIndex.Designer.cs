@@ -33,6 +33,7 @@
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.reflectionLabel1 = new DevComponents.DotNetBar.Controls.ReflectionLabel();
             this.btnNewExamination = new DevComponents.DotNetBar.ButtonX();
+            this.btnChangeBackgroundImage = new DevComponents.DotNetBar.ButtonX();
             this.SuspendLayout();
             // 
             // btnStatistics
@@ -113,13 +114,27 @@
             this.btnNewExamination.Text = "New Examination";
             this.btnNewExamination.Click += new System.EventHandler(this.btnNewExamination_Click);
             // 
+            // btnChangeBackgroundImage
+            // 
+            this.btnChangeBackgroundImage.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnChangeBackgroundImage.BackColor = System.Drawing.Color.Transparent;
+            this.btnChangeBackgroundImage.ColorTable = DevComponents.DotNetBar.eButtonColor.Flat;
+            this.btnChangeBackgroundImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeBackgroundImage.Location = new System.Drawing.Point(12, 12);
+            this.btnChangeBackgroundImage.Name = "btnChangeBackgroundImage";
+            this.btnChangeBackgroundImage.Size = new System.Drawing.Size(222, 40);
+            this.btnChangeBackgroundImage.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnChangeBackgroundImage.TabIndex = 30;
+            this.btnChangeBackgroundImage.Text = "Change Background Image";
+            this.btnChangeBackgroundImage.Click += new System.EventHandler(this.btnChangeBackgroundImage_Click);
+            // 
             // FrmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::DrMinaClinic.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(946, 525);
+            this.Controls.Add(this.btnChangeBackgroundImage);
             this.Controls.Add(this.btnNewExamination);
             this.Controls.Add(this.reflectionLabel1);
             this.Controls.Add(this.btnClose);
@@ -130,6 +145,7 @@
             this.Name = "FrmIndex";
             this.Text = "Dr. Mina Clinic";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmIndex_Load);
             this.ResumeLayout(false);
 
         }
@@ -139,5 +155,6 @@
         private DevComponents.DotNetBar.ButtonX btnClose;
         private DevComponents.DotNetBar.Controls.ReflectionLabel reflectionLabel1;
         private DevComponents.DotNetBar.ButtonX btnNewExamination;
+        private DevComponents.DotNetBar.ButtonX btnChangeBackgroundImage;
     }
 }

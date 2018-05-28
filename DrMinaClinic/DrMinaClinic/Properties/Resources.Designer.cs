@@ -71,21 +71,20 @@ namespace DrMinaClinic.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Image files | *.BMP; *.DIB; *.RLE; *.JPG; *.JPEG; *.JPE; *.JFIF; *.GIF; *.TIF; *.TIFF; *.PNG.
         /// </summary>
-        internal static System.Drawing.Bitmap Back {
+        internal static string AllImageFiles {
             get {
-                object obj = ResourceManager.GetObject("Back", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("AllImageFiles", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Background {
+        internal static System.Drawing.Bitmap Back {
             get {
-                object obj = ResourceManager.GetObject("Background", resourceCulture);
+                object obj = ResourceManager.GetObject("Back", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -192,6 +191,15 @@ namespace DrMinaClinic.Properties {
             get {
                 object obj = ResourceManager.GetObject("OK", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Image(s).
+        /// </summary>
+        internal static string OpenFileDialogTitleForImages {
+            get {
+                return ResourceManager.GetString("OpenFileDialogTitleForImages", resourceCulture);
             }
         }
         

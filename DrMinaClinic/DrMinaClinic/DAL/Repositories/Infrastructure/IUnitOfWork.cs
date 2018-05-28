@@ -6,5 +6,6 @@
         PatientRepository PatientRepository { get; }
         PregnancyDetailsRepository PregnancyDetailsRepository { get; }
         PregnancyRepository PregnancyRepository { get; }
+        BackgroundImageRepository BackgroundImageRepository { get; }
     }
 }

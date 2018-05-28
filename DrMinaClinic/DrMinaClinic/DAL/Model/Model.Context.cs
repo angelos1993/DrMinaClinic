@@ -25,6 +25,7 @@ namespace DrMinaClinic.DAL.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BackgroundImage> BackgroundImages { get; set; }
         public virtual DbSet<Examination> Examinations { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Pregnancy> Pregnancies { get; set; }
