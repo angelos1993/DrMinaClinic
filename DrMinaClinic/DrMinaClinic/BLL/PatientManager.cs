@@ -26,7 +26,27 @@ namespace DrMinaClinic.BLL
                     today.Date == new DateTime(year, month, day))
                 {
                     var lastNumber = int.Parse(lastPatientId.Substring(8));
-                    return $"{datePartOfLastPatientIdString}{lastNumber + 1}";
+                    var newPatientId = $"{datePartOfLastPatientIdString}{lastNumber + 1}";
+
+                    #region Double-Check -_-
+
+                    var counter = 0;
+                    var isNewPatientIdValid = false;
+                    do
+                    {
+                        // ReSharper disable once AccessToModifiedClosure
+                        if (UnitOfWork.PatientRepository.Get(patient => patient.Id == newPatientId).Any())
+                        {
+                            newPatientId = $"{datePartOfLastPatientIdString}{lastNumber + 1 + counter}";
+                            counter++;
+                        }
+                        else
+                            isNewPatientIdValid = true;
+                    } while (!isNewPatientIdValid);
+
+                    #endregion
+
+                    return newPatientId;
                 }
             }
             return $"{today.Year:0000}{today.Month:00}{today.Day:00}1";
