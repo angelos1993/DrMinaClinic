@@ -231,7 +231,11 @@
     <Content Include="Deployment Versions\1. May 25, 2018\Dr.Mina Clinic.exe" />
     <Content Include="Deployment Versions\1. May 25, 2018\Script.iss" />
     <Content Include="Deployment Versions\1. May 25, 2018\SQL-Script.sql" />
+    <Content Include="Deployment Versions\2. May 28, 2018\Dr.Mina Clinic.exe" />
+    <Content Include="Deployment Versions\2. May 28, 2018\Script.iss" />
     <Content Include="Deployment Versions\2. May 28, 2018\Script.sql" />
+    <Content Include="Deployment Versions\3. August 6, 2018\DrMinaClinic.exe" />
+    <Content Include="Deployment Versions\3. August 6, 2018\Script.iss" />
     <Content Include="Logo.ico" />
     <Content Include="Resources\Add.png" />
     <None Include="Resources\Statistics.png" />
