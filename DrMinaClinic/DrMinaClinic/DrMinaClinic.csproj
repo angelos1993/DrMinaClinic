@@ -113,6 +113,7 @@
     <Compile Include="DAL\Repositories\PregnancyRepository.cs" />
     <Compile Include="DAL\VMs\PatientExaminationVm.cs" />
     <Compile Include="DAL\VMs\PregnancyDetailVm.cs" />
+    <Content Include="Deployment Versions\4\Script.sql" />
     <Compile Include="PL\Forms\FrmExamination.cs">
       <SubType>Form</SubType>
     </Compile>
