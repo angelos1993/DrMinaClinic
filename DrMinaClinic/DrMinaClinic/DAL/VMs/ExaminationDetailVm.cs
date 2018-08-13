@@ -2,7 +2,7 @@
 
 namespace DrMinaClinic.DAL.VMs
 {
-    public class PregnancyDetailVm
+    public class ExaminationDetailVm
     {
         [Browsable(false)]
         public bool Living { get; set; }

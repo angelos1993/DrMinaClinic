@@ -9,6 +9,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ExaminationDetails">
+      <EntityTypeMapping TypeName="DrMinaClinicModel.ExaminationDetail">
+        <MappingFragment StoreEntitySet="ExaminationDetails">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ExaminationId" ColumnName="ExaminationId" />
+          <ScalarProperty Name="Living" ColumnName="Living" />
+          <ScalarProperty Name="AF" ColumnName="AF" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Placenta" ColumnName="Placenta" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Presentation" ColumnName="Presentation" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Examinations">
       <EntityTypeMapping TypeName="DrMinaClinicModel.Examination">
         <MappingFragment StoreEntitySet="Examinations">
@@ -27,6 +42,7 @@
           <ScalarProperty Name="Fhs" ColumnName="Fhs" />
           <ScalarProperty Name="Engagement" ColumnName="Engagement" />
           <ScalarProperty Name="UltraSoundNotes" ColumnName="UltraSoundNotes" />
+          <ScalarProperty Name="No" ColumnName="No" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -76,26 +92,10 @@
           <ScalarProperty Name="P2" ColumnName="P2" />
           <ScalarProperty Name="Vag" ColumnName="Vag" />
           <ScalarProperty Name="CS" ColumnName="CS" />
-          <ScalarProperty Name="No" ColumnName="No" />
           <ScalarProperty Name="LMP" ColumnName="LMP" />
           <ScalarProperty Name="EDD" ColumnName="EDD" />
           <ScalarProperty Name="ActualBirthdate" ColumnName="ActualBirthdate" />
           <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PregnancyDetails">
-      <EntityTypeMapping TypeName="DrMinaClinicModel.PregnancyDetail">
-        <MappingFragment StoreEntitySet="PregnancyDetails">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="PregnancyId" ColumnName="PregnancyId" />
-          <ScalarProperty Name="Living" ColumnName="Living" />
-          <ScalarProperty Name="AF" ColumnName="AF" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
-          <ScalarProperty Name="Placenta" ColumnName="Placenta" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
-          <ScalarProperty Name="Presentation" ColumnName="Presentation" />
-          <ScalarProperty Name="Other" ColumnName="Other" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

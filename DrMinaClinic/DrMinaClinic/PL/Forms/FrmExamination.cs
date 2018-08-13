@@ -39,10 +39,10 @@ namespace DrMinaClinic.PL.Forms
         private Examination Examination { get; set; }
         private static DateTime Today => DateTime.Now.Date;
         private ExaminationFormMode Mode { get; set; }
-        private PregnancyDetailManager _pregnancyDetailManager;
+        private ExaminationDetailManager _examinationDetailManager;
 
-        private PregnancyDetailManager PregnancyDetailManager =>
-            _pregnancyDetailManager ?? (_pregnancyDetailManager = new PregnancyDetailManager());
+        private ExaminationDetailManager ExaminationDetailManager =>
+            _examinationDetailManager ?? (_examinationDetailManager = new ExaminationDetailManager());
 
         #endregion
 
@@ -64,7 +64,7 @@ namespace DrMinaClinic.PL.Forms
 
         private void intInNo_ValueChanged(object sender, EventArgs e)
         {
-            intInNo.Value = Math.Max(dgvPregnancyDetails.Rows.Count, intInNo.Value);
+            intInNo.Value = Math.Max(dgvExaminationDetails.Rows.Count, intInNo.Value);
         }
 
         private void btnAddEditDetails_Click(object sender, EventArgs e)
@@ -76,9 +76,9 @@ namespace DrMinaClinic.PL.Forms
                 ErrorProvider.SetError(intInNo, Resources.EnterChildrenCountText);
                 return;
             }
-            if (Pregnancy == null)
-                Pregnancy = new Pregnancy();
-            new FrmPregnancyDetails(this, Pregnancy, intInNo.Value).ShowDialog();
+            if (Examination == null)
+                Examination = new Examination();
+            new FrmExaminationDetails(this, Examination, intInNo.Value).ShowDialog();
         }
 
         private void btnNewPregnancy_Click(object sender, EventArgs e)
@@ -147,6 +147,8 @@ namespace DrMinaClinic.PL.Forms
             intInBP1.Value = int.Parse(bp[0]);
             intInBP2.Value = int.Parse(bp[1]);
             txtUltraSoungNotes.Text = examination.UltraSoundNotes;
+            intInNo.Value = examination.No ?? 0;
+            FillGrid(examination);
         }
 
         private void DisplayPregnancy(Pregnancy pregnancy)
@@ -154,12 +156,10 @@ namespace DrMinaClinic.PL.Forms
             intInG.Value = pregnancy.G ?? default(int);
             intInP1.Value = pregnancy.P1 ?? default(int);
             intInP2.Value = pregnancy.P2 ?? default(int);
-            intInNo.Value = pregnancy.No;
             dtEDD.Value = pregnancy.EDD ?? default(DateTime);
             dtLMP.Value = pregnancy.LMP ?? default(DateTime);
             intInCS.Value = pregnancy.CS ?? default(int);
             intInVag.Value = pregnancy.Vag ?? default(int);
-            FillGrid(pregnancy);
         }
 
         private void SetFormForAddExamination(Pregnancy pregnancy)
@@ -335,7 +335,6 @@ namespace DrMinaClinic.PL.Forms
             Pregnancy.G = intInG.Value;
             Pregnancy.P1 = intInP1.Value;
             Pregnancy.P2 = intInP2.Value;
-            Pregnancy.No = intInNo.Value;
             Pregnancy.EDD = dtEDD.Value != default(DateTime) ? dtEDD.Value : (DateTime?) null;
             Pregnancy.LMP = dtLMP.Value;
             Pregnancy.CS = intInCS.Value;
@@ -360,6 +359,7 @@ namespace DrMinaClinic.PL.Forms
             Examination.UrineSuger = swBtnSugar.Value;
             Examination.BP = $"{intInBP1.Value} / {intInBP2.Value}";
             Examination.UltraSoundNotes = txtUltraSoungNotes.Text;
+            Examination.No = intInNo.Value;
         }
 
         private Pregnancy GetCurrentPregnancy()
@@ -389,6 +389,7 @@ namespace DrMinaClinic.PL.Forms
             intInBP1.Value = default(int);
             intInBP2.Value = default(int);
             txtUltraSoungNotes.Clear();
+            intInNo.Value = default(int);
         }
 
         private void ResetPregnancyData()
@@ -401,7 +402,7 @@ namespace DrMinaClinic.PL.Forms
             dtLMP.Value = default(DateTime);
             intInCS.Value = default(int);
             intInVag.Value = default(int);
-            dgvPregnancyDetails.DataSource = null;
+            dgvExaminationDetails.DataSource = null;
         }
 
         private void ResetFormData()
@@ -458,27 +459,27 @@ namespace DrMinaClinic.PL.Forms
             return pregnancy != null && pregnancy.Examinations.Any(examination => examination.Date.Date == Today.Date);
         }
 
-        private void FillGrid(Pregnancy pregnancy)
+        private void FillGrid(Examination examination)
         {
-            dgvPregnancyDetails.DataSource = pregnancy.PregnancyDetails.Select(pregnancyDetail => new PregnancyDetailVm
+            dgvExaminationDetails.DataSource = examination.ExaminationDetails.Select(examinationDetail => new ExaminationDetailVm
             {
-                Living = pregnancyDetail.Living,
-                Af = pregnancyDetail.AF,
-                Sex = pregnancyDetail.Sex,
-                Placenta = pregnancyDetail.Placenta,
-                Weight = pregnancyDetail.Weight ?? default(double),
-                Presentation = pregnancyDetail.Presentation,
-                Other = pregnancyDetail.Other
+                Living = examinationDetail.Living,
+                Af = examinationDetail.AF,
+                Sex = examinationDetail.Sex,
+                Placenta = examinationDetail.Placenta,
+                Weight = examinationDetail.Weight ?? default(double),
+                Presentation = examinationDetail.Presentation,
+                Other = examinationDetail.Other
             }).ToList();
         }
 
         #region Call-Back(s)
 
-        public void SetPregnancyDetails(List<PregnancyDetail> pregnancyDetailsList)
+        public void SetExaminationDetails(List<ExaminationDetail> examinationDetailsList)
         {
-            PregnancyDetailManager.DeletePregnancyDetailsList(Pregnancy.PregnancyDetails.ToList());
-            Pregnancy.PregnancyDetails = pregnancyDetailsList;
-            FillGrid(Pregnancy);
+            ExaminationDetailManager.DeleteExaminationDetailsList(Examination.ExaminationDetails.ToList());
+            Examination.ExaminationDetails = examinationDetailsList;
+            FillGrid(Examination);
         }
 
         #endregion

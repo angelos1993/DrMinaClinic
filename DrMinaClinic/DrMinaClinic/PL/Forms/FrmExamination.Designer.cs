@@ -38,7 +38,7 @@
             this.dtLMP = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.intInNo = new DevComponents.Editors.IntegerInput();
             this.labelX7 = new DevComponents.DotNetBar.LabelX();
-            this.dgvPregnancyDetails = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.dgvExaminationDetails = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.dtEDD = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.pnlPreviousLabour = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -102,7 +102,7 @@
             this.pnlPregnancyData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtLMP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intInNo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPregnancyDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExaminationDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEDD)).BeginInit();
             this.pnlPreviousLabour.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.intInVag)).BeginInit();
@@ -348,10 +348,10 @@
             this.labelX7.Text = "No.";
             this.labelX7.TextAlignment = System.Drawing.StringAlignment.Center;
             // 
-            // dgvPregnancyDetails
+            // dgvExaminationDetails
             // 
-            this.dgvPregnancyDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPregnancyDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvExaminationDetails.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvExaminationDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -359,13 +359,13 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPregnancyDetails.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvPregnancyDetails.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgvPregnancyDetails.Location = new System.Drawing.Point(377, 110);
-            this.dgvPregnancyDetails.Name = "dgvPregnancyDetails";
-            this.dgvPregnancyDetails.ReadOnly = true;
-            this.dgvPregnancyDetails.Size = new System.Drawing.Size(669, 108);
-            this.dgvPregnancyDetails.TabIndex = 9;
+            this.dgvExaminationDetails.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvExaminationDetails.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgvExaminationDetails.Location = new System.Drawing.Point(377, 110);
+            this.dgvExaminationDetails.Name = "dgvExaminationDetails";
+            this.dgvExaminationDetails.ReadOnly = true;
+            this.dgvExaminationDetails.Size = new System.Drawing.Size(669, 108);
+            this.dgvExaminationDetails.TabIndex = 9;
             // 
             // dtEDD
             // 
@@ -635,7 +635,7 @@
             this.pnlExaminationData.Controls.Add(this.groupPanel2);
             this.pnlExaminationData.Controls.Add(this.btnAddEditDetails);
             this.pnlExaminationData.Controls.Add(this.intInUlterineSize);
-            this.pnlExaminationData.Controls.Add(this.dgvPregnancyDetails);
+            this.pnlExaminationData.Controls.Add(this.dgvExaminationDetails);
             this.pnlExaminationData.Controls.Add(this.labelX20);
             this.pnlExaminationData.Controls.Add(this.intInNo);
             this.pnlExaminationData.Controls.Add(this.cmbEngagement);
@@ -1385,7 +1385,7 @@
             this.pnlPregnancyData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtLMP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.intInNo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPregnancyDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvExaminationDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtEDD)).EndInit();
             this.pnlPreviousLabour.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.intInVag)).EndInit();
@@ -1429,7 +1429,7 @@
         private DevComponents.DotNetBar.LabelX labelX5;
         private DevComponents.Editors.DateTimeAdv.DateTimeInput dtEDD;
         private DevComponents.DotNetBar.LabelX labelX6;
-        private DevComponents.DotNetBar.Controls.DataGridViewX dgvPregnancyDetails;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgvExaminationDetails;
         private DevComponents.Editors.IntegerInput intInNo;
         private DevComponents.DotNetBar.LabelX labelX7;
         private DevComponents.DotNetBar.Controls.GroupPanel pnlExaminationData;

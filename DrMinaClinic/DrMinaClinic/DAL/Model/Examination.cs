@@ -14,6 +14,12 @@ namespace DrMinaClinic.DAL.Model
     
     public partial class Examination
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Examination()
+        {
+            this.ExaminationDetails = new HashSet<ExaminationDetail>();
+        }
+    
         public int Id { get; set; }
         public System.DateTime Date { get; set; }
         public int PregnancyId { get; set; }
@@ -29,7 +35,10 @@ namespace DrMinaClinic.DAL.Model
         public Nullable<int> Fhs { get; set; }
         public Nullable<int> Engagement { get; set; }
         public string UltraSoundNotes { get; set; }
+        public Nullable<int> No { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExaminationDetail> ExaminationDetails { get; set; }
         public virtual Pregnancy Pregnancy { get; set; }
     }
 }

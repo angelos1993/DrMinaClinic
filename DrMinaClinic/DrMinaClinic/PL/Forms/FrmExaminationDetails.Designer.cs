@@ -1,6 +1,6 @@
 ﻿namespace DrMinaClinic.PL.Forms
 {
-    partial class FrmPregnancyDetails
+    partial class FrmExaminationDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -338,7 +338,7 @@
             this.btnSave.Text = "Save";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // FrmPregnancyDetails
+            // FrmExaminationDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -364,9 +364,9 @@
             this.Controls.Add(this.labelX14);
             this.Controls.Add(this.treeChildren);
             this.DoubleBuffered = true;
-            this.Name = "FrmPregnancyDetails";
-            this.Text = "Pregnancy Details";
-            this.Load += new System.EventHandler(this.FrmPregnancyDetails_Load);
+            this.Name = "FrmExaminationDetails";
+            this.Text = "Examination Details";
+            this.Load += new System.EventHandler(this.FrmExaminationDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dblInWeight)).EndInit();
             this.ResumeLayout(false);

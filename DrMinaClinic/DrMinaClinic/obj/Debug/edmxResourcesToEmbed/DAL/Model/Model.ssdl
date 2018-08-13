@@ -7,6 +7,20 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Data" Type="varbinary(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="ExaminationDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ExaminationId" Type="int" Nullable="false" />
+    <Property Name="Living" Type="bit" Nullable="false" />
+    <Property Name="AF" Type="nvarchar(max)" />
+    <Property Name="Sex" Type="bit" Nullable="false" />
+    <Property Name="Placenta" Type="nvarchar(max)" />
+    <Property Name="Weight" Type="float" />
+    <Property Name="Presentation" Type="nvarchar(max)" />
+    <Property Name="Other" Type="nvarchar(max)" />
+  </EntityType>
   <EntityType Name="Examinations">
     <Key>
       <PropertyRef Name="Id" />
@@ -26,6 +40,7 @@
     <Property Name="Fhs" Type="int" />
     <Property Name="Engagement" Type="int" />
     <Property Name="UltraSoundNotes" Type="nvarchar(max)" />
+    <Property Name="No" Type="int" />
   </EntityType>
   <EntityType Name="Patients">
     <Key>
@@ -73,25 +88,10 @@
     <Property Name="P2" Type="int" />
     <Property Name="Vag" Type="int" />
     <Property Name="CS" Type="int" />
-    <Property Name="No" Type="int" Nullable="false" />
     <Property Name="LMP" Type="date" />
     <Property Name="EDD" Type="date" />
     <Property Name="ActualBirthdate" Type="date" />
     <Property Name="IsCurrent" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PregnancyDetails">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="PregnancyId" Type="int" Nullable="false" />
-    <Property Name="Living" Type="bit" Nullable="false" />
-    <Property Name="AF" Type="nvarchar(max)" />
-    <Property Name="Sex" Type="bit" Nullable="false" />
-    <Property Name="Placenta" Type="nvarchar(max)" />
-    <Property Name="Weight" Type="float" />
-    <Property Name="Presentation" Type="nvarchar(max)" />
-    <Property Name="Other" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -103,6 +103,18 @@
     <Property Name="version" Type="int" />
     <Property Name="definition" Type="varbinary(max)" />
   </EntityType>
+  <Association Name="FK_ExaminationDetails_Examinations">
+    <End Role="Examinations" Type="Self.Examinations" Multiplicity="1" />
+    <End Role="ExaminationDetails" Type="Self.ExaminationDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Examinations">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExaminationDetails">
+        <PropertyRef Name="ExaminationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Examinations_Pregnancies">
     <End Role="Pregnancies" Type="Self.Pregnancies" Multiplicity="1" />
     <End Role="Examinations" Type="Self.Examinations" Multiplicity="*" />
@@ -127,25 +139,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PregnancyDetails_Pregnancies">
-    <End Role="Pregnancies" Type="Self.Pregnancies" Multiplicity="1" />
-    <End Role="PregnancyDetails" Type="Self.PregnancyDetails" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Pregnancies">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PregnancyDetails">
-        <PropertyRef Name="PregnancyId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="DrMinaClinicModelStoreContainer">
     <EntitySet Name="BackgroundImages" EntityType="Self.BackgroundImages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExaminationDetails" EntityType="Self.ExaminationDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Examinations" EntityType="Self.Examinations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pregnancies" EntityType="Self.Pregnancies" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PregnancyDetails" EntityType="Self.PregnancyDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ExaminationDetails_Examinations" Association="Self.FK_ExaminationDetails_Examinations">
+      <End Role="Examinations" EntitySet="Examinations" />
+      <End Role="ExaminationDetails" EntitySet="ExaminationDetails" />
+    </AssociationSet>
     <AssociationSet Name="FK_Examinations_Pregnancies" Association="Self.FK_Examinations_Pregnancies">
       <End Role="Pregnancies" EntitySet="Pregnancies" />
       <End Role="Examinations" EntitySet="Examinations" />
@@ -153,10 +157,6 @@
     <AssociationSet Name="FK_Pregnancies_Patients" Association="Self.FK_Pregnancies_Patients">
       <End Role="Patients" EntitySet="Patients" />
       <End Role="Pregnancies" EntitySet="Pregnancies" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PregnancyDetails_Pregnancies" Association="Self.FK_PregnancyDetails_Pregnancies">
-      <End Role="Pregnancies" EntitySet="Pregnancies" />
-      <End Role="PregnancyDetails" EntitySet="PregnancyDetails" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -6,7 +6,7 @@
 
         private ExaminationRepository _examinationRepository;
         private PatientRepository _patientRepository;
-        private PregnancyDetailsRepository _pregnancyDetailsRepository;
+        private ExaminationDetailsRepository _examinationDetailsRepository;
         private PregnancyRepository _pregnancyRepository;
         private BackgroundImageRepository _backgroundImageRepository;
 
@@ -20,8 +20,8 @@
         public PatientRepository PatientRepository =>
             _patientRepository ?? (_patientRepository = new PatientRepository());
 
-        public PregnancyDetailsRepository PregnancyDetailsRepository =>
-            _pregnancyDetailsRepository ?? (_pregnancyDetailsRepository = new PregnancyDetailsRepository());
+        public ExaminationDetailsRepository ExaminationDetailsRepository =>
+            _examinationDetailsRepository ?? (_examinationDetailsRepository = new ExaminationDetailsRepository());
 
         public PregnancyRepository PregnancyRepository =>
             _pregnancyRepository ?? (_pregnancyRepository = new PregnancyRepository());

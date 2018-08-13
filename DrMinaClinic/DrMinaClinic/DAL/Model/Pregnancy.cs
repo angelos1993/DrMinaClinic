@@ -18,7 +18,6 @@ namespace DrMinaClinic.DAL.Model
         public Pregnancy()
         {
             this.Examinations = new HashSet<Examination>();
-            this.PregnancyDetails = new HashSet<PregnancyDetail>();
         }
     
         public int Id { get; set; }
@@ -28,7 +27,6 @@ namespace DrMinaClinic.DAL.Model
         public Nullable<int> P2 { get; set; }
         public Nullable<int> Vag { get; set; }
         public Nullable<int> CS { get; set; }
-        public int No { get; set; }
         public Nullable<System.DateTime> LMP { get; set; }
         public Nullable<System.DateTime> EDD { get; set; }
         public Nullable<System.DateTime> ActualBirthdate { get; set; }
@@ -37,7 +35,5 @@ namespace DrMinaClinic.DAL.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Examination> Examinations { get; set; }
         public virtual Patient Patient { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PregnancyDetail> PregnancyDetails { get; set; }
     }
 }

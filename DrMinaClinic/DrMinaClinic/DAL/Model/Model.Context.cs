@@ -26,10 +26,10 @@ namespace DrMinaClinic.DAL.Model
         }
     
         public virtual DbSet<BackgroundImage> BackgroundImages { get; set; }
+        public virtual DbSet<ExaminationDetail> ExaminationDetails { get; set; }
         public virtual DbSet<Examination> Examinations { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
         public virtual DbSet<Pregnancy> Pregnancies { get; set; }
-        public virtual DbSet<PregnancyDetail> PregnancyDetails { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

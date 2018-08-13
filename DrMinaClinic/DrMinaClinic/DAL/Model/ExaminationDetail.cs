@@ -12,10 +12,10 @@ namespace DrMinaClinic.DAL.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class PregnancyDetail
+    public partial class ExaminationDetail
     {
         public int Id { get; set; }
-        public int PregnancyId { get; set; }
+        public int ExaminationId { get; set; }
         public bool Living { get; set; }
         public string AF { get; set; }
         public bool Sex { get; set; }
@@ -24,6 +24,6 @@ namespace DrMinaClinic.DAL.Model
         public string Presentation { get; set; }
         public string Other { get; set; }
     
-        public virtual Pregnancy Pregnancy { get; set; }
+        public virtual Examination Examination { get; set; }
     }
 }

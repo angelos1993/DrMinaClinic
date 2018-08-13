@@ -12,6 +12,20 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Data" Type="varbinary(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="ExaminationDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExaminationId" Type="int" Nullable="false" />
+          <Property Name="Living" Type="bit" Nullable="false" />
+          <Property Name="AF" Type="nvarchar(max)" />
+          <Property Name="Sex" Type="bit" Nullable="false" />
+          <Property Name="Placenta" Type="nvarchar(max)" />
+          <Property Name="Weight" Type="float" />
+          <Property Name="Presentation" Type="nvarchar(max)" />
+          <Property Name="Other" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Examinations">
           <Key>
             <PropertyRef Name="Id" />
@@ -31,6 +45,7 @@
           <Property Name="Fhs" Type="int" />
           <Property Name="Engagement" Type="int" />
           <Property Name="UltraSoundNotes" Type="nvarchar(max)" />
+          <Property Name="No" Type="int" />
         </EntityType>
         <EntityType Name="Patients">
           <Key>
@@ -78,25 +93,10 @@
           <Property Name="P2" Type="int" />
           <Property Name="Vag" Type="int" />
           <Property Name="CS" Type="int" />
-          <Property Name="No" Type="int" Nullable="false" />
           <Property Name="LMP" Type="date" />
           <Property Name="EDD" Type="date" />
           <Property Name="ActualBirthdate" Type="date" />
           <Property Name="IsCurrent" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PregnancyDetails">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PregnancyId" Type="int" Nullable="false" />
-          <Property Name="Living" Type="bit" Nullable="false" />
-          <Property Name="AF" Type="nvarchar(max)" />
-          <Property Name="Sex" Type="bit" Nullable="false" />
-          <Property Name="Placenta" Type="nvarchar(max)" />
-          <Property Name="Weight" Type="float" />
-          <Property Name="Presentation" Type="nvarchar(max)" />
-          <Property Name="Other" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -108,6 +108,18 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK_ExaminationDetails_Examinations">
+          <End Role="Examinations" Type="Self.Examinations" Multiplicity="1" />
+          <End Role="ExaminationDetails" Type="Self.ExaminationDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examinations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExaminationDetails">
+              <PropertyRef Name="ExaminationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Examinations_Pregnancies">
           <End Role="Pregnancies" Type="Self.Pregnancies" Multiplicity="1" />
           <End Role="Examinations" Type="Self.Examinations" Multiplicity="*" />
@@ -132,25 +144,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PregnancyDetails_Pregnancies">
-          <End Role="Pregnancies" Type="Self.Pregnancies" Multiplicity="1" />
-          <End Role="PregnancyDetails" Type="Self.PregnancyDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pregnancies">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PregnancyDetails">
-              <PropertyRef Name="PregnancyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DrMinaClinicModelStoreContainer">
           <EntitySet Name="BackgroundImages" EntityType="Self.BackgroundImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExaminationDetails" EntityType="Self.ExaminationDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Examinations" EntityType="Self.Examinations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patients" EntityType="Self.Patients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Pregnancies" EntityType="Self.Pregnancies" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PregnancyDetails" EntityType="Self.PregnancyDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ExaminationDetails_Examinations" Association="Self.FK_ExaminationDetails_Examinations">
+            <End Role="Examinations" EntitySet="Examinations" />
+            <End Role="ExaminationDetails" EntitySet="ExaminationDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_Examinations_Pregnancies" Association="Self.FK_Examinations_Pregnancies">
             <End Role="Pregnancies" EntitySet="Pregnancies" />
             <End Role="Examinations" EntitySet="Examinations" />
@@ -158,10 +162,6 @@
           <AssociationSet Name="FK_Pregnancies_Patients" Association="Self.FK_Pregnancies_Patients">
             <End Role="Patients" EntitySet="Patients" />
             <End Role="Pregnancies" EntitySet="Pregnancies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PregnancyDetails_Pregnancies" Association="Self.FK_PregnancyDetails_Pregnancies">
-            <End Role="Pregnancies" EntitySet="Pregnancies" />
-            <End Role="PregnancyDetails" EntitySet="PregnancyDetails" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -175,6 +175,21 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Data" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ExaminationDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExaminationId" Type="Int32" Nullable="false" />
+          <Property Name="Living" Type="Boolean" Nullable="false" />
+          <Property Name="AF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Sex" Type="Boolean" Nullable="false" />
+          <Property Name="Placenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="Double" />
+          <Property Name="Presentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Examination" Relationship="Self.FK_ExaminationDetails_Examinations" FromRole="ExaminationDetails" ToRole="Examinations" />
         </EntityType>
         <EntityType Name="Examination">
           <Key>
@@ -195,6 +210,8 @@
           <Property Name="Fhs" Type="Int32" />
           <Property Name="Engagement" Type="Int32" />
           <Property Name="UltraSoundNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="No" Type="Int32" />
+          <NavigationProperty Name="ExaminationDetails" Relationship="Self.FK_ExaminationDetails_Examinations" FromRole="Examinations" ToRole="ExaminationDetails" />
           <NavigationProperty Name="Pregnancy" Relationship="Self.FK_Examinations_Pregnancies" FromRole="Examinations" ToRole="Pregnancies" />
         </EntityType>
         <EntityType Name="Patient">
@@ -244,29 +261,12 @@
           <Property Name="P2" Type="Int32" />
           <Property Name="Vag" Type="Int32" />
           <Property Name="CS" Type="Int32" />
-          <Property Name="No" Type="Int32" Nullable="false" />
           <Property Name="LMP" Type="DateTime" Precision="0" />
           <Property Name="EDD" Type="DateTime" Precision="0" />
           <Property Name="ActualBirthdate" Type="DateTime" Precision="0" />
           <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Examinations" Relationship="Self.FK_Examinations_Pregnancies" FromRole="Pregnancies" ToRole="Examinations" />
           <NavigationProperty Name="Patient" Relationship="Self.FK_Pregnancies_Patients" FromRole="Pregnancies" ToRole="Patients" />
-          <NavigationProperty Name="PregnancyDetails" Relationship="Self.FK_PregnancyDetails_Pregnancies" FromRole="Pregnancies" ToRole="PregnancyDetails" />
-        </EntityType>
-        <EntityType Name="PregnancyDetail">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PregnancyId" Type="Int32" Nullable="false" />
-          <Property Name="Living" Type="Boolean" Nullable="false" />
-          <Property Name="AF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Sex" Type="Boolean" Nullable="false" />
-          <Property Name="Placenta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Weight" Type="Double" />
-          <Property Name="Presentation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Pregnancy" Relationship="Self.FK_PregnancyDetails_Pregnancies" FromRole="PregnancyDetails" ToRole="Pregnancies" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -278,6 +278,18 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_ExaminationDetails_Examinations">
+          <End Role="Examinations" Type="Self.Examination" Multiplicity="1" />
+          <End Role="ExaminationDetails" Type="Self.ExaminationDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Examinations">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ExaminationDetails">
+              <PropertyRef Name="ExaminationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Examinations_Pregnancies">
           <End Role="Pregnancies" Type="Self.Pregnancy" Multiplicity="1" />
           <End Role="Examinations" Type="Self.Examination" Multiplicity="*" />
@@ -302,25 +314,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_PregnancyDetails_Pregnancies">
-          <End Role="Pregnancies" Type="Self.Pregnancy" Multiplicity="1" />
-          <End Role="PregnancyDetails" Type="Self.PregnancyDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pregnancies">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="PregnancyDetails">
-              <PropertyRef Name="PregnancyId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DrMinaClinicEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BackgroundImages" EntityType="Self.BackgroundImage" />
+          <EntitySet Name="ExaminationDetails" EntityType="Self.ExaminationDetail" />
           <EntitySet Name="Examinations" EntityType="Self.Examination" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
           <EntitySet Name="Pregnancies" EntityType="Self.Pregnancy" />
-          <EntitySet Name="PregnancyDetails" EntityType="Self.PregnancyDetail" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_ExaminationDetails_Examinations" Association="Self.FK_ExaminationDetails_Examinations">
+            <End Role="Examinations" EntitySet="Examinations" />
+            <End Role="ExaminationDetails" EntitySet="ExaminationDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK_Examinations_Pregnancies" Association="Self.FK_Examinations_Pregnancies">
             <End Role="Pregnancies" EntitySet="Pregnancies" />
             <End Role="Examinations" EntitySet="Examinations" />
@@ -328,10 +332,6 @@
           <AssociationSet Name="FK_Pregnancies_Patients" Association="Self.FK_Pregnancies_Patients">
             <End Role="Patients" EntitySet="Patients" />
             <End Role="Pregnancies" EntitySet="Pregnancies" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PregnancyDetails_Pregnancies" Association="Self.FK_PregnancyDetails_Pregnancies">
-            <End Role="Pregnancies" EntitySet="Pregnancies" />
-            <End Role="PregnancyDetails" EntitySet="PregnancyDetails" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -345,6 +345,21 @@
               <MappingFragment StoreEntitySet="BackgroundImages">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExaminationDetails">
+            <EntityTypeMapping TypeName="DrMinaClinicModel.ExaminationDetail">
+              <MappingFragment StoreEntitySet="ExaminationDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExaminationId" ColumnName="ExaminationId" />
+                <ScalarProperty Name="Living" ColumnName="Living" />
+                <ScalarProperty Name="AF" ColumnName="AF" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Placenta" ColumnName="Placenta" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Presentation" ColumnName="Presentation" />
+                <ScalarProperty Name="Other" ColumnName="Other" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -366,6 +381,7 @@
                 <ScalarProperty Name="Fhs" ColumnName="Fhs" />
                 <ScalarProperty Name="Engagement" ColumnName="Engagement" />
                 <ScalarProperty Name="UltraSoundNotes" ColumnName="UltraSoundNotes" />
+                <ScalarProperty Name="No" ColumnName="No" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -415,26 +431,10 @@
                 <ScalarProperty Name="P2" ColumnName="P2" />
                 <ScalarProperty Name="Vag" ColumnName="Vag" />
                 <ScalarProperty Name="CS" ColumnName="CS" />
-                <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="LMP" ColumnName="LMP" />
                 <ScalarProperty Name="EDD" ColumnName="EDD" />
                 <ScalarProperty Name="ActualBirthdate" ColumnName="ActualBirthdate" />
                 <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PregnancyDetails">
-            <EntityTypeMapping TypeName="DrMinaClinicModel.PregnancyDetail">
-              <MappingFragment StoreEntitySet="PregnancyDetails">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="PregnancyId" ColumnName="PregnancyId" />
-                <ScalarProperty Name="Living" ColumnName="Living" />
-                <ScalarProperty Name="AF" ColumnName="AF" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
-                <ScalarProperty Name="Placenta" ColumnName="Placenta" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="Presentation" ColumnName="Presentation" />
-                <ScalarProperty Name="Other" ColumnName="Other" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

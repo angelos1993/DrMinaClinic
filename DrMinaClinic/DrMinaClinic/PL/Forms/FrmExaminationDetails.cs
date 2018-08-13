@@ -8,54 +8,54 @@ using DrMinaClinic.Utility;
 
 namespace DrMinaClinic.PL.Forms
 {
-    public partial class FrmPregnancyDetails : FrmMaster
+    public partial class FrmExaminationDetails : FrmMaster
     {
         #region Constructor
 
-        public FrmPregnancyDetails(FrmExamination owner, Pregnancy pregnancy, int no)
+        public FrmExaminationDetails(Form owner, Examination examination, int no)
         {
             Owner = owner;
-            Pregnancy = pregnancy;
+            Examination = examination;
             No = no;
             InitializeComponent();
-            if (Pregnancy.PregnancyDetails.Any())
+            if (Examination.ExaminationDetails.Any())
             {
-                PregnancyDetailsList = Pregnancy.PregnancyDetails.ToList();
-                if (no > Pregnancy.PregnancyDetails.Count)
+                ExaminationDetailsList = Examination.ExaminationDetails.ToList();
+                if (no > Examination.ExaminationDetails.Count)
                 {
-                    var difference = no - Pregnancy.PregnancyDetails.Count;
+                    var difference = no - Examination.ExaminationDetails.Count;
                     for (var i = 0; i < difference; i++)
-                        PregnancyDetailsList.Add(new PregnancyDetail());
+                        ExaminationDetailsList.Add(new ExaminationDetail());
                 }
             }
             else
             {
-                PregnancyDetailsList = new List<PregnancyDetail>();
+                ExaminationDetailsList = new List<ExaminationDetail>();
                 for (var i = 0; i < No; i++)
-                    PregnancyDetailsList.Add(new PregnancyDetail());
+                    ExaminationDetailsList.Add(new ExaminationDetail());
             }
-            PregnancyDetailManager.DeletePregnancyDetailsForPregnancy(pregnancy.Id);
-            pregnancy.PregnancyDetails.Clear();
+            ExaminationDetailManager.DeleteExaminationDetailsForPregnancy(examination.Id);
+            examination.ExaminationDetails.Clear();
         }
 
         #endregion
 
         #region Properties
 
-        public Pregnancy Pregnancy { get; set; }
+        public Examination Examination { get; set; }
         public int No { get; set; }
-        private List<PregnancyDetail> PregnancyDetailsList { get; }
+        private List<ExaminationDetail> ExaminationDetailsList { get; }
         private FrmExamination OwnerForm => Owner as FrmExamination;
-        private PregnancyDetailManager _pregnancyDetailManager;
+        private ExaminationDetailManager _examinationDetailManager;
 
-        private PregnancyDetailManager PregnancyDetailManager =>
-            _pregnancyDetailManager ?? (_pregnancyDetailManager = new PregnancyDetailManager());
+        private ExaminationDetailManager ExaminationDetailManager =>
+            _examinationDetailManager ?? (_examinationDetailManager = new ExaminationDetailManager());
 
         #endregion
 
         #region Events
 
-        private void FrmPregnancyDetails_Load(object sender, EventArgs e)
+        private void FrmExaminationDetails_Load(object sender, EventArgs e)
         {
             Cursor = Cursors.WaitCursor;
             ResetForm();
@@ -125,28 +125,28 @@ namespace DrMinaClinic.PL.Forms
         private void HandleAfterNodeSelection(TreeNode selectedNode)
         {
             var selectedNodeIndex = selectedNode.Index;
-            DisplayPregnancyDetail(selectedNodeIndex);
+            DisplayExaminationDetail(selectedNodeIndex);
             lblHeader.Text = selectedNode.Text;
         }
 
-        private void DisplayPregnancyDetail(int selectedNodeIndex)
+        private void DisplayExaminationDetail(int selectedNodeIndex)
         {
-            if (!PregnancyDetailsList.Any())
+            if (!ExaminationDetailsList.Any())
                 return;
-            var pregnancyDetail = PregnancyDetailsList[selectedNodeIndex];
-            swBtnLiving.Value = pregnancyDetail.Living;
-            txtAf.Text = pregnancyDetail.AF ?? string.Empty;
-            swBtnSex.Value = pregnancyDetail.Sex;
-            txtPlacenta.Text = pregnancyDetail.Placenta ?? string.Empty;
-            dblInWeight.Value = pregnancyDetail.Weight ?? default(double);
-            txtPresentation.Text = pregnancyDetail.Presentation ?? string.Empty;
-            txtOther.Text = pregnancyDetail.Other ?? string.Empty;
+            var examinationDetail = ExaminationDetailsList[selectedNodeIndex];
+            swBtnLiving.Value = examinationDetail.Living;
+            txtAf.Text = examinationDetail.AF ?? string.Empty;
+            swBtnSex.Value = examinationDetail.Sex;
+            txtPlacenta.Text = examinationDetail.Placenta ?? string.Empty;
+            dblInWeight.Value = examinationDetail.Weight ?? default(double);
+            txtPresentation.Text = examinationDetail.Presentation ?? string.Empty;
+            txtOther.Text = examinationDetail.Other ?? string.Empty;
         }
 
         private void Save()
         {
             LoadDataFromForm(treeChildren.SelectedNode.Index);
-            OwnerForm.SetPregnancyDetails(PregnancyDetailsList);
+            OwnerForm.SetExaminationDetails(ExaminationDetailsList);
             Close();
         }
 
@@ -167,9 +167,9 @@ namespace DrMinaClinic.PL.Forms
 
         private void LoadDataFromForm(int selectedNodeIndex)
         {
-            PregnancyDetailsList[selectedNodeIndex] = new PregnancyDetail
+            ExaminationDetailsList[selectedNodeIndex] = new ExaminationDetail
             {
-                PregnancyId = Pregnancy.Id,
+                ExaminationId = Examination.Id,
                 Living = swBtnLiving.Value,
                 AF = txtAf.Text,
                 Sex = swBtnSex.Value,

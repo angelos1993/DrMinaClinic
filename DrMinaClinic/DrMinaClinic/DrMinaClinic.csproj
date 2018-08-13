@@ -65,7 +65,7 @@
     <Compile Include="BLL\ExaminationManager.cs" />
     <Compile Include="BLL\Infrastructure\BaseManager.cs" />
     <Compile Include="BLL\PatientManager.cs" />
-    <Compile Include="BLL\PregnancyDetailManager.cs" />
+    <Compile Include="BLL\ExaminationDetailManager.cs" />
     <Compile Include="BLL\PregnancyManager.cs" />
     <Compile Include="DAL\Enums\ExaminationFormMode.cs" />
     <Compile Include="DAL\Enums\ReceptionFormMode.cs" />
@@ -73,6 +73,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Model\Examination.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Model\ExaminationDetail.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Model\Model.Context.cs">
@@ -96,9 +99,6 @@
     <Compile Include="DAL\Model\Pregnancy.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Model\PregnancyDetail.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="DAL\Model\sysdiagram.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -109,11 +109,21 @@
     <Compile Include="DAL\Repositories\Infrastructure\RepositoryBase.cs" />
     <Compile Include="DAL\Repositories\Infrastructure\UnitOfWork.cs" />
     <Compile Include="DAL\Repositories\PatientRepository.cs" />
-    <Compile Include="DAL\Repositories\PregnancyDetailsRepository.cs" />
+    <Compile Include="DAL\Repositories\ExaminationDetailsRepository.cs" />
     <Compile Include="DAL\Repositories\PregnancyRepository.cs" />
     <Compile Include="DAL\VMs\PatientExaminationVm.cs" />
-    <Compile Include="DAL\VMs\PregnancyDetailVm.cs" />
-    <Content Include="Deployment Versions\4\Script.sql" />
+    <Compile Include="DAL\VMs\ExaminationDetailVm.cs" />
+    <Content Include="DAL\Model\Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\Model\Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Deployment Versions\4. August 15, 2018\Script.sql" />
     <Compile Include="PL\Forms\FrmExamination.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,11 +148,11 @@
     <Compile Include="PL\Forms\FrmPregnancyActualBirthDate.Designer.cs">
       <DependentUpon>FrmPregnancyActualBirthDate.cs</DependentUpon>
     </Compile>
-    <Compile Include="PL\Forms\FrmPregnancyDetails.cs">
+    <Compile Include="PL\Forms\FrmExaminationDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PL\Forms\FrmPregnancyDetails.Designer.cs">
-      <DependentUpon>FrmPregnancyDetails.cs</DependentUpon>
+    <Compile Include="PL\Forms\FrmExaminationDetails.Designer.cs">
+      <DependentUpon>FrmExaminationDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="PL\Forms\FrmReception.cs">
       <SubType>Form</SubType>
@@ -182,8 +192,8 @@
     <EmbeddedResource Include="PL\Forms\FrmPregnancyActualBirthDate.resx">
       <DependentUpon>FrmPregnancyActualBirthDate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PL\Forms\FrmPregnancyDetails.resx">
-      <DependentUpon>FrmPregnancyDetails.cs</DependentUpon>
+    <EmbeddedResource Include="PL\Forms\FrmExaminationDetails.resx">
+      <DependentUpon>FrmExaminationDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PL\Forms\FrmReception.resx">
       <DependentUpon>FrmReception.cs</DependentUpon>
@@ -219,16 +229,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="DAL\Model\Model.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="DAL\Model\Model.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model.edmx</DependentUpon>
-      <LastGenOutput>Model.cs</LastGenOutput>
-    </Content>
     <Content Include="Deployment Versions\1. May 25, 2018\Dr.Mina Clinic.exe" />
     <Content Include="Deployment Versions\1. May 25, 2018\Script.iss" />
     <Content Include="Deployment Versions\1. May 25, 2018\SQL-Script.sql" />

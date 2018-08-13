@@ -4,7 +4,7 @@
     {
         ExaminationRepository ExaminationRepository { get; }
         PatientRepository PatientRepository { get; }
-        PregnancyDetailsRepository PregnancyDetailsRepository { get; }
+        ExaminationDetailsRepository ExaminationDetailsRepository { get; }
         PregnancyRepository PregnancyRepository { get; }
         BackgroundImageRepository BackgroundImageRepository { get; }
     }

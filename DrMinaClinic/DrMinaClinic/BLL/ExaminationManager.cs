@@ -10,6 +10,11 @@ namespace DrMinaClinic.BLL
     {
         #region Properties
 
+        private ExaminationDetailManager _examinationDetailManager;
+
+        private ExaminationDetailManager ExaminationDetailManager =>
+            _examinationDetailManager ?? (_examinationDetailManager = new ExaminationDetailManager());
+
         #endregion
 
         #region Methods
@@ -17,10 +22,14 @@ namespace DrMinaClinic.BLL
         public void AddExamination(Examination examination)
         {
             UnitOfWork.ExaminationRepository.Add(examination);
+            if (examination.ExaminationDetails.Any())
+                ExaminationDetailManager.AddExaminationDetail(examination.ExaminationDetails.ToList(), examination.Id);
         }
 
         public void UpdateExamination(Examination examination)
         {
+            if (examination.ExaminationDetails.Any())
+                ExaminationDetailManager.AddExaminationDetail(examination.ExaminationDetails.ToList(), examination.Id);
             UnitOfWork.ExaminationRepository.Update(examination);
         }
 
