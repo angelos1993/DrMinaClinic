@@ -268,6 +268,8 @@
             this.dtBirthdate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dtBirthdate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtBirthdate.ButtonDropDown.Visible = true;
+            this.dtBirthdate.CustomFormat = "MMM dd, yyyy";
+            this.dtBirthdate.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dtBirthdate.Location = new System.Drawing.Point(84, 70);
             // 
             // 
