@@ -40,7 +40,6 @@
     <Property Name="Fhs" Type="int" />
     <Property Name="Engagement" Type="int" />
     <Property Name="UltraSoundNotes" Type="nvarchar(max)" />
-    <Property Name="No" Type="int" />
   </EntityType>
   <EntityType Name="Patients">
     <Key>
@@ -88,10 +87,15 @@
     <Property Name="P2" Type="int" />
     <Property Name="Vag" Type="int" />
     <Property Name="CS" Type="int" />
+    <Property Name="No" Type="int" Nullable="false" />
     <Property Name="LMP" Type="date" />
     <Property Name="EDD" Type="date" />
     <Property Name="ActualBirthdate" Type="date" />
     <Property Name="IsCurrent" Type="bit" Nullable="false" />
+    <Property Name="MalesCount" Type="int" />
+    <Property Name="FemalesCount" Type="int" />
+    <Property Name="LivingCount" Type="int" />
+    <Property Name="DeadCount" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>

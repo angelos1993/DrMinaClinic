@@ -51,25 +51,5 @@ go
 drop table PregnancyDetails
 go
 /*******************************************************************************************/
-alter table Examinations add No int null
-go
-declare @pregnancyId int
-declare @no int
-declare @examinationId int
-declare NoCursor cursor
-for select Id, No from Pregnancies
-open NoCursor
-fetch next from NoCursor into @pregnancyId, @no
-while @@fetch_status = 0
-begin
-	set @examinationId = (select min(Id) from Examinations where PregnancyId = @pregnancyId)
-	if @examinationId is not null
-		update Examinations set No = @no where Id = @examinationId
-	fetch next from NoCursor into @pregnancyId, @no
-end
-close NoCursor
-deallocate NoCursor
-go
-/*******************************************************************************************/
-alter table Pregnancies drop column No
+alter table Pregnancies add MalesCount int null, FemalesCount int null, LivingCount int null, DeadCount int NULL
 go

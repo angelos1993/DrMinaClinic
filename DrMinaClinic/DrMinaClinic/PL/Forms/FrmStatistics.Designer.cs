@@ -48,7 +48,7 @@
             this.dt.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dt.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dt.ButtonDropDown.Visible = true;
-            this.dt.CustomFormat = "MMM dd, yyyy";
+            this.dt.CustomFormat = "dd/MM/yyyy";
             this.dt.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dt.Location = new System.Drawing.Point(93, 12);
             // 

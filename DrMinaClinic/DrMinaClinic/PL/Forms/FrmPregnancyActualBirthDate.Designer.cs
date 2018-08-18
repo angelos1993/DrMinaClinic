@@ -103,7 +103,7 @@
             this.dtActualDate.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.dtActualDate.ButtonDropDown.Shortcut = DevComponents.DotNetBar.eShortcut.AltDown;
             this.dtActualDate.ButtonDropDown.Visible = true;
-            this.dtActualDate.CustomFormat = "MMM dd, yyyy";
+            this.dtActualDate.CustomFormat = "dd/MM/yyyy";
             this.dtActualDate.Format = DevComponents.Editors.eDateTimePickerFormat.Custom;
             this.dtActualDate.Location = new System.Drawing.Point(69, 41);
             // 

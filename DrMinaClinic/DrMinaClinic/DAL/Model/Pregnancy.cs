@@ -27,10 +27,15 @@ namespace DrMinaClinic.DAL.Model
         public Nullable<int> P2 { get; set; }
         public Nullable<int> Vag { get; set; }
         public Nullable<int> CS { get; set; }
+        public int No { get; set; }
         public Nullable<System.DateTime> LMP { get; set; }
         public Nullable<System.DateTime> EDD { get; set; }
         public Nullable<System.DateTime> ActualBirthdate { get; set; }
         public bool IsCurrent { get; set; }
+        public Nullable<int> MalesCount { get; set; }
+        public Nullable<int> FemalesCount { get; set; }
+        public Nullable<int> LivingCount { get; set; }
+        public Nullable<int> DeadCount { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Examination> Examinations { get; set; }

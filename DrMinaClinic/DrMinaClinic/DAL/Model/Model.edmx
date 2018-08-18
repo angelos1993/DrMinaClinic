@@ -45,7 +45,6 @@
           <Property Name="Fhs" Type="int" />
           <Property Name="Engagement" Type="int" />
           <Property Name="UltraSoundNotes" Type="nvarchar(max)" />
-          <Property Name="No" Type="int" />
         </EntityType>
         <EntityType Name="Patients">
           <Key>
@@ -93,10 +92,15 @@
           <Property Name="P2" Type="int" />
           <Property Name="Vag" Type="int" />
           <Property Name="CS" Type="int" />
+          <Property Name="No" Type="int" Nullable="false" />
           <Property Name="LMP" Type="date" />
           <Property Name="EDD" Type="date" />
           <Property Name="ActualBirthdate" Type="date" />
           <Property Name="IsCurrent" Type="bit" Nullable="false" />
+          <Property Name="MalesCount" Type="int" />
+          <Property Name="FemalesCount" Type="int" />
+          <Property Name="LivingCount" Type="int" />
+          <Property Name="DeadCount" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -210,7 +214,6 @@
           <Property Name="Fhs" Type="Int32" />
           <Property Name="Engagement" Type="Int32" />
           <Property Name="UltraSoundNotes" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="No" Type="Int32" />
           <NavigationProperty Name="ExaminationDetails" Relationship="Self.FK_ExaminationDetails_Examinations" FromRole="Examinations" ToRole="ExaminationDetails" />
           <NavigationProperty Name="Pregnancy" Relationship="Self.FK_Examinations_Pregnancies" FromRole="Examinations" ToRole="Pregnancies" />
         </EntityType>
@@ -261,10 +264,15 @@
           <Property Name="P2" Type="Int32" />
           <Property Name="Vag" Type="Int32" />
           <Property Name="CS" Type="Int32" />
+          <Property Name="No" Type="Int32" Nullable="false" />
           <Property Name="LMP" Type="DateTime" Precision="0" />
           <Property Name="EDD" Type="DateTime" Precision="0" />
           <Property Name="ActualBirthdate" Type="DateTime" Precision="0" />
           <Property Name="IsCurrent" Type="Boolean" Nullable="false" />
+          <Property Name="MalesCount" Type="Int32" />
+          <Property Name="FemalesCount" Type="Int32" />
+          <Property Name="LivingCount" Type="Int32" />
+          <Property Name="DeadCount" Type="Int32" />
           <NavigationProperty Name="Examinations" Relationship="Self.FK_Examinations_Pregnancies" FromRole="Pregnancies" ToRole="Examinations" />
           <NavigationProperty Name="Patient" Relationship="Self.FK_Pregnancies_Patients" FromRole="Pregnancies" ToRole="Patients" />
         </EntityType>
@@ -381,7 +389,6 @@
                 <ScalarProperty Name="Fhs" ColumnName="Fhs" />
                 <ScalarProperty Name="Engagement" ColumnName="Engagement" />
                 <ScalarProperty Name="UltraSoundNotes" ColumnName="UltraSoundNotes" />
-                <ScalarProperty Name="No" ColumnName="No" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -431,10 +438,15 @@
                 <ScalarProperty Name="P2" ColumnName="P2" />
                 <ScalarProperty Name="Vag" ColumnName="Vag" />
                 <ScalarProperty Name="CS" ColumnName="CS" />
+                <ScalarProperty Name="No" ColumnName="No" />
                 <ScalarProperty Name="LMP" ColumnName="LMP" />
                 <ScalarProperty Name="EDD" ColumnName="EDD" />
                 <ScalarProperty Name="ActualBirthdate" ColumnName="ActualBirthdate" />
                 <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+                <ScalarProperty Name="MalesCount" ColumnName="MalesCount" />
+                <ScalarProperty Name="FemalesCount" ColumnName="FemalesCount" />
+                <ScalarProperty Name="LivingCount" ColumnName="LivingCount" />
+                <ScalarProperty Name="DeadCount" ColumnName="DeadCount" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

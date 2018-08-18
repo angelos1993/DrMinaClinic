@@ -42,7 +42,6 @@
           <ScalarProperty Name="Fhs" ColumnName="Fhs" />
           <ScalarProperty Name="Engagement" ColumnName="Engagement" />
           <ScalarProperty Name="UltraSoundNotes" ColumnName="UltraSoundNotes" />
-          <ScalarProperty Name="No" ColumnName="No" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -92,10 +91,15 @@
           <ScalarProperty Name="P2" ColumnName="P2" />
           <ScalarProperty Name="Vag" ColumnName="Vag" />
           <ScalarProperty Name="CS" ColumnName="CS" />
+          <ScalarProperty Name="No" ColumnName="No" />
           <ScalarProperty Name="LMP" ColumnName="LMP" />
           <ScalarProperty Name="EDD" ColumnName="EDD" />
           <ScalarProperty Name="ActualBirthdate" ColumnName="ActualBirthdate" />
           <ScalarProperty Name="IsCurrent" ColumnName="IsCurrent" />
+          <ScalarProperty Name="MalesCount" ColumnName="MalesCount" />
+          <ScalarProperty Name="FemalesCount" ColumnName="FemalesCount" />
+          <ScalarProperty Name="LivingCount" ColumnName="LivingCount" />
+          <ScalarProperty Name="DeadCount" ColumnName="DeadCount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

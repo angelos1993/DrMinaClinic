@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="995c19610b0d4339b56931a1e9151295" Name="Diagram1" ZoomLevel="78">
+      <Diagram DiagramId="f536c020232b4f6d81fdfaa09e6321b6" Name="Diagram1" ZoomLevel="78">
         <EntityTypeShape EntityType="DrMinaClinicModel.BackgroundImage" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DrMinaClinicModel.ExaminationDetail" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="DrMinaClinicModel.Examination" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrMinaClinicModel.Examination" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DrMinaClinicModel.Patient" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DrMinaClinicModel.Pregnancy" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DrMinaClinicModel.Pregnancy" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DrMinaClinicModel.sysdiagram" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
         <AssociationConnector Association="DrMinaClinicModel.FK_ExaminationDetails_Examinations" ManuallyRouted="false" />
         <AssociationConnector Association="DrMinaClinicModel.FK_Examinations_Pregnancies" ManuallyRouted="false" />

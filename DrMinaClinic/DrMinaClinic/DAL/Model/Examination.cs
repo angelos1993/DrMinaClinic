@@ -35,7 +35,6 @@ namespace DrMinaClinic.DAL.Model
         public Nullable<int> Fhs { get; set; }
         public Nullable<int> Engagement { get; set; }
         public string UltraSoundNotes { get; set; }
-        public Nullable<int> No { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ExaminationDetail> ExaminationDetails { get; set; }

@@ -139,6 +139,7 @@ namespace DrMinaClinic.PL.Forms
             intInFundalHeight.Value = examination.FundalHeight ?? default(int);
             swBtnOedema.Value = examination.Oedema ?? default(bool);
             intInHb.Value = examination.Hb ?? default(int);
+            intInFHS.Value = examination.Fhs ?? default(int);
             intInUlterineSize.Value = examination.UterineSize ?? default(int);
             cmbEngagement.SelectedIndex = ExaminationManager.GetEngagementValueFromText(examination.Engagement);
             cmbAlb.SelectedIndex = ExaminationManager.GetAlbValueFromText(examination.UrineAlb);
@@ -147,7 +148,6 @@ namespace DrMinaClinic.PL.Forms
             intInBP1.Value = int.Parse(bp[0]);
             intInBP2.Value = int.Parse(bp[1]);
             txtUltraSoungNotes.Text = examination.UltraSoundNotes;
-            intInNo.Value = examination.No ?? 0;
             FillGrid(examination);
         }
 
@@ -160,6 +160,11 @@ namespace DrMinaClinic.PL.Forms
             dtLMP.Value = pregnancy.LMP ?? default(DateTime);
             intInCS.Value = pregnancy.CS ?? default(int);
             intInVag.Value = pregnancy.Vag ?? default(int);
+            intInNo.Value = pregnancy.No;
+            intInMales.Value = pregnancy.MalesCount ?? default(int);
+            intInFemales.Value = pregnancy.FemalesCount ?? default(int);
+            intInLiving.Value = pregnancy.LivingCount ?? default(int);
+            intInDead.Value = pregnancy.DeadCount ?? default(int);
         }
 
         private void SetFormForAddExamination(Pregnancy pregnancy)
@@ -339,6 +344,11 @@ namespace DrMinaClinic.PL.Forms
             Pregnancy.LMP = dtLMP.Value;
             Pregnancy.CS = intInCS.Value;
             Pregnancy.Vag = intInVag.Value;
+            Pregnancy.No = intInNo.Value;
+            Pregnancy.MalesCount = intInMales.Value;
+            Pregnancy.FemalesCount = intInFemales.Value;
+            Pregnancy.LivingCount = intInLiving.Value;
+            Pregnancy.DeadCount = intInDead.Value;
         }
 
         private void LoadExaminationFromForm()
@@ -359,7 +369,6 @@ namespace DrMinaClinic.PL.Forms
             Examination.UrineSuger = swBtnSugar.Value;
             Examination.BP = $"{intInBP1.Value} / {intInBP2.Value}";
             Examination.UltraSoundNotes = txtUltraSoungNotes.Text;
-            Examination.No = intInNo.Value;
         }
 
         private Pregnancy GetCurrentPregnancy()
@@ -402,6 +411,10 @@ namespace DrMinaClinic.PL.Forms
             dtLMP.Value = default(DateTime);
             intInCS.Value = default(int);
             intInVag.Value = default(int);
+            intInMales.Value = default(int);
+            intInFemales.Value = default(int);
+            intInLiving.Value = default(int);
+            intInDead.Value = default(int);
             dgvExaminationDetails.DataSource = null;
         }
 
