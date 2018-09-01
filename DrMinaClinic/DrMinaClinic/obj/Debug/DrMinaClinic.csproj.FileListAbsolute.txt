@@ -18,4 +18,3 @@ G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.Pr
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.exe
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.pdb
 G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.PL.Forms.FrmExaminationDetails.resources
-G:\Angelos\DrMinaClinic\Repo\DrMinaClinic\DrMinaClinic\obj\Debug\DrMinaClinic.csprojResolveAssemblyReference.cache

@@ -182,6 +182,7 @@ namespace DrMinaClinic.PL.Forms
                     Patient = new Patient();
                     LoadPatientFromForm();
                     Patient.Id = PatientManager.GetNextPatientId(PatientManager.GetLastPatientId());
+                    Patient.CreatedOn = DateTime.Now;
                     PatientManager.AddNewPatient(Patient);
                     DisplayPatient();
                     EnableOrDisableControls(ReceptionFormMode.HasPatient);
@@ -352,7 +353,6 @@ namespace DrMinaClinic.PL.Forms
             Patient.BirthDate = dtBirthdate.Value;
             Patient.Address = txtAddress.Text.FullTrim();
             Patient.Phone = txtPhone.Text.FullTrim();
-            Patient.CreatedOn = DateTime.Now;
 
             #endregion
 
