@@ -241,6 +241,8 @@
     <Content Include="Deployment Versions\5. August 15, 2018\Dr.Mina Clinic.exe" />
     <Content Include="Deployment Versions\5. August 15, 2018\Script.iss" />
     <Content Include="Deployment Versions\5. August 15, 2018\Script.sql" />
+    <Content Include="Deployment Versions\6. September 3, 2018\Dr.Mina Clinic.exe" />
+    <Content Include="Deployment Versions\6. September 3, 2018\Script.iss" />
     <Content Include="Logo.ico" />
     <Content Include="Resources\Add.png" />
     <None Include="Resources\Statistics.png" />
